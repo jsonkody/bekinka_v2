@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { useRoute } from 'vue-router'
-// import Social from './Social.vue'
+import SocialComponent from '@/components/SocialComponent.vue'
 
 const route = useRoute()
 </script>
@@ -83,11 +83,8 @@ const route = useRoute()
       </nav>
     </div>
 
-    <!-- <Social /> -->
-    <div>Social</div>
+    <SocialComponent />
   </section>
 </template>
 
-<style scoped>
-
-</style>
+<style scoped></style>
