@@ -1,4 +1,7 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import EmoComponent from '@/components/EmoComponent.vue'
+import HeartComponent from '@/components/HeartComponent.vue'
+</script>
 
 <template>
   <div class="">
@@ -58,7 +61,7 @@
           Veliké díky za podporu v nemoci posílá Beki & její rodina
         </div>
 
-        <Heart />
+        <HeartComponent />
       </div>
 
       <div class="mt-8 p-3 md:p-8 leading-relaxed dark-wrap text-left">
@@ -109,7 +112,7 @@
       <div id="andullie" class="my-24 flex items-center justify-center">
         <div>
           <h2 class="mb-5 text-xl text-green-400">
-            <Emo>Clap andullHello </Emo>
+            <EmoComponent>Clap andullHello </EmoComponent>
             <a
               target="_blank"
               rel="noreferrer"
@@ -119,9 +122,9 @@
               Andullie
               <TbExternalLink class="external_link" />
             </a>
-            <Emo>
+            <EmoComponent>
               zorganizovala stream na podporu Beky bekiPray bekiPog bekiAha bekiLurk
-              bekiBlankies</Emo
+              bekiBlankies</EmoComponent
             >
           </h2>
 
@@ -141,7 +144,7 @@
       <div id="shilou" class="my-24 flex items-center justify-center">
         <div>
           <h2 class="mb-5 text-xl text-green-400">
-            <Emo>Clap shilLove Charitativní stream od </Emo>
+            <EmoComponent>Clap shilLove Charitativní stream od </EmoComponent>
             <a
               target="_blank"
               rel="noreferrer"
@@ -151,7 +154,10 @@
               Shil0u_
               <TbExternalLink class="external_link" />
             </a>
-            <Emo>shilEZY na podporu Bekinky bekiPray bekiPog bekiAha bekiBlankies shilLove</Emo>
+            <EmoComponent
+              >shilEZY na podporu Bekinky bekiPray bekiPog bekiAha bekiBlankies
+              shilLove</EmoComponent
+            >
           </h2>
 
           <div
