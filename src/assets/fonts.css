@@ -1,6 +1,6 @@
 /* Fonts */
 
-// App global font
+/* App global font */
 @font-face {
   font-family: 'Inter';
   src: url('./fonts/inter.ttf');
@@ -9,7 +9,7 @@
   font-display: swap;
 }
 
-// font-pixelated menu font
+/* font-pixelated menu font */
 @font-face {
   font-family: 'Pixel';
   src: url('./fonts/pixel.woff2');
@@ -17,7 +17,7 @@
   font-style: normal oblique 0deg 10deg;
 }
 
-// Logo "Bekinka"
+/* Logo "Bekinka" */
 @font-face {
   font-family: 'Streamster';
   src: url('./fonts/streamster.ttf');
@@ -25,7 +25,7 @@
   font-style: normal oblique 0deg 10deg;
 }
 
-// Test - trying new main font (Asap)
+/* Test - trying new main font (Asap) */
 @font-face {
   font-family: 'AsapI';
   src: url('./fonts/asap.ttf') format('truetype');
