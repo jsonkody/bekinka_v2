@@ -2,8 +2,6 @@
 
 <template>
   <main>
-    <div class="">
-      Home
-    </div>
+    <div class="">Games</div>
   </main>
 </template>

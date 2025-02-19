@@ -1,0 +1,93 @@
+<script setup lang="ts">
+import { useRoute } from 'vue-router'
+// import Social from './Social.vue'
+
+const route = useRoute()
+</script>
+
+<template>
+  <section
+    class="pb-5 sm:pt-5 mt-0 md:mt-0 md:h-24 flex flex-col-reverse sm:flex-row items-center justify-between"
+  >
+    <div class="flex items-center">
+      <router-link to="/" class="px-5">
+        <div class="px-5 hidden md:inline-block">
+          <div class="inline-block flex h-full">
+            <div class="glitch group ml-2 relative inline-block w-32">
+              <div
+                class="bekinka-logo text-5xl font-streamster text-purple-400 group-hover:text-purple-200 trans"
+              >
+                Bekinka
+              </div>
+              <div class="kata text-purple-400 group-hover:text-purple-200 trans">ベキンカ</div>
+              <div class="hira text-purple-400 group-hover:text-purple-200 trans">なに これ</div>
+            </div>
+          </div>
+        </div>
+      </router-link>
+
+      <router-link
+        to="/"
+        class="z-20 absolute left-1 top-1 sm:left-5 sm:top-5 lg:left-52 lg:top-5 md:hidden lg:block"
+      >
+        <img
+          class="opacity-0 hover:opacity-100 trans"
+          alt="beki smile"
+          width="65"
+          height="65"
+          src="/src/assets/images/logo_smile.webp"
+        />
+      </router-link>
+    </div>
+
+    <div class="pt-14 sm:pt-4">
+      <nav class="font-pixel flex flex-col sm:flex-row justify-center items-center">
+        <!-- Home -->
+        <router-link to="/" custom v-slot="{ navigate, isExactActive }">
+          <div
+            class="menu-link cursor-pointer"
+            :class="{ active: isExactActive }"
+            @click="navigate"
+          >
+            <span class="text-pink-300 mr-3" :class="{ invisible: !isExactActive }">{</span>
+            Sbírka
+            <span class="ml-3 text-pink-300" :class="{ invisible: !isExactActive }">}</span>
+          </div>
+        </router-link>
+
+        <!-- Games -->
+        <router-link to="/games" custom v-slot="{ navigate, isExactActive }">
+          <div
+            class="menu-link cursor-pointer"
+            :class="{ active: isExactActive }"
+            @click="navigate"
+          >
+            <span class="text-pink-300 mr-3" :class="{ invisible: !isExactActive }">{</span>
+            Games
+            <span class="ml-3 text-pink-300" :class="{ invisible: !isExactActive }">}</span>
+          </div>
+        </router-link>
+
+        <!-- Art -->
+        <router-link to="/art" custom v-slot="{ navigate, isExactActive }">
+          <div
+            class="menu-link cursor-pointer"
+            :class="{ active: isExactActive }"
+            @click="navigate"
+          >
+            <span class="text-pink-300 mr-3" :class="{ invisible: !isExactActive }">{</span>
+            Art
+            <span class="ml-3 text-pink-300" :class="{ invisible: !isExactActive }">}</span>
+          </div>
+        </router-link>
+      </nav>
+    </div>
+
+    <!-- <Social /> -->
+    <div>Social</div>
+  </section>
+</template>
+
+<style scoped>
+
+</style>

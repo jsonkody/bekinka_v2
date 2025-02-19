@@ -203,22 +203,22 @@ input[type='number'] {
   max-height: 75vh;
 }
 
-.glitch {
+@utility glitch {
   transition: text-shadow 0.2s ease;
   text-shadow: -2px 2px 1px #8c00ffe1;
+
+  &:hover {
+    text-shadow: -2px 2px 2px #ff00aa;
+  }
 }
 
-.glitch:hover {
-  text-shadow: -2px 2px 2px #ff00aa;
-}
-
-.glitch-reverse {
+@utility glitch-reverse {
   transition: text-shadow 0.2s ease;
   text-shadow: -2px 2px 1px #a73bff;
-}
 
-.glitch-reverse:hover {
-  text-shadow: 2px -2px 1px #ff00aa;
+  &:hover {
+    text-shadow: 2px -2px 1px #ff00aa;
+  }
 }
 
 .social-block {
@@ -307,19 +307,56 @@ input[type='number'] {
 }
 
 .video_container {
-	position: relative;
-	padding-bottom: 0;
-	padding-top: 0;
-	height: 100%;
-	overflow: hidden;
+  position: relative;
+  padding-bottom: 0;
+  padding-top: 0;
+  height: 100%;
+  overflow: hidden;
 }
 
 .video_container iframe,
 .video_container object,
 .video_container embed {
-	position: absolute;
-	top: 0;
-	left: 0;
-	width: 100%;
-	height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.bekinka-logo {
+  position: absolute;
+  display: inline-block;
+  bottom: -1.5rem;
+  transform: rotate(-16deg);
+}
+
+.kata {
+  position: absolute;
+  display: inline-block;
+  bottom: -2.6rem;
+  right: -0.3rem;
+  font-size: 1.2rem;
+}
+
+.hira {
+  position: absolute;
+  display: none;
+  bottom: -3.6rem;
+  right: -0.3rem;
+  font-size: 1rem;
+}
+
+.menu-link {
+  /* @apply px-4 py-2 glitch glitch-reverse text-4xl text-pink-300 hover:text-pink-100 active:text-pink-100; */
+  @apply px-4 py-2 glitch glitch-reverse text-4xl text-pink-300 hover:text-pink-100 active:text-pink-100;
+  transition: all 0.15s;
+}
+
+.menu-link.active {
+  @apply text-cyan-200;
+}
+
+.trans {
+  @apply transition duration-200;
 }
