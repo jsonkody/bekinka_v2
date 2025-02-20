@@ -31,4 +31,21 @@ interface Game {
   }
 }
 
-export type { IconName, Photo, Game }
+enum Genre {
+  Adventure = 101,
+  RPG = 102,
+  FPS = 103,
+  Shooter = 104,
+  Racing = 105,
+  HackNslash = 106,
+  Horror = 107,
+  Survival = 108,
+  Puzzle = 109,
+  Platform = 110,
+  Simulator = 111,
+  Souls = 112,
+  Indie = 113,
+  MMO = 114,
+}
+
+export type { Genre, IconName, Photo, Game }

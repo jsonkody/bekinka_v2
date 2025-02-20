@@ -6,6 +6,23 @@ import EmoComponent from '@/components/EmoComponent.vue'
 import { useGames } from '@/stores/Games'
 
 const games = useGames()
+
+enum Genre {
+  Adventure = 101,
+  RPG = 102,
+  FPS = 103,
+  Shooter = 104,
+  Racing = 105,
+  HackNslash = 106,
+  Horror = 107,
+  Survival = 108,
+  Puzzle = 109,
+  Platform = 110,
+  Simulator = 111,
+  Souls = 112,
+  Indie = 113,
+  MMO = 114,
+}
 </script>
 
 <template>
@@ -27,14 +44,14 @@ const games = useGames()
     >
       <div v-for="g in Object.keys(games.genres)" :key="g" class="cursor-pointer">
         <div
-          @click="games.changeGenre(Number(g) as game.Genre)"
+          @click="games.changeGenre(Number(g) as Genre)"
           class="font-asap mr-1 mb-1 py-1 px-3 text-sm rounded trans"
           :class="{
             'bg-green-300/90 text-black': games.genre === Number(g),
             'bg-black/25 text-white hover:bg-black/70': games.genre !== Number(g),
           }"
         >
-          {{ games.genres[Number(g)].title }}
+          {{ games.genres[Number(g) as Genre].title }}
         </div>
       </div>
     </div>
