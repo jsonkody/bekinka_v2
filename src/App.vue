@@ -40,11 +40,6 @@ import TheFooter from '@/components/TheFooter.vue'
 </template>
 
 <style>
-:root {
-  scroll-behavior: smooth;
-  color: white;
-}
-
 .head_position {
   display: none;
   pointer-events: none;

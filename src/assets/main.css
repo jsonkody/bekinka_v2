@@ -63,8 +63,9 @@
 /* Global styles */
 :root,
 body {
-  cursor: var(--cursor-default);
   scroll-behavior: smooth;
+  color: white;
+  cursor: var(--cursor-default);
   font-family: 'Inter', Arial, Helvetica, sans-serif;
   padding: 0;
   margin: 0;
@@ -73,8 +74,24 @@ body {
   background-image: url('/images/bg.svg');
   background-size: 100% auto;
   background-repeat: repeat-y;
-  color: white;
   /* border: 1px solid red; */
+
+  --fancybox-bg: rgba(255, 1, 1, 0.98); /* Hlavní pozadí */
+  --fancybox-accent-color: #fdd0fe; /* Barva ovládacích prvků */
+  --fancybox-thumbs-bg: rgba(0, 0, 0, 1); /* Pozadí náhledů */
+}
+
+.fancybox__backdrop {
+  background: rgba(0, 0, 0, 0.88) !important;
+  backdrop-filter: blur(10px);
+}
+
+.f-button {
+  background: rgba(0, 0, 0, 0) !important;
+}
+
+.fancybox__nav {
+  opacity: 0.1;
 }
 
 html::-webkit-scrollbar,
