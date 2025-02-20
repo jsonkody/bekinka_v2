@@ -47,7 +47,7 @@ const scoreColor = (score: number) => {
       <!-- Okno obsah -->
       <div class="font-inter flex text-gray-900 minHRating leading-6 tracking-normal">
         <!-- rating & image -->
-        <div class="p-3">
+        <div v-if="game.rating" class="p-3">
           <div
             class="font-pixel group rounded-lg overflow-hidden inline-block relative"
             :class="[scoreColor(game.rating), { 'border-t-4': game.rating }]"
@@ -96,11 +96,13 @@ const scoreColor = (score: number) => {
           </div>
 
           <!-- Nehodnoceno -->
-          <div v-if="!game.rating" class="m-5 p-2 text-2xl text-red-600">
-            <span class="mr-1">🚧</span>
-            připravujeme
-            <span class="mr-1">🚧</span>
-            <div> ( ͡° ͜ʖ ͡°)</div>
+          <div v-if="!game.rating" class="p-2 text-3xl text-red-600">
+            <div class="font-pixel">
+              <span class="mr-1">🚧</span>
+              připravujeme
+              <span class="mr-1">🚧</span>
+            </div>
+            <div class="font-roboto-mono">( ͡° ͜ʖ ͡°)</div>
           </div>
 
           <!-- Request -->
