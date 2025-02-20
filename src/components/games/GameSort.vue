@@ -41,11 +41,11 @@ const handleScoreClick = () => {
     >
       <template v-if="isDesc">
         Od nejnovějších
-        <IconComponent name="ArrDown" />
+        <IconComponent name="ArrDown" size="1.5rem" />
       </template>
       <template v-else>
         Od nejstarších
-        <IconComponent name="ArrUp" />
+        <IconComponent name="ArrUp" size="1.5rem" />
       </template>
     </button>
 
@@ -58,8 +58,10 @@ const handleScoreClick = () => {
         'text-pink-400 hover:text-pink-300': !sortByDate,
       }"
     >
-      <template v-if="fromBest"> Od nejlepších <IconComponent name="ArrDown" /> </template>
-      <template v-else> Od nejhorších <IconComponent name="ArrUp" /> </template>
+      <template v-if="fromBest">
+        Od nejlepších <IconComponent name="ArrDown" size="1.5rem" />
+      </template>
+      <template v-else> Od nejhorších <IconComponent name="ArrUp" size="1.5rem" /> </template>
     </button>
   </div>
 </template>

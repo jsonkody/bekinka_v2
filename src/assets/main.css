@@ -91,11 +91,7 @@ input[type='number'] {
   cursor: text;
 }
 
-.dark-wrap {
-  padding: 0.75rem;
-  background-color: rgba(0, 0, 0, 0.4);
-  border-radius: 1rem;
-}
+
 
 .external_link {
   display: inline-block;
@@ -252,23 +248,6 @@ input[type='number'] {
   filter: drop-shadow(-2px 2px 1px #ff00aa);
 }
 
-.social-link {
-  display: inline-block;
-  padding-left: 0.5rem;
-  padding-right: 0.5rem;
-  padding-top: 0.25rem;
-  padding-bottom: 0.25rem;
-  font-size: 1.5rem;
-  color: #f9a8d4;
-  transition-property: all;
-  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-  transition-duration: 0.2s;
-}
-
-.social-link:hover {
-  color: #fbcfe8;
-}
-
 .footer {
   background-image: url('/images/checkerboard.svg');
   height: 12rem;
@@ -372,7 +351,7 @@ input[type='number'] {
 }
 
 .dark-wrap {
-  @apply p-3 bg-black/40 rounded-2xl;
+  @apply py-6 p-3 bg-black/40 rounded-2xl;
 }
 
 @theme {

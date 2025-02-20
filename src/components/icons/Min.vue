@@ -11,7 +11,6 @@ const { size } = defineProps({
   <svg
     :width="size"
     :height="size"
-    class="h-5 w-5 inline-block"
     viewBox="0 0 16 16"
     fill="none"
     xmlns="http://www.w3.org/2000/svg"

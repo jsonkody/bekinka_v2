@@ -1605,7 +1605,7 @@ const filteredGames = computed(() => {
 </script>
 
 <template>
-  <div class="dark-wrap py-6">
+  <div class="dark-wrap">
     <!-- Vyhledávání -->
     <div class="flex justify-center intems-center">
       <input
@@ -1652,7 +1652,7 @@ const filteredGames = computed(() => {
   <div class="my-3 text-center">
     <h2>
       <span class="font-asap text-sm text-white/50 hover:opacity-90 trans">
-        Hodnocení = míra zábavy pro Beku...
+        Hodnocení = míra zábavy pro Beku. Neslouží jako náhrada profesionálních recenzí ;)
       </span>
     </h2>
   </div>
