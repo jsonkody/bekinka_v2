@@ -7,7 +7,7 @@
         width="21"
         height="21"
         class="inline"
-        src="/public/images/heart_green.webp"
+        src="/images/heart_green.webp"
         alt="dobrodružné srdce"
         title="dobrodružné srdce"
       />
@@ -15,7 +15,7 @@
         width="21"
         height="21"
         class="inline"
-        src="/public/images/heart_cyan.webp"
+        src="/images/heart_cyan.webp"
         alt="diamantové srdce"
         title="diamantové srdce"
       />
@@ -23,7 +23,7 @@
         width="21"
         height="21"
         class="inline"
-        src="/public/images/heart_purple.webp"
+        src="/images/heart_purple.webp"
         alt="statečné srdce"
         title="statečné srdce"
       />
@@ -31,7 +31,7 @@
         width="21"
         height="21"
         class="inline"
-        src="/public/images/heart_red.webp"
+        src="/images/heart_red.webp"
         alt="milující srdce"
         title="milující srdce"
       />
@@ -39,7 +39,7 @@
         width="21"
         height="21"
         class="inline"
-        src="/public/images/heart_gold.webp"
+        src="/images/heart_gold.webp"
         alt="zlaté srdce"
         title="zlaté srdce"
       />

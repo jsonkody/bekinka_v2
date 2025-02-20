@@ -35,7 +35,7 @@ const route = useRoute()
           alt="beki smile"
           width="65"
           height="65"
-          src="/public/images/logo_smile.webp"
+          src="/images/logo_smile.webp"
         />
       </router-link>
     </div>
