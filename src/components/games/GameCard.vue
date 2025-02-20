@@ -98,8 +98,9 @@ const scoreColor = (score: number) => {
           <!-- Nehodnoceno -->
           <div v-if="!game.rating" class="m-5 p-2 text-2xl text-red-600">
             <span class="mr-1">🚧</span>
-            připravujeme ( ͡° ͜ʖ ͡°)
+            připravujeme
             <span class="mr-1">🚧</span>
+            <div> ( ͡° ͜ʖ ͡°)</div>
           </div>
 
           <!-- Request -->
