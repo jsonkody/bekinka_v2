@@ -1,85 +1,11 @@
 <script setup lang="ts">
-import type { GenreObj } from '@/typings/types'
+// import type { Genre } from '@/stores/Games'
 import GameCard from '@/components/games/GameCard.vue'
 import GameSort from '@/components/games/GameSort.vue'
 import EmoComponent from '@/components/EmoComponent.vue'
 import { useGames } from '@/stores/Games'
-import { ref, computed } from 'vue'
 
 const games = useGames()
-
-enum Genre {
-  Adventure = 101,
-  RPG = 102,
-  FPS = 103,
-  Shooter = 104,
-  Racing = 105,
-  HackNslash = 106,
-  Horror = 107,
-  Survival = 108,
-  Puzzle = 109,
-  Platform = 110,
-  Simulator = 111,
-  Souls = 112,
-  Indie = 113,
-  MMO = 114,
-}
-
-// Reaktivní stav
-const gameName = ref('')
-const genre = ref<Genre>()
-const isDesc = ref(true)
-const fromBest = ref(true)
-const sortByDate = ref(true)
-
-const handleChangeGenre = (new_genre: Genre) => {
-  genre.value = new_genre
-}
-
-const genres: Record<Genre, GenreObj> = {
-  [Genre.Adventure]: { title: 'Adventura', id: Genre.Adventure },
-  [Genre.RPG]: { title: 'RPG', id: Genre.RPG },
-  [Genre.FPS]: { title: 'FPS', id: Genre.FPS },
-  [Genre.Shooter]: { title: 'Střílečka', id: Genre.Shooter },
-  [Genre.Racing]: { title: 'Závodní', id: Genre.Racing },
-  [Genre.HackNslash]: { title: 'Mlátička', id: Genre.HackNslash },
-  [Genre.Horror]: { title: 'Hororovka', id: Genre.Horror },
-  [Genre.Survival]: { title: 'Survival', id: Genre.Survival },
-  [Genre.Puzzle]: { title: 'Logická', id: Genre.Puzzle },
-  [Genre.Platform]: { title: 'Plošinovka', id: Genre.Platform },
-  [Genre.Simulator]: { title: 'Simulátor', id: Genre.Simulator },
-  [Genre.Souls]: { title: 'Souls', id: Genre.Souls },
-  [Genre.Indie]: { title: 'Nezávislá', id: Genre.Indie },
-  [Genre.MMO]: { title: 'MMO', id: Genre.MMO },
-  // ... ostatní žánry
-}
-
-// Metody
-const changeGenre = (g: Genre | undefined) => {
-  gameName.value = ''
-  genre.value = genre.value === g ? undefined : g
-}
-
-const setSearch = (e: Event) => {
-  genre.value = undefined
-  gameName.value = (e.target as HTMLInputElement).value
-}
-
-// Computed property pro filtrované hry
-const filteredGames = computed(() => {
-  return games.data
-    .sort((a, b) => {
-      if (sortByDate.value) {
-        return isDesc.value ? b.index - a.index : a.index - b.index
-      }
-      return fromBest.value ? (b.rating || 0) - (a.rating || 0) : (a.rating || 0) - (b.rating || 0)
-    })
-    .filter((game) => {
-      if (genre.value) return game.genre.includes(genre.value)
-      return true
-    })
-    .filter((game) => game.title.toLowerCase().includes(gameName.value.toLowerCase()))
-})
 </script>
 
 <template>
@@ -90,8 +16,8 @@ const filteredGames = computed(() => {
         placeholder="Vyhledej hru ..."
         class="bg-white font-asap font-semibold text-purple-950 text-xl px-3 mb-2 rounded-md border-2 border-purple-400 hover:border-green-400 focus:border-green-400 focus:outline-none trans"
         type="text"
-        :value="gameName"
-        @input="setSearch"
+        :value="games.gameName"
+        @input="games.setSearch"
       />
     </div>
 
@@ -99,16 +25,16 @@ const filteredGames = computed(() => {
     <div
       class="border border-purple-400/10 bg-purple-400/10 pb-1 pt-2 rounded-md mb-2 mt-3 font-sans font-medium flex flex-wrap items-center justify-center"
     >
-      <div v-for="g in Object.keys(genres)" :key="g" class="cursor-pointer">
+      <div v-for="g in Object.keys(games.genres)" :key="g" class="cursor-pointer">
         <div
-          @click="changeGenre(Number(g) as Genre)"
+          @click="games.changeGenre(Number(g) as game.Genre)"
           class="font-asap mr-1 mb-1 py-1 px-3 text-sm rounded trans"
           :class="{
-            'bg-green-300/90 text-black': genre === Number(g),
-            'bg-black/25 text-white hover:bg-black/70': genre !== Number(g),
+            'bg-green-300/90 text-black': games.genre === Number(g),
+            'bg-black/25 text-white hover:bg-black/70': games.genre !== Number(g),
           }"
         >
-          {{ genres[Number(g) as Genre].title }}
+          {{ games.genres[Number(g)].title }}
         </div>
       </div>
     </div>
@@ -116,12 +42,12 @@ const filteredGames = computed(() => {
     <!-- Třídění -->
     <div class="flex items-center justify-center">
       <GameSort
-        :is-desc="isDesc"
-        :from-best="fromBest"
-        :sort-by-date="sortByDate"
-        @update:is-desc="isDesc = $event"
-        @update:from-best="fromBest = $event"
-        @update:sort-by-date="sortByDate = $event"
+        :is-desc="games.isDesc"
+        :from-best="games.fromBest"
+        :sort-by-date="games.sortByDate"
+        @update:is-desc="games.isDesc = $event"
+        @update:from-best="games.fromBest = $event"
+        @update:sort-by-date="games.sortByDate = $event"
       />
     </div>
   </div>
@@ -138,13 +64,13 @@ const filteredGames = computed(() => {
   <!-- Seznam her -->
   <div class="flex flex-wrap">
     <GameCard
-      v-for="game in filteredGames"
+      v-for="game in games.filteredGames"
       :key="game.index + 'game'"
       :game="game"
-      :genres="genres"
-      :from-best="fromBest"
-      :genre="genre"
-      @change-genre="handleChangeGenre"
+      :genres="games.genres"
+      :from-best="games.fromBest"
+      :genre="games.genre"
+      @change-genre="games.handleChangeGenre"
     />
   </div>
 
