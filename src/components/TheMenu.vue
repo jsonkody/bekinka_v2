@@ -7,8 +7,9 @@ const route = useRoute()
 
 <template>
   <section
-    class="pb-5 sm:pt-5 mt-0 md:mt-0 md:h-24 flex flex-col-reverse sm:flex-row items-center justify-between"
+    class="pb-5 sm:pt-8 mt-0 md:mt-0 md:h-24 flex flex-col-reverse sm:flex-row items-center justify-between"
   >
+    <!-- Bekinka logo -->
     <div class="flex items-center">
       <router-link to="/" class="px-5">
         <div class="px-5 hidden md:inline-block">
@@ -26,6 +27,7 @@ const route = useRoute()
         </div>
       </router-link>
 
+      <!-- meme secret -->
       <router-link
         to="/"
         class="z-20 absolute left-1 top-1 sm:left-5 sm:top-5 lg:left-52 lg:top-5 md:hidden lg:block"
@@ -40,7 +42,7 @@ const route = useRoute()
       </router-link>
     </div>
 
-    <div class="pt-14 sm:pt-4">
+    <div class="pt-13 sm:pt-0">
       <nav class="font-pixel flex flex-col sm:flex-row justify-center items-center">
         <!-- Home -->
         <router-link to="/" custom v-slot="{ navigate, isExactActive }">

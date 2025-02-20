@@ -9,15 +9,6 @@ const { size } = defineProps({
 
 <template>
   <svg
-    :width="size"
-    :height="size"
-    viewBox="0 0 16 16"
-    fill="none"
-    xmlns="http://www.w3.org/2000/svg"
-  >
-    <path d="M10.5 12H11V11H10.5V12ZM4 12H10.5V11H4V12Z" fill="currentColor" />
-  </svg>
-  <svg
     stroke="currentColor"
     fill="currentColor"
     stroke-width="0"
