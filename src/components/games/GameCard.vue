@@ -38,7 +38,7 @@ const scoreColor = (score: number) => {
         }"
       >
         <span class="mx-1">{{ game.index ? `${game.index}.` : '' }}</span>
-        <span class="mx-1">{{ game.title }}</span>
+        <span class="mx-1 window-title overflow-x-scroll">{{ game.title }}</span>
         <span class="cursor-pointer button justify-self-end mr-1">
           <span class="select-none font-normal text-gray-700 buttonX">x</span>
         </span>
@@ -52,7 +52,7 @@ const scoreColor = (score: number) => {
             class="font-pixel group rounded-lg overflow-hidden inline-block relative"
             :class="[scoreColor(game.rating), { 'border-t-4': game.rating }]"
           >
-            <div class="image">
+            <div v-if="game.img.url" class="image">
               <img
                 :alt="game.title"
                 width="90"
@@ -67,7 +67,7 @@ const scoreColor = (score: number) => {
         </div>
 
         <!-- Content -->
-        <div class="p-3 pl-1 window-content">
+        <div class="p-3 pl-1 window-content text-center">
           <!-- Žánr -->
           <div class="mb-1 flex justify-end flex-wrap text-xs text-gray-600">
             <div
@@ -90,15 +90,18 @@ const scoreColor = (score: number) => {
           </div>
 
           <!-- Text recenze a emoji -->
-          <div>
+          <div class="text-left">
             <span class="text-2xl mr-2">{{ game.emoji }}</span>
             <EmoComponent>{{ game.text }}</EmoComponent>
           </div>
 
           <!-- Nehodnoceno -->
-          <div v-if="!game.rating" class="inline-block m-5">
-            <span class="text-xl mr-1">🚧</span>
-            zatím neohodnoceno
+          <div
+            v-if="!game.rating"
+            class="m-5 p-2 text-2xl rounded-full bg-gray-800 text-yellow-200"
+          >
+            <span class="mr-1">🚧</span>
+            ... připravujeme ( ͡° ͜ʖ ͡°)
           </div>
 
           <!-- Request -->
@@ -255,5 +258,33 @@ const scoreColor = (score: number) => {
 
 .trans {
   transition: all 0.2s ease-in-out;
+}
+
+.window-title {
+  overflow-x: auto;
+  text-wrap: nowrap;
+  /* width */
+  &::-webkit-scrollbar {
+    height: 0.3rem;
+    width: 0.3rem;
+    transition: all 0.2s;
+  }
+
+  /* Track */
+  &::-webkit-scrollbar-track {
+    background: #00000000;
+  }
+
+  /* Handle */
+  &::-webkit-scrollbar-thumb {
+    background: #ffffff96;
+    border-radius: 1rem;
+  }
+
+  /* Handle on hover */
+  &::-webkit-scrollbar-thumb:hover {
+    background: #ffffffd8;
+    cursor: pointer;
+  }
 }
 </style>
