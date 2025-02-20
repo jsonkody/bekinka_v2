@@ -11,7 +11,7 @@ import TheFooter from '@/components/TheFooter.vue'
       <ScrollToTop />
 
       <div class="head_position absolute z-10">
-        <img width="283" height="430" src="/src/assets/images/head.webp" alt="head" />
+        <img width="283" height="430" src="/public/images/head.webp" alt="head" />
       </div>
 
       <TheMenu />
@@ -22,7 +22,7 @@ import TheFooter from '@/components/TheFooter.vue'
       >
         <img
           alt="bekinka japanese"
-          src="/src/assets/images/bekinka_jpn.webp"
+          src="/public/images/bekinka_jpn.webp"
           width="480"
           height="140"
         />

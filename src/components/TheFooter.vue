@@ -5,7 +5,7 @@
     <img
       width="283"
       height="430"
-      src="/src/assets/images/head_footer.webp"
+      src="/public/images/head_footer.webp"
       alt="head"
       class="absolute bottom-0 z-10"
     />
