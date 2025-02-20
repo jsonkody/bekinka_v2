@@ -67,7 +67,7 @@ const scoreColor = (score: number) => {
         </div>
 
         <!-- Content -->
-        <div class="p-3 pl-1 content">
+        <div class="p-3 pl-1 window-content">
           <!-- Žánr -->
           <div class="mb-1 flex justify-end flex-wrap text-xs text-gray-600">
             <div
@@ -157,23 +157,23 @@ const scoreColor = (score: number) => {
   opacity: 0;
 }
 
-.content {
+.window-content {
   width: 100%;
 }
 
-.content::-webkit-scrollbar {
+.window-content::-webkit-scrollbar {
   width: 7px;
 }
 
-.content::-webkit-scrollbar-track {
+.window-content::-webkit-scrollbar-track {
   background: transparent;
 }
 
-.content::-webkit-scrollbar-thumb {
+.window-content::-webkit-scrollbar-thumb {
   background: #a7a7a7;
 }
 
-.content::-webkit-scrollbar-thumb:hover {
+.window-content::-webkit-scrollbar-thumb:hover {
   background: #474649;
 }
 
