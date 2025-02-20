@@ -10,4 +10,11 @@ type IconName =
   | 'Youtube'
   | 'Twitch'
 
-export type { IconName }
+  interface Photo {
+    name: string
+    width: number
+    height: number
+    alt: string
+  }
+
+export type { IconName, Photo }

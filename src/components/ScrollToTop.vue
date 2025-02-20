@@ -39,7 +39,7 @@ const scrollToTop = () => {
   position: fixed;
   right: 40px;
   bottom: 30px;
-  z-index: 9999;
+  z-index: 90;
 }
 
 @media (max-width: 768px) {
