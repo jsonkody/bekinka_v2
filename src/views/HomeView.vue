@@ -45,16 +45,17 @@ import HeartComponent from '@/components/HeartComponent.vue'
         <p class="my-3 font-asap text-lg">
           Navíc, pro ty z vás, kteří sledují moji uměleckou stránku na
           <a target="_blank" class="pl-3 px-2 link" href="https://www.artstation.com/rebecapro">
-            Artstation </a
-          >{' '} jsem přidala několik nových obrázků, které jsem vytvořila během posledních měsíců.
-          Tyto obrázky jsou pro mě zvláštní, protože odrážejí moje pocity a zkušenosti během tohoto
-          náročného období.{' '}
+            Artstation
+          </a>
+          jsem přidala několik nových obrázků, které jsem vytvořila během posledních měsíců. Tyto
+          obrázky jsou pro mě zvláštní, protože odrážejí moje pocity a zkušenosti během tohoto
+          náročného období.
         </p>
 
         <h2 class="text-right mr-7 text-xl text-emerald-400 font-asap">S láskou, Beki</h2>
 
         <p class="mt-4">
-          PS: updatovali jsme{' '}
+          PS: updatovali jsme
           <a class="link" href="#galerie"> fotografie v galerii. </a>
         </p>
       </div>
