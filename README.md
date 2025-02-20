@@ -1,39 +1,29 @@
-# bekinka_v2
+Navod jako minule
 
-This template should help get you started developing with Vue 3 in Vite.
-
-## Recommended IDE Setup
-
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur).
-
-## Type Support for `.vue` Imports in TS
-
-TypeScript cannot handle type information for `.vue` imports by default, so we replace the `tsc` CLI with `vue-tsc` for type checking. In editors, we need [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) to make the TypeScript language service aware of `.vue` types.
-
-## Customize configuration
-
-See [Vite Configuration Reference](https://vite.dev/config/).
-
-## Project Setup
-
+stahnes k sobe na PC pomoci GitBash
 ```sh
-pnpm install
+git clone git@github.com:JsonKody/bekinka_v2.git
 ```
 
-### Compile and Hot-Reload for Development
+Nainstalujes dependence pomoci
 
 ```sh
-pnpm dev
+pnpm i
 ```
 
-### Type-Check, Compile and Minify for Production
+Spustis u sebe pomoci
 
 ```sh
-pnpm build
+pnmp dev
 ```
+(dalsi scripty jsou v `package.json` ;) ) 
 
-### Lint with [ESLint](https://eslint.org/)
+
+Ulozis a nahrajes pomoci 
 
 ```sh
-pnpm lint
+pnpm psh
 ```
+
+
+Hry muzes upravovat v souboru `/src/stores/Games.ts`
