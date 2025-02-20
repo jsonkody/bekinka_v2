@@ -117,7 +117,7 @@ const filteredGames = computed(() => {
     <div class="flex justify-center intems-center">
       <input
         placeholder="Vyhledej hru ..."
-        class="font-asap font-semibold text-purple-950 text-xl px-3 mb-2 rounded-md border-2 border-purple-400 hover:border-green-400 focus:border-green-400 focus:outline-none trans"
+        class="bg-white font-asap font-semibold text-purple-950 text-xl px-3 mb-2 rounded-md border-2 border-purple-400 hover:border-green-400 focus:border-green-400 focus:outline-none trans"
         type="text"
         :value="gameName"
         @input="setSearch"
@@ -126,7 +126,7 @@ const filteredGames = computed(() => {
 
     <!-- Žánry -->
     <div
-      class="border border-purple-400 border-opacity-10 bg-purple-400 pb-1 pt-2 bg-opacity-10 rounded-md mb-2 mt-3 font-sans font-medium flex flex-wrap items-center justify-center"
+      class="border border-purple-400/10 bg-purple-400/10 pb-1 pt-2 rounded-md mb-2 mt-3 font-sans font-medium flex flex-wrap items-center justify-center"
     >
       <div v-for="g in Object.keys(genres)" :key="g" class="cursor-pointer">
         <div
