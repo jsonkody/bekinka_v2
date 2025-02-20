@@ -8,19 +8,7 @@ const photos = art.photos
 
 <template>
   <div class="flex flex-wrap items-center">
-    <FancyboxWrapper
-      :options="{
-        Thumbs: { type: 'modern' },
-        Toolbar: {
-          display: {
-            left: [],
-            middle: [],
-            right: ['fullscreen', 'close'],
-          },
-        },
-        groupAll: true,
-      }"
-    >
+    <FancyboxWrapper>
       <a
         v-for="photo in photos"
         :key="photo.alt"
