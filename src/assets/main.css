@@ -1,8 +1,8 @@
 @import url('fonts.css');
 @import 'tailwindcss';
 
-.rd {
-  border: 4px solid red;
+@utility rd {
+  border: 1px solid red;
 }
 
 /* @utility trans {
@@ -356,13 +356,19 @@ input[type='number'] {
 }
 
 .menu-link {
-  /* @apply px-4 py-2 glitch glitch-reverse text-4xl text-pink-300 hover:text-pink-100 active:text-pink-100; */
-  @apply px-4 py-2 glitch glitch-reverse text-4xl text-pink-300 hover:text-pink-100 active:text-pink-100;
+  @apply cursor-pointer lg:px-2 py-2 flex glitch text-4xl text-pink-300 hover:text-pink-100 active:text-pink-100;
   transition: all 0.15s;
+
+  .left {
+    @apply mr-4 text-pink-300 ;
+  }
+  .right {
+    @apply ml-4 text-pink-300;
+  }
 }
 
 .menu-link.active {
-  @apply text-cyan-200;
+  @apply text-cyan-200 glitch-reverse;
 }
 
 .dark-wrap {

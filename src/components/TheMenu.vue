@@ -45,39 +45,39 @@ const route = useRoute()
         <!-- Home -->
         <router-link to="/" custom v-slot="{ navigate, isExactActive }">
           <div
-            class="menu-link cursor-pointer"
+            class="menu-link"
             :class="{ active: isExactActive }"
             @click="navigate"
           >
-            <span class="text-pink-300 mr-3" :class="{ invisible: !isExactActive }">{</span>
+            <span class="left" :class="{ invisible: !isExactActive }">{</span>
             Sbírka
-            <span class="ml-3 text-pink-300" :class="{ invisible: !isExactActive }">}</span>
+            <span class="right" :class="{ invisible: !isExactActive }">}</span>
           </div>
         </router-link>
 
         <!-- Games -->
         <router-link to="/games" custom v-slot="{ navigate, isExactActive }">
           <div
-            class="menu-link cursor-pointer"
+            class="menu-link"
             :class="{ active: isExactActive }"
             @click="navigate"
           >
-            <span class="text-pink-300 mr-3" :class="{ invisible: !isExactActive }">{</span>
+            <span class="left" :class="{ invisible: !isExactActive }">{</span>
             Games
-            <span class="ml-3 text-pink-300" :class="{ invisible: !isExactActive }">}</span>
+            <span class="right" :class="{ invisible: !isExactActive }">}</span>
           </div>
         </router-link>
 
         <!-- Art -->
         <router-link to="/art" custom v-slot="{ navigate, isExactActive }">
           <div
-            class="menu-link cursor-pointer"
+            class="menu-link"
             :class="{ active: isExactActive }"
             @click="navigate"
           >
-            <span class="text-pink-300 mr-3" :class="{ invisible: !isExactActive }">{</span>
+            <span class="left" :class="{ invisible: !isExactActive }">{</span>
             Art
-            <span class="ml-3 text-pink-300" :class="{ invisible: !isExactActive }">}</span>
+            <span class="right" :class="{ invisible: !isExactActive }">}</span>
           </div>
         </router-link>
       </nav>
