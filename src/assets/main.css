@@ -430,3 +430,42 @@ input[type='number'] {
 .dark-wrap {
   @apply py-6 p-3 bg-black/40 rounded-2xl;
 }
+
+.gallery-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.2rem;
+  justify-content: center;
+  margin: 2rem 0;
+}
+
+.gallery-item {
+  transition: transform 0.3s ease;
+
+  &:hover {
+    transform: scale(1.03);
+    z-index: 1;
+  }
+
+  @media (max-width: 1024px) {
+    flex-basis: calc(33.33% - 1rem); /* 3 sloupce */
+  }
+
+  @media (max-width: 768px) {
+    flex-basis: calc(50% - 1rem); /* 2 sloupce */
+  }
+}
+
+.thumbnail {
+  width: 100%;
+  height: auto;
+  border-radius: 16px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  border: 2px solid transparent;
+  transition: all 0.15s ease;
+
+  &:hover {
+    border-color: #e7aaff;
+    box-shadow: 0 6px 16px #dd87ffd0;
+  }
+}

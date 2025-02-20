@@ -36,7 +36,7 @@ const handleScoreClick = () => {
       class="font-asap font-semibold text-lg cursor-pointer p-2 focus:outline-none trans"
       :class="{
         'text-pink-400 hover:text-pink-300': sortByDate,
-        'text-purple-300 opacity-30 hover:opacity-50': !sortByDate,
+        'text-purple-300/30 hover:text-purple-300/50': !sortByDate,
       }"
     >
       <template v-if="isDesc">
@@ -54,7 +54,7 @@ const handleScoreClick = () => {
       @click="handleScoreClick"
       class="font-asap font-semibold text-lg cursor-pointer p-2 focus:outline-none trans"
       :class="{
-        'text-purple-300 opacity-30 hover:opacity-50': sortByDate,
+        'text-purple-300/30 hover:text-purple-300/50': sortByDate,
         'text-pink-400 hover:text-pink-300': !sortByDate,
       }"
     >

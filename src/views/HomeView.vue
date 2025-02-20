@@ -1,9 +1,9 @@
 <script setup lang="ts">
 import LiteYouTubeEmbed from 'vue-lite-youtube-embed'
 import 'vue-lite-youtube-embed/style.css'
-
 import EmoComponent from '@/components/EmoComponent.vue'
 import HeartComponent from '@/components/HeartComponent.vue'
+import GalleryHomeComponent from '@/components/gallery/GalleryHomeComponent.vue'
 </script>
 
 <template>
@@ -187,7 +187,7 @@ import HeartComponent from '@/components/HeartComponent.vue'
           </h2>
         </div>
         <div class="flex">
-          <GalleryNew />
+          <GalleryHomeComponent />
         </div>
       </div>
     </div>

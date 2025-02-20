@@ -1,9 +1,9 @@
 <script setup lang="ts">
 import FancyboxWrapper from './FancyboxWrapper.vue'
-import { useArt } from '../../stores/Art'
-const art = useArt()
+import { useGalleryHome } from '../../stores/GalleryHome'
+const galery = useGalleryHome()
 
-const photos = art.photos
+const photos = galery.photos
 </script>
 
 <template>
@@ -13,13 +13,13 @@ const photos = art.photos
         class="gallery-item"
         v-for="photo in photos"
         :key="photo.alt"
-        :href="`/images/art/${photo.name}.webp`"
+        :href="`/images/cesta_new/${photo.name}.webp`"
         data-fancybox="gallery"
         :data-caption="photo.alt"
       >
         <img
           class="thumbnail"
-          :src="`/images/art/thumb/${photo.name}_thumb.webp`"
+          :src="`/images/cesta_new/thumb/${photo.name}_thumb.webp`"
           :width="photo.width"
           :height="photo.height"
           :alt="photo.alt"
