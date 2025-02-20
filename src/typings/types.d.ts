@@ -1,3 +1,3 @@
-type IconName = 'admin' | 'align-left' | 'align-center'
+type IconName = 'ArrDown' | 'ArrUp' | 'Ban' | 'Discord' | 'Max' | 'Min'
 
 export type { IconName }

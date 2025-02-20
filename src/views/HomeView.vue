@@ -1,4 +1,7 @@
 <script setup lang="ts">
+import LiteYouTubeEmbed from 'vue-lite-youtube-embed'
+import 'vue-lite-youtube-embed/style.css'
+
 import EmoComponent from '@/components/EmoComponent.vue'
 import HeartComponent from '@/components/HeartComponent.vue'
 </script>

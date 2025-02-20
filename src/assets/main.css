@@ -364,3 +364,7 @@ input[type='number'] {
 .menu-link.active {
   @apply text-cyan-200;
 }
+
+.dark-wrap {
+  @apply p-3 bg-black/40 rounded-2xl;
+}

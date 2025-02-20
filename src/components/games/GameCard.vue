@@ -1,0 +1,259 @@
+<script setup lang="ts">
+import EmoComponent from '../EmoComponent.vue'
+import { ref } from 'vue'
+
+const props = defineProps<{
+  game: any
+  genres: Record<number, { title: string }>
+  fromBest: boolean
+  genre?: number
+}>()
+
+const emit = defineEmits(['change-genre'])
+
+const isOpen = ref(false)
+
+const toggleOpen = () => {
+  isOpen.value = !isOpen.value
+}
+
+const scoreColor = (score: number) => {
+  if (score >= 80) return 'score-green'
+  if (score >= 65) return 'score-yellow'
+  if (score >= 45) return 'score-red'
+  return 'score-gray'
+}
+</script>
+
+<template>
+  <div @click="toggleOpen" class="font-pixel group p-2 inline-block w-full md:w-1/2 xl:w-1/3">
+    <div class="shadow-lg hover:shadow-2xl window">
+      <!-- Lista -->
+      <div
+        class="lista flex items-center justify-between"
+        :class="{
+          played: game.rating,
+          wanted: !game.rating,
+          requested: game.requested,
+        }"
+      >
+        <span class="mx-1">{{ game.index ? `${game.index}.` : '' }}</span>
+        <span class="mx-1">{{ game.title }}</span>
+        <span class="cursor-pointer button justify-self-end mr-1">
+          <span class="select-none font-normal text-gray-700 buttonX">x</span>
+        </span>
+      </div>
+
+      <!-- Okno obsah -->
+      <div class="font-inter flex text-gray-900 minHRating leading-6 tracking-normal">
+        <!-- rating & image -->
+        <div class="p-3">
+          <div
+            class="font-pixel group rounded-lg overflow-hidden inline-block relative"
+            :class="[scoreColor(game.rating), { 'border-t-4': game.rating }]"
+          >
+            <div class="image">
+              <img
+                :alt="game.title"
+                width="90"
+                height="120"
+                :src="`https://images.igdb.com/igdb/image/upload/t_cover_small/${game.img.url}.jpg`"
+              />
+            </div>
+            <div v-if="game.rating" class="score">
+              <span>{{ game.rating }}%</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Content -->
+        <div class="p-3 pl-1 content">
+          <!-- Žánr -->
+          <div class="mb-1 flex justify-end flex-wrap text-xs text-gray-600">
+            <div
+              v-for="gen in game.genre"
+              :key="gen + 'cardGenre'"
+              class="cursor-pointer"
+              @click.stop="emit('change-genre', gen)"
+            >
+              <div
+                class="pt-0.5 px-1 m-0.5 border rounded"
+                :class="{
+                  'border-blue-600 text-blue-600 hover:border-purple-500 hover:text-purple-500':
+                    gen === genre,
+                  'border-gray-400 hover:border-gray-600 hover:text-gray-900': gen !== genre,
+                }"
+              >
+                {{ genres[gen]?.title }}
+              </div>
+            </div>
+          </div>
+
+          <!-- Text recenze a emoji -->
+          <div>
+            <span class="text-2xl mr-2">{{ game.emoji }}</span>
+            <EmoComponent>{{ game.text }}</EmoComponent>
+          </div>
+
+          <!-- Nehodnoceno -->
+          <div v-if="!game.rating" class="inline-block m-5">
+            <span class="text-xl mr-1">🚧</span>
+            zatím neohodnoceno
+          </div>
+
+          <!-- Request -->
+          <div v-if="game.requested" class="font-inter mt-3">
+            <span class="text-gray-600">requested by: </span>
+            <span class="font-semibold text-purple-700 hover:text-purple-500 trans">
+              {{ game.requested }}
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</template>
+
+<style scoped>
+.lista {
+  transition: opacity 0.2s;
+  color: white;
+  position: relative;
+  box-shadow: 0 2px 1px -1px rgb(147, 147, 147);
+}
+
+.lista.played {
+  background: linear-gradient(90deg, #1d44ed 0%, #000083 100%);
+}
+
+.lista.wanted {
+  background: #747888;
+}
+
+.lista.requested {
+  background: linear-gradient(90deg, #7500da 0%, #000082 100%);
+}
+
+.lista span {
+  z-index: 20;
+}
+
+.lista::before {
+  position: absolute;
+  content: '';
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: linear-gradient(
+    45deg,
+    rgba(12, 255, 212, 1) 0%,
+    rgba(255, 139, 243, 1) 44%,
+    rgba(255, 111, 235, 1) 53%,
+    rgba(0, 212, 255, 1) 100%
+  );
+  z-index: 0;
+  transition: opacity 0.1s linear;
+  opacity: 0;
+}
+
+.content {
+  width: 100%;
+}
+
+.content::-webkit-scrollbar {
+  width: 7px;
+}
+
+.content::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.content::-webkit-scrollbar-thumb {
+  background: #a7a7a7;
+}
+
+.content::-webkit-scrollbar-thumb:hover {
+  background: #474649;
+}
+
+.score {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 27%;
+  background-color: rgba(0, 0, 0, 0.6);
+  font-size: 1.7rem;
+  transition: all 0.2s;
+}
+
+.window {
+  transition: all 0.2s;
+  border: 3px outset #c3c3c3;
+  background: #e7e7e7;
+}
+
+.window:hover {
+  transform: scale(1.04);
+  background: #f7f7f7;
+  border: 3px outset #d8d8d8;
+}
+
+.window:hover .lista::before {
+  z-index: 0;
+  opacity: 1;
+}
+
+.window:hover .score {
+  height: 100%;
+  font-size: 2.4rem;
+  font-weight: 900;
+  background-color: rgba(0, 0, 0, 0.25);
+  text-shadow:
+    -1px -1px 0 #000,
+    1px -1px 0 #000,
+    -1px 1px 0 #000,
+    1px 1px 0 #000;
+}
+
+.button {
+  border: 2px outset #c3c3c3;
+  background: #c3c3c3;
+  display: inline-block;
+  width: 1.1rem;
+  height: 1.06rem;
+  color: black;
+}
+
+.buttonX {
+  position: relative;
+  bottom: 0.5rem;
+  left: 0.05rem;
+}
+
+.button:hover {
+  border: 2px inset #c3c3c3;
+}
+
+.button:hover .buttonX {
+  bottom: 0.4rem;
+  left: 0.1rem;
+}
+
+.button:hover .buttonX:active {
+  color: #79ffff;
+}
+
+.image {
+  width: 90px;
+  height: 120px;
+}
+
+.trans {
+  transition: all 0.2s ease-in-out;
+}
+</style>

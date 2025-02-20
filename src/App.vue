@@ -2,6 +2,7 @@
 import { RouterView } from 'vue-router'
 import TheMenu from '@/components/TheMenu.vue'
 import ScrollToTop from '@/components/ScrollToTop.vue'
+import TheFooter from '@/components/TheFooter.vue'
 </script>
 
 <template>

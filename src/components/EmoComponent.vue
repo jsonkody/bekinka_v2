@@ -53,6 +53,7 @@ const processContent = (text: string) => {
 }
 
 watchEffect(() => {
+  //@ts-ignore
   const slotContent = slots.default?.()?.[0]?.children || ''
   processedHtml.value = processContent(String(slotContent))
 })
