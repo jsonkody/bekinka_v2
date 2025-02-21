@@ -17,7 +17,7 @@ const photos = art.photos
       >
         <img
           class="thumbnail"
-          src="/images/art/thumb/bex-hex-asset.avif_thumb.webp"
+          src="/images/art/thumb/bex-hex-asset_thumb.avif"
           alt="testuji AVIF pro iPhony"
         />
       </a>

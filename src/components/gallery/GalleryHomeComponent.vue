@@ -20,8 +20,6 @@ const photos = galery.photos
         <img
           class="thumbnail"
           :src="`/images/cesta_new/thumb/${photo.name}_thumb.webp`"
-          :width="photo.width"
-          :height="photo.height"
           :alt="photo.alt"
         />
       </a>
