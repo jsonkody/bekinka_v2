@@ -1,29 +1,46 @@
-Navod jako minule
+## 📚 Návod na Bekinka_v2
 
-stahnes k sobe na PC pomoci GitBash
+## 📥 1. Stáhni si projekt k sobě na počítač
+
+Pomocí **Git Bash** (nebo jiného terminálu) si naklonuješ projekt z GitHubu:
+
 ```sh
 git clone git@github.com:JsonKody/bekinka_v2.git
 ```
 
-Nainstalujes dependence pomoci
+## 🛠️ 2. Nainstaluj potřebné knihovny (dependencies)
+
+Po naklonování si přejdi do složky projektu (`cd bekinka_v2`) a spusť:
 
 ```sh
 pnpm i
 ```
 
-Spustis u sebe pomoci
+> "⚠️ Tohle stačí udělat jen jednou po stažení – pak už to nebudeš potřebovat opakovat!"
+
+## 🎮 3. Spusť projekt u sebe na počítači
+
+Když máš všechno ready, spustíš si to lokálně příkazem:
 
 ```sh
 pnmp dev
 ```
-(dalsi scripty jsou v `package.json` ;) ) 
 
+> "🎨 Projekt se spustí a můžeš ho otestovat v prohlížeči (obvykle na http://localhost:5173). Další užitečné příkazy najdeš v souboru package.json! 😉"
 
-Ulozis a nahrajes pomoci 
+## ✏️ 4. Uprav si hry podle sebe
+
+Hry můžeš editovat v souboru:
+📍 `/src/stores/Games.ts`
+
+> "🧠 Tady můžeš měnit pravidla, přidávat nové nápady nebo cokoli, co tě napadne – je to tvoje hřiště!"
+
+## 🚀 5. Nahraj změny na GitHub a web
+
+Až budeš spokojená, uložíš změny a nahraješ je příkazem:
 
 ```sh
 pnpm psh
 ```
 
-
-Hry muzes upravovat v souboru `/src/stores/Games.ts`
+> "🌐 Tím se projekt uloží na GitHub a můžeš ho nasadit na web (např. přes Vercel nebo Netlify). Hotovo!"
