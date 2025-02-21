@@ -200,6 +200,7 @@ const scoreColor = (score: number) => {
 }
 
 .window {
+  user-select: none;
   transition: all 0.2s;
   border: 3px outset #c3c3c3;
   background: #e7e7e7;

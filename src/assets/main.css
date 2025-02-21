@@ -241,6 +241,7 @@ input[type='number'] {
 }
 
 .menu-link {
+  user-select: none;
   padding-top: 0.5rem;
   padding-bottom: 0.5rem;
   font-size: 2.25rem;
@@ -274,11 +275,11 @@ input[type='number'] {
 
 @utility glitch-reverse {
   transition: text-shadow 0.2s ease;
-  text-shadow: -2px 2px 1px #a73bff;
+  /* text-shadow: -2px 2px 1px #a73bff; */
+  text-shadow: 2px -2px 1px #ff00aa;
 
-  &:hover {
-    text-shadow: 2px -2px 1px #ff00aa;
-  }
+  /* &:hover {
+  } */
 }
 
 .social-block {
