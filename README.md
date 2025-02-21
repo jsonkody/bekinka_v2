@@ -44,3 +44,11 @@ pnpm psh
 ```
 
 > "🌐 Tím se projekt uloží na GitHub a můžeš ho nasadit na web (např. přes Vercel nebo Netlify). Hotovo!"
+
+## 🌟 A je to!
+
+To je všechno – teď už můžeš sama upravovat bekinka.cz a nasazovat ho na web! Kdyby něco nešlo, napiš mi, ať to spolu rozlouskneme. 🎉
+
+💖 Přeju hodně štěstí!
+
+Daniel 😊
