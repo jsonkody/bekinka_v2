@@ -12,11 +12,8 @@ type IconName =
 
 interface Photo {
   name: string
-  width: number
-  height: number
   alt: string
 }
-
 
 interface Game {
   index: number

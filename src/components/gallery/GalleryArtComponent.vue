@@ -11,6 +11,22 @@ const photos = art.photos
     <div class="gallery-wrapper">
       <a
         class="gallery-item"
+        href="/images/art/bex-hex-asset.avif"
+        data-fancybox="gallery"
+        data-caption="testuji AVIF pro iPhony"
+      >
+        <img
+          class="thumbnail"
+          src="/images/art/thumb/bex-hex-asset.avif_thumb.webp"
+          alt="testuji AVIF pro iPhony"
+        />
+      </a>
+    </div>
+  </FancyboxWrapper>
+  <FancyboxWrapper>
+    <div class="gallery-wrapper">
+      <a
+        class="gallery-item"
         v-for="photo in photos"
         :key="photo.alt"
         :href="`/images/art/${photo.name}.webp`"
@@ -20,8 +36,6 @@ const photos = art.photos
         <img
           class="thumbnail"
           :src="`/images/art/thumb/${photo.name}_thumb.webp`"
-          :width="photo.width"
-          :height="photo.height"
           :alt="photo.alt"
         />
       </a>
