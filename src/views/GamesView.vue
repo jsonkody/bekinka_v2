@@ -26,7 +26,7 @@ enum Genre {
 </script>
 
 <template>
-  <div class="dark-wrap">
+  <div class="pt-6 px-3 pb-2 bg-black/40 rounded-2xl">
     <!-- Vyhledávání -->
     <div class="flex justify-center intems-center">
       <input
