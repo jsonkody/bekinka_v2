@@ -29,13 +29,13 @@ const photos = art.photos
         class="gallery-item"
         v-for="photo in photos"
         :key="photo.alt"
-        :href="`/images/art/${photo.name}.webp`"
+        :href="`/images/art/${photo.name}.${photo.type}`"
         data-fancybox="gallery"
         :data-caption="photo.alt"
       >
         <img
           class="thumbnail"
-          :src="`/images/art/thumb/${photo.name}_thumb.webp`"
+          :src="`/images/art/thumb/${photo.name}_thumb.${photo.type}`"
           :alt="photo.alt"
         />
       </a>
