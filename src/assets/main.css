@@ -351,23 +351,23 @@ input[type='number'] {
 }
 
 .score-green {
-  color: #22c55e;
-  border-color: #22c55e;
+  color: #00e955;
+  border-color: #0add57;
 }
 
 .score-yellow {
-  color: #facc15;
-  border-color: #facc15;
+  color: #ffdd33;
+  border-color: #eebf04;
 }
 
 .score-red {
-  color: #ef4444;
-  border-color: #ef4444;
+  color: #ff2929;
+  border-color: #e83737;
 }
 
 .score-gray {
-  color: #9ca3af;
-  border-color: #9ca3af;
+  color: #d6d6d6;
+  border-color: #8a8a8a;
 }
 
 .video_container {

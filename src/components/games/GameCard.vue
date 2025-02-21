@@ -130,8 +130,6 @@ const scoreColor = (score: number) => {
   box-shadow: 0 2px 1px -1px rgb(147, 147, 147);
 }
 
-
-
 .lista.played {
   background: linear-gradient(90deg, #1d44ed 0%, #000083 100%);
 }
