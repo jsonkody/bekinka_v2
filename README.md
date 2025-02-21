@@ -44,7 +44,7 @@ Až budeš spokojená, uložíš změny a nahraješ je příkazem:
 pnpm psh
 ```
 
-> _"🌐 Tím se projekt uloží na GitHub a můžeš ho nasadit na web (např. přes Vercel nebo Netlify). Hotovo!"_
+> _"🌐 Tím se projekt uloží na GitHub, Vercel si toho všimne a nasadí to na web. Hotovo!"_
 
 ### 🌟 A je to!
 
