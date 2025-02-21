@@ -45,7 +45,7 @@ enum Genre {
       <div v-for="g in Object.keys(games.genres)" :key="g" class="cursor-pointer">
         <div
           @click="games.changeGenre(Number(g) as Genre)"
-          class="font-asap mr-1 mb-1 py-1 px-3 text-sm rounded trans"
+          class="select-none font-asap mr-1 mb-1 py-1 px-3 text-sm rounded trans"
           :class="{
             'bg-green-300/90 text-black': games.genre === Number(g),
             'bg-black/25 text-white hover:bg-black/70': games.genre !== Number(g),

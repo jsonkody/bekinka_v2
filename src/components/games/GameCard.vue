@@ -94,7 +94,7 @@ const scoreColor = (score: number) => {
           </div>
 
           <!-- Text recenze a emoji -->
-          <div class="text-left">
+          <div class="text-left sm:select-text">
             <span class="text-2xl mr-2">{{ game.emoji }}</span>
             <EmoComponent>{{ game.text }}</EmoComponent>
           </div>
