@@ -1,12 +1,16 @@
 <script setup lang="ts">
+import type { Game } from '@/typings/types'
 import EmoComponent from '../EmoComponent.vue'
+import { useGames } from '@/stores/Games'
 import { ref } from 'vue'
 
-const props = defineProps<{
-  game: any
+const games = useGames()
+
+const { game } = defineProps<{
+  game: Game
   genres: Record<number, { title: string }>
-  fromBest: boolean
-  genre?: number
+  // fromBest: boolean
+  // genre?: number
 }>()
 
 const emit = defineEmits(['change-genre'])
@@ -80,8 +84,8 @@ const scoreColor = (score: number) => {
                 class="pt-0.5 px-1 m-0.5 border rounded"
                 :class="{
                   'border-blue-600 text-blue-600 hover:border-purple-500 hover:text-purple-500':
-                    gen === genre,
-                  'border-gray-400 hover:border-gray-600 hover:text-gray-900': gen !== genre,
+                    gen === games.genre,
+                  'border-gray-400 hover:border-gray-600 hover:text-gray-900': gen !== games.genre,
                 }"
               >
                 {{ genres[gen]?.title }}
@@ -126,6 +130,8 @@ const scoreColor = (score: number) => {
   box-shadow: 0 2px 1px -1px rgb(147, 147, 147);
 }
 
+
+
 .lista.played {
   background: linear-gradient(90deg, #1d44ed 0%, #000083 100%);
 }
@@ -150,11 +156,11 @@ const scoreColor = (score: number) => {
   bottom: 0;
   left: 0;
   background: linear-gradient(
-    45deg,
-    rgba(12, 255, 212, 1) 0%,
-    rgba(255, 139, 243, 1) 44%,
-    rgba(255, 111, 235, 1) 53%,
-    rgba(0, 212, 255, 1) 100%
+    90deg,
+    rgb(111, 0, 255) 5%,
+    rgb(255, 193, 249) 35%,
+    rgb(255, 240, 156) 60%,
+    rgb(0, 255, 179) 100%
   );
   z-index: 0;
   transition: opacity 0.1s linear;
@@ -210,6 +216,11 @@ const scoreColor = (score: number) => {
 .window:hover .lista::before {
   z-index: 0;
   opacity: 1;
+}
+
+.window:hover .window-title {
+  transition: color 0.15s;
+  color: black;
 }
 
 .window:hover .score {
