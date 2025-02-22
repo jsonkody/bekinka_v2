@@ -432,18 +432,28 @@ input[type='number'] {
   @apply py-6 p-3 bg-black/40 rounded-2xl;
 }
 
-
 /* Layout galerie */
 .gallery-wrapper {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(80px, 1fr)); /* Flexibilní sloupce */
-  gap: 0.1rem; /* Mezera mezi položkami */
-  padding: 0;
+  grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+  gap: 0.1rem;
 }
 
-/* Styl pro jednotlivé odkazy */
 .gallery-item {
-  display: block; /* Odkaz zabírá celou plochu */
+  transition: transform 0.3s ease;
+
+  &:hover {
+    transform: scale(1.03);
+    z-index: 1;
+  }
+
+  @media (max-width: 1024px) {
+    flex-basis: calc(33.33% - 1rem); /* 3 sloupce */
+  }
+
+  @media (max-width: 768px) {
+    flex-basis: calc(50% - 1rem); /* 2 sloupce */
+  }
 }
 
 /* Styl pro thumbnaily */

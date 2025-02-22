@@ -186,9 +186,8 @@ import GalleryHomeComponent from '@/components/gallery/GalleryHomeComponent.vue'
             pláč, jindy zase smích. Fotky jsou většinou seřazené podle toho, kdy byly pořízené.
           </h2>
         </div>
-        <div class="flex">
-          <GalleryHomeComponent />
-        </div>
+
+        <GalleryHomeComponent />
       </div>
     </div>
   </div>
