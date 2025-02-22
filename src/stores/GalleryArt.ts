@@ -372,14 +372,22 @@ export const useGalleryArt = defineStore('GalleryArt', () => {
     })
   }
 
-  const animate_and_sort = () => {
-    // 1. Krátké zamíchání
-    shuffle()
+  const is_mobile = ref(window.innerWidth < 768)
+  window.addEventListener('resize', () => {
+    is_mobile.value = window.innerWidth < 768
+  })
 
-    // 2. Po krátké prodlevě seřazení
+  const animate_and_sort = () => {
+    if (is_mobile.value) {
+      sort_photos()
+      return
+    }
+
+    // on PC shuffle then sort - better animation
+    shuffle()
     setTimeout(() => {
       sort_photos()
-    }, 300) // 300ms prodleva – uprav podle potřeby
+    }, 300)
   }
 
   watch(is_desc, () => {
