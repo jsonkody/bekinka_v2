@@ -7,152 +7,122 @@ export const useGalleryHome = defineStore('GalleryHome', () => {
     {
       name: '1',
       alt: 'První hospitalizace',
-      type: 'webp'
     },
     {
       name: '2',
       alt: 'První hospitalizace',
-      type: 'webp'
     },
     {
       name: '3',
       alt: 'První hospitalizace',
-      type: 'webp'
     },
     {
       name: '4',
       alt: 'První hospitalizace',
-      type: 'webp'
     },
     {
       name: '5',
       alt: 'První hospitalizace',
-      type: 'webp'
     },
     {
       name: '6',
       alt: 'Bolesti',
-      type: 'webp'
     },
     {
       name: '7',
       alt: 'Beky a Váša (přítel)',
-      type: 'webp'
     },
     {
       name: '8',
       alt: 'Přišla kytička',
-      type: 'webp'
     },
     {
       name: '9',
       alt: 'Beky / Beki / Beka / Bekinka / Rebeca :)',
-      type: 'webp'
     },
     {
       name: '10',
       alt: 'Lepší den',
-      type: 'webp'
     },
     {
       name: '11',
       alt: 'Horší den',
-      type: 'webp'
     },
     {
       name: '12',
       alt: ':(',
-      type: 'webp'
     },
     {
       name: '13',
       alt: ":'(",
-      type: 'webp'
     },
     {
       name: '14',
       alt: 'Prášky na bolest asi zabraly :)',
-      type: 'webp'
     },
     {
       name: '15',
       alt: ":'(",
-      type: 'webp'
     },
     {
       name: '16',
       alt: 'Pennynka & Bekinka',
-      type: 'webp'
     },
     {
       name: '17',
       alt: 'Je to náročné',
-      type: 'webp'
     },
     {
       name: '18',
       alt: 'Je to náročné',
-      type: 'webp'
     },
     {
       name: '19',
       alt: 'Je to náročné',
-      type: 'webp'
     },
     {
       name: '20',
       alt: 'Je to náročné',
-      type: 'webp'
     },
     {
       name: '21',
       alt: 'Beki a táta',
-      type: 'webp'
     },
     {
       name: '22',
       alt: 'Doma',
-      type: 'webp'
     },
     {
       name: '23',
       alt: 'Zase v nemocnici',
-      type: 'webp'
     },
     {
       name: '24',
       alt: 'Beky a mamka',
-      type: 'webp'
     },
     {
       name: '25',
       alt: 'Já a Beki - zrovna radioaktivní v proton centru',
-      type: 'webp'
     },
     {
       name: '26',
       alt: 'Desetimetrové kapačky :O',
-      type: 'webp'
     },
     {
       name: '27',
       alt: 'Proton Center',
-      type: 'webp'
     },
     {
       name: '28',
       alt: 'Beki a Já (starší brácha Daniel - JsonKody)',
-      type: 'webp'
     },
     {
       name: '29',
       alt: 'Beki a Páťa (mladší brácha Patrick)',
-      type: 'webp'
     },
     {
       name: '30',
       alt: 'V nemocnici',
-      type: 'webp'
     },
     // {
     //   name: "31",
