@@ -357,6 +357,13 @@ export const useGalleryArt = defineStore('GalleryArt', () => {
 
   const is_desc = ref(true)
 
+  const shuffle = () => {
+    for (let i = pictures.value.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1))
+      ;[pictures.value[i], pictures.value[j]] = [pictures.value[j], pictures.value[i]]
+    }
+  }
+
   const sort_photos = () => {
     pictures.value.sort((a, b) => {
       const numA = parseInt(a.name.split('_')[0], 10)
@@ -365,11 +372,21 @@ export const useGalleryArt = defineStore('GalleryArt', () => {
     })
   }
 
+  const animate_and_sort = () => {
+    // 1. Krátké zamíchání
+    shuffle()
+
+    // 2. Po krátké prodlevě seřazení
+    setTimeout(() => {
+      sort_photos()
+    }, 300) // 300ms prodleva – uprav podle potřeby
+  }
+
   watch(is_desc, () => {
-    sort_photos()
+    animate_and_sort()
   })
 
-  sort_photos()
+  animate_and_sort()
 
   return { is_desc, pictures }
 })

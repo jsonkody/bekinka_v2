@@ -51,6 +51,7 @@ const paintings = art.pictures
 .wrapper-enter-from,
 .wrapper-leave-to {
   opacity: 0;
-  transform: translateY(20px); /* Lehké posunutí dolů */
+  transform: translateY(10px); /* Lehké posunutí dolů */
+  transition: all 0.3s ease;
 }
 </style>
