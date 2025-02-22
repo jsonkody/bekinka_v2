@@ -1,200 +1,375 @@
 // import { ref, computed } from 'vue'
 import type { Photo } from '@/typings/types'
 import { defineStore } from 'pinia'
+import { ref, watch } from 'vue'
 
 export const useArt = defineStore('Art', () => {
-  const photos: Photo[] = [
+  const photos = ref<Photo[]>([
     {
-      name: 'bex-hex-asset',
-      alt: 'Bex hex asset - toto je taky AVIF iPhone test!',
-      type: 'avif',
+      name: '1_sylvanas',
+      alt: '',
     },
     {
-      name: 'out_of_time_girl',
-      alt: 'Out of time girl',
-      type: 'webp',
+      name: '2_grogu',
+      alt: '',
     },
     {
-      name: 'noface_ghost',
-      alt: 'No face ghost',
-      type: 'webp',
+      name: '3_ned',
+      alt: '',
     },
     {
-      name: 'curious_girl_boo',
-      alt: 'Boo, Curious girl',
-      type: 'webp',
+      name: '4_malenia',
+      alt: '',
     },
     {
-      name: 'daniel_fortesque',
-      alt: 'Sir Daniel Fortesque',
-      type: 'webp',
+      name: '5_jihiro',
+      alt: '',
     },
     {
-      name: 'cake_grogu',
-      alt: 'Grogu, happy birthday',
-      type: 'webp',
+      name: '6_me',
+      alt: '',
     },
     {
-      name: 'muffin_ned',
-      alt: 'Ned, HAPPY BIRTHDAY',
-      type: 'webp',
+      name: '7_boyfriend',
+      alt: '',
     },
     {
-      name: 'dark_void',
-      alt: 'ėM, Sad one',
-      type: 'webp',
+      name: '8_brother',
+      alt: '',
     },
     {
-      name: 'demonia2',
-      alt: 'D3MONÌA',
-      type: 'webp',
+      name: '9_runningupthehill',
+      alt: '',
     },
     {
-      name: 'demonia',
-      alt: 'D3MONÌA',
-      type: 'webp',
+      name: '10_shepherd',
+      alt: '',
     },
     {
-      name: 'shadow_hunter_kassandra',
-      alt: 'Kasandra, shadow hunter',
-      type: 'webp',
+      name: '11_elf_with_butterfly',
+      alt: '',
     },
     {
-      name: 'zayda_the_rabbit',
-      alt: 'Zayda, the rabbit',
-      type: 'webp',
+      name: '12_good_hunter',
+      alt: '',
     },
     {
-      name: 'dangerous_beauty_ravena',
-      alt: 'Ravena, dangerous beauty',
-      type: 'webp',
+      name: '13_hamster',
+      alt: '',
     },
     {
-      name: 'hrom_the_tired_djinn',
-      alt: 'Hjôm, The Tired djin',
-      type: 'webp',
+      name: '14_bekhi',
+      alt: '',
     },
     {
-      name: 'shadow_rogue_auerra',
-      alt: 'Auerra, The Shadow rogue',
-      type: 'webp',
+      name: '15_freya',
+      alt: '',
     },
     {
-      name: 'munai',
-      alt: 'Munåi, The Moon seed',
-      type: 'webp',
+      name: '16_mononoke_mask',
+      alt: '',
     },
     {
-      name: 'medusa',
-      alt: 'Medisā, Medusa of Death',
-      type: 'webp',
+      name: '17_death_stranding',
+      alt: '',
     },
     {
-      name: 'horizon',
-      alt: 'Bring Me the Horizon',
-      type: 'webp',
+      name: '18_my_dad',
+      alt: '',
     },
     {
-      name: 'my_dad',
-      alt: 'Dárek pro tátu',
-      type: 'webp',
+      name: '19_bmt_horizon',
+      alt: '',
     },
     {
-      name: 'death_stranding',
-      alt: 'Death Stranding',
-      type: 'webp',
+      name: '20_medisa',
+      alt: '',
     },
     {
-      name: 'monomoke_mask',
-      alt: 'Mononoke mask',
-      type: 'webp',
+      name: '21_munai',
+      alt: '',
     },
     {
-      name: 'freya',
-      alt: 'Freya',
-      type: 'webp',
+      name: '22_auerra',
+      alt: '',
     },
     {
-      name: 'star_guardian_bekhi',
-      alt: 'Bekhi, The Star Guardian',
-      type: 'webp',
+      name: '23_hjom',
+      alt: '',
     },
     {
-      name: 'hamster_bou',
-      alt: 'Křeček Bou',
-      type: 'webp',
+      name: '24_ravena',
+      alt: '',
     },
     {
-      name: 'hunter',
-      alt: 'Bloodborne, hunter',
-      type: 'webp',
+      name: '25_zayda',
+      alt: '',
     },
     {
-      name: 'elf_with_butterfly',
-      alt: 'Elfka s motýlem',
-      type: 'webp',
+      name: '26_kasandra',
+      alt: '',
     },
     {
-      name: 'pastyr',
-      alt: 'Svatební dar pro rodinu věřících',
-      type: 'webp',
+      name: '27_d3monia',
+      alt: '',
     },
     {
-      name: 'runningupthehill',
-      alt: 'Scéna ze Stranger Things tak jak tam nikdy nebyla',
-      type: 'webp',
+      name: '28_sad_one',
+      alt: '',
     },
     {
-      name: 'brother',
-      alt: 'Brácha Dan',
-      type: 'webp',
+      name: '29_ned',
+      alt: '',
     },
     {
-      name: 'boyfriend',
-      alt: 'Přítel Vašek',
-      type: 'webp',
+      name: '30_goru',
+      alt: '',
     },
     {
-      name: 'me',
-      alt: 'Já',
-      type: 'webp',
+      name: '31_daniel_fortesque',
+      alt: '',
     },
     {
-      name: 'jihiro',
-      alt: 'Hrdinka mého nejoblíbenějšího filmu všech dob',
-      type: 'webp',
+      name: '32_boo',
+      alt: '',
     },
     {
-      name: 'malenia',
-      alt: 'Ano, začala jsem s kreslenim těsně před Elden Ringem',
-      type: 'webp',
+      name: '33_no_face_ghost',
+      alt: '',
     },
     {
-      name: 'ned2',
-      alt: 'Ned pro Davida',
-      type: 'webp',
+      name: '34_out_of_time_girl',
+      alt: '',
     },
     {
-      name: 'ned',
-      alt: 'Ned pro Davida',
-      type: 'webp',
+      name: '35_cheryl_mason',
+      alt: '',
     },
     {
-      name: 'grogu2',
-      alt: 'Grogu pro Petu',
-      type: 'webp',
+      name: '36_hellga',
+      alt: '',
     },
     {
-      name: 'grogu',
-      alt: 'Grogu',
-      type: 'webp',
+      name: '37_hida',
+      alt: '',
     },
     {
-      name: 'sylvanas',
-      alt: 'Sylvanas pro Daneka',
-      type: 'webp',
+      name: '38_darrke',
+      alt: '',
     },
-  ]
+    {
+      name: '39_beauty',
+      alt: '',
+    },
+    {
+      name: '40_butterfli_girl',
+      alt: '',
+    },
+    {
+      name: '41_coraline',
+      alt: '',
+    },
+    {
+      name: '42_princess_mononoke',
+      alt: '',
+    },
+    {
+      name: '43_diablo',
+      alt: '',
+    },
+    {
+      name: '44_chihiro',
+      alt: '',
+    },
+    {
+      name: '45_delicate_weapon',
+      alt: '',
+    },
+    {
+      name: '46_sirena',
+      alt: '',
+    },
+    {
+      name: '47_nea',
+      alt: '',
+    },
+    {
+      name: '48_ela',
+      alt: '',
+    },
+    {
+      name: '49_staria',
+      alt: '',
+    },
+    {
+      name: '50_alesa',
+      alt: '',
+    },
+    {
+      name: '51_lea',
+      alt: '',
+    },
+    {
+      name: '52_boh',
+      alt: '',
+    },
+    {
+      name: '53_darka',
+      alt: '',
+    },
+    {
+      name: '54_sleepy',
+      alt: '',
+    },
+    {
+      name: '55_vessel',
+      alt: '',
+    },
+    {
+      name: '56_cheryl_mason',
+      alt: '',
+    },
+    {
+      name: '57_thalia_lyra',
+      alt: '',
+    },
+    {
+      name: '58_feng_min',
+      alt: '',
+    },
+    {
+      name: '59_the_artist',
+      alt: '',
+    },
+    {
+      name: '60_sable_ward',
+      alt: '',
+    },
+    {
+      name: '61_katara',
+      alt: '',
+    },
+    {
+      name: '62_wasek',
+      alt: '',
+    },
+    {
+      name: '63_studiez_1',
+      alt: '',
+    },
+    {
+      name: '64_padme',
+      alt: '',
+    },
+    {
+      name: '65_geralt',
+      alt: '',
+    },
+    {
+      name: '66_senua_hellblade',
+      alt: '',
+    },
+    {
+      name: '67_melina',
+      alt: '',
+    },
+    {
+      name: '68_gw1_necromancer',
+      alt: '',
+    },
+    {
+      name: '69_gw1_monk',
+      alt: '',
+    },
+    {
+      name: '70_elden_king',
+      alt: '',
+    },
+    {
+      name: '71_mr_chapadlak',
+      alt: '',
+    },
+    {
+      name: '72_next_gen_bmth',
+      alt: '',
+    },
+    {
+      name: '73_courtney_la_plante',
+      alt: '',
+    },
+    {
+      name: '74_maria_sh',
+      alt: '',
+    },
+    {
+      name: '75_mary_sh',
+      alt: '',
+    },
+    {
+      name: '76_upgrade',
+      alt: '',
+    },
+    {
+      name: '77_happy_christmas_sh',
+      alt: '',
+    },
+    {
+      name: '78_jack_skelington',
+      alt: '',
+    },
+    {
+      name: '79_studiez_2',
+      alt: '',
+    },
+    {
+      name: '80_lilith',
+      alt: '',
+    },
+    {
+      name: '81_mantis',
+      alt: '',
+    },
+    {
+      name: '82_corsets_study',
+      alt: '',
+    },
+    {
+      name: '83_bayonetta',
+      alt: '',
+    },
+    {
+      name: '84_ciri',
+      alt: '',
+    },
+    {
+      name: '85_galadriel',
+      alt: '',
+    },
+    {
+      name: '86_bex',
+      alt: '',
+    },
+    {
+      name: '87_plava_laguna',
+      alt: '',
+    },
+  ])
 
-  return { photos }
+  const is_desc = ref(true)
+
+  const sort_photos = () => {
+    photos.value.sort((a, b) => {
+      const numA = parseInt(a.name.split('_')[0], 10)
+      const numB = parseInt(b.name.split('_')[0], 10)
+      return is_desc.value ? numB - numA : numA - numB
+    })
+  }
+
+  watch(is_desc, () => {
+    sort_photos()
+  })
+
+  sort_photos()
+
+  return { is_desc, photos }
 })

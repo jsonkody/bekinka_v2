@@ -13,7 +13,6 @@ type IconName =
 interface Photo {
   name: string
   alt: string
-  type: 'avif' | 'webp'
 }
 
 interface Game {
