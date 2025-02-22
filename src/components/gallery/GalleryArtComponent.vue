@@ -1,9 +1,9 @@
 <script setup lang="ts">
 import FancyboxWrapper from './FancyboxWrapper.vue'
-import { useArt } from '../../stores/Art'
-const art = useArt()
+import { useGalleryArt } from '../../stores/GalleryArt'
+const art = useGalleryArt()
 
-const photos = art.photos
+const paintings = art.pictures
 </script>
 
 <template>
@@ -26,13 +26,13 @@ const photos = art.photos
       <TransitionGroup tag="div" name="wrapper" class="gallery-wrapper">
         <a
           class="gallery-item"
-          v-for="photo in photos"
-          :key="photo.name"
-          :href="`/images/art/${photo.name}.avif`"
+          v-for="paint in paintings"
+          :key="paint.name"
+          :href="`/images/art/${paint.name}.avif`"
           data-fancybox="gallery"
-          :data-caption="photo.alt"
+          :data-caption="paint.description"
         >
-          <img class="thumbnail" :src="`/images/art/thumb/${photo.name}.avif`" :alt="photo.alt" />
+          <img class="thumbnail" :src="`/images/art/thumb/${paint.name}.avif`" :alt="paint.description" />
         </a>
       </TransitionGroup>
     </FancyboxWrapper>

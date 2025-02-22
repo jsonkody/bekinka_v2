@@ -1,364 +1,364 @@
 // import { ref, computed } from 'vue'
-import type { Photo } from '@/typings/types'
+import type { Picture } from '@/typings/types'
 import { defineStore } from 'pinia'
 import { ref, watch } from 'vue'
 
-export const useArt = defineStore('Art', () => {
-  const photos = ref<Photo[]>([
+export const useGalleryArt = defineStore('GalleryArt', () => {
+  const pictures = ref<Picture[]>([
     {
       name: '1_sylvanas',
-      alt: '',
+      description: 'sylvanas #1',
     },
     {
       name: '2_grogu',
-      alt: '',
+      description: 'grogu #2',
     },
     {
       name: '3_ned',
-      alt: '',
+      description: 'ned #3',
     },
     {
       name: '4_malenia',
-      alt: '',
+      description: 'malenia #4',
     },
     {
       name: '5_jihiro',
-      alt: '',
+      description: 'jihirø #5',
     },
     {
       name: '6_me',
-      alt: '',
+      description: 'me #6',
     },
     {
       name: '7_boyfriend',
-      alt: '',
+      description: 'boyfriend #7',
     },
     {
       name: '8_brother',
-      alt: '',
+      description: 'brøther #8',
     },
     {
       name: '9_runningupthehill',
-      alt: '',
+      description: 'runningupthehill #9',
     },
     {
       name: '10_shepherd',
-      alt: '',
+      description: 'Pastýř',
     },
     {
       name: '11_elf_with_butterfly',
-      alt: '',
+      description: 'Elf with butterfly',
     },
     {
       name: '12_good_hunter',
-      alt: '',
+      description: 'Bloodborne, Good hunter',
     },
     {
       name: '13_hamster',
-      alt: '',
+      description: 'Spirited Away, hamster',
     },
     {
       name: '14_bekhi',
-      alt: '',
+      description: 'Bekhi, The Star Guardian',
     },
     {
       name: '15_freya',
-      alt: '',
+      description: 'Freya',
     },
     {
       name: '16_mononoke_mask',
-      alt: '',
+      description: 'Mononoke mask',
     },
     {
       name: '17_death_stranding',
-      alt: '',
+      description: 'Death Stranding',
     },
     {
       name: '18_my_dad',
-      alt: '',
+      description: 'My dad',
     },
     {
       name: '19_bmt_horizon',
-      alt: '',
+      description: 'Bring me the Horizon',
     },
     {
       name: '20_medisa',
-      alt: '',
+      description: 'Medisā, Medusa of Death',
     },
     {
       name: '21_munai',
-      alt: '',
+      description: 'Munåi, The Moon seed',
     },
     {
       name: '22_auerra',
-      alt: '',
+      description: 'Auerra, The Shadow rogue',
     },
     {
       name: '23_hjom',
-      alt: '',
+      description: 'Hjôm, The Tired djin',
     },
     {
       name: '24_ravena',
-      alt: '',
+      description: 'Ravena, dangerous beauty',
     },
     {
       name: '25_zayda',
-      alt: '',
+      description: 'Zayda, the rabbit',
     },
     {
       name: '26_kasandra',
-      alt: '',
+      description: 'Kasandra, shadow hunter',
     },
     {
       name: '27_d3monia',
-      alt: '',
+      description: 'D3MONÌA',
     },
     {
       name: '28_sad_one',
-      alt: '',
+      description: 'ėM, Sad one',
     },
     {
       name: '29_ned',
-      alt: '',
+      description: 'Ned, HAPPY BIRTHDAY',
     },
     {
       name: '30_goru',
-      alt: '',
+      description: 'Grogu, happy birthday',
     },
     {
       name: '31_daniel_fortesque',
-      alt: '',
+      description: 'Sir Daniel Fortesque',
     },
     {
       name: '32_boo',
-      alt: '',
+      description: 'Boo, Curious girl',
     },
     {
       name: '33_no_face_ghost',
-      alt: '',
+      description: 'No face ghost',
     },
     {
       name: '34_out_of_time_girl',
-      alt: '',
+      description: 'out_of_time_girl',
     },
     {
       name: '35_cheryl_mason',
-      alt: '',
+      description: 'Cheryl Mason from Dead by Daylight',
     },
     {
       name: '36_hellga',
-      alt: '',
+      description: 'Hellga',
     },
     {
       name: '37_hida',
-      alt: '',
+      description: 'Hida',
     },
     {
       name: '38_darrke',
-      alt: '',
+      description: 'Darrkē',
     },
     {
       name: '39_beauty',
-      alt: '',
+      description: 'Every body is beautiful in some way',
     },
     {
       name: '40_butterfli_girl',
-      alt: '',
+      description: 'Butterfli-girl',
     },
     {
       name: '41_coraline',
-      alt: '',
+      description: 'Coraline',
     },
     {
       name: '42_princess_mononoke',
-      alt: '',
+      description: 'Princess Mononoke',
     },
     {
       name: '43_diablo',
-      alt: '',
+      description: 'Diablo',
     },
     {
       name: '44_chihiro',
-      alt: '',
+      description: 'Chihiro',
     },
     {
       name: '45_delicate_weapon',
-      alt: '',
+      description: 'Delicate weapon',
     },
     {
       name: '46_sirena',
-      alt: '',
+      description: 'Siréna',
     },
     {
       name: '47_nea',
-      alt: '',
+      description: 'Nea',
     },
     {
       name: '48_ela',
-      alt: '',
+      description: 'Ela',
     },
     {
       name: '49_staria',
-      alt: '',
+      description: 'Ståria',
     },
     {
       name: '50_alesa',
-      alt: '',
+      description: 'Alessa',
     },
     {
       name: '51_lea',
-      alt: '',
+      description: 'Lea',
     },
     {
       name: '52_boh',
-      alt: '',
+      description: 'Boh',
     },
     {
       name: '53_darka',
-      alt: '',
+      description: 'Darka',
     },
     {
       name: '54_sleepy',
-      alt: '',
+      description: 'ii sleepy',
     },
     {
       name: '55_vessel',
-      alt: '',
+      description: 'Vessel, Sleep Token',
     },
     {
       name: '56_cheryl_mason',
-      alt: '',
+      description: 'Cheryl Mason from DBD',
     },
     {
       name: '57_thalia_lyra',
-      alt: '',
+      description: 'Thalita Lyra, Dead by Daylight',
     },
     {
       name: '58_feng_min',
-      alt: '',
+      description: 'Feng Min',
     },
     {
       name: '59_the_artist',
-      alt: '',
+      description: 'The Artist',
     },
     {
       name: '60_sable_ward',
-      alt: '',
+      description: 'Sable Ward',
     },
     {
       name: '61_katara',
-      alt: '',
+      description: 'Katara',
     },
     {
       name: '62_wasek',
-      alt: '',
+      description: 'Wasek',
     },
     {
       name: '63_studiez_1',
-      alt: '',
+      description: 'Studiez 1',
     },
     {
       name: '64_padme',
-      alt: '',
+      description: 'Padme',
     },
     {
       name: '65_geralt',
-      alt: '',
+      description: 'Geralt The Witcher',
     },
     {
       name: '66_senua_hellblade',
-      alt: '',
+      description: 'Senua, Hellblade',
     },
     {
       name: '67_melina',
-      alt: '',
+      description: 'Melina, Elden Ring',
     },
     {
       name: '68_gw1_necromancer',
-      alt: '',
+      description: 'Necromancer from Guild Wars 1',
     },
     {
       name: '69_gw1_monk',
-      alt: '',
+      description: 'Monk from Guild Wars 1',
     },
     {
       name: '70_elden_king',
-      alt: '',
+      description: 'Elden Ring / Elden Lord (!! ELDEN KING !! - pozn. od JsonKody)',
     },
     {
       name: '71_mr_chapadlak',
-      alt: '',
+      description: 'mr_chapadlak',
     },
     {
       name: '72_next_gen_bmth',
-      alt: '',
+      description: 'NexGen Bring Me The Horizon',
     },
     {
       name: '73_courtney_la_plante',
-      alt: '',
+      description: 'Courtney LaPlante, Spiritbox',
     },
     {
       name: '74_maria_sh',
-      alt: '',
+      description: 'Maria, Silent Hill',
     },
     {
       name: '75_mary_sh',
-      alt: '',
+      description: 'Mary, Silent Hill 2',
     },
     {
       name: '76_upgrade',
-      alt: '',
+      description: 'UPGRADE',
     },
     {
       name: '77_happy_christmas_sh',
-      alt: '',
+      description: 'happy christmas from silent hill',
     },
     {
       name: '78_jack_skelington',
-      alt: '',
+      description: 'Jack Skelington - Snowman',
     },
     {
       name: '79_studiez_2',
-      alt: '',
+      description: 'Studiez2',
     },
     {
       name: '80_lilith',
-      alt: '',
+      description: 'Lilith, Diablo IV',
     },
     {
       name: '81_mantis',
-      alt: '',
+      description: 'Mantis, Marvel Rivals',
     },
     {
       name: '82_corsets_study',
-      alt: '',
+      description: 'Corsets, study',
     },
     {
       name: '83_bayonetta',
-      alt: '',
+      description: 'Bayonetta',
     },
     {
       name: '84_ciri',
-      alt: '',
+      description: 'Ciri, The Witcher',
     },
     {
       name: '85_galadriel',
-      alt: '',
+      description: 'Galadriel, Lord of the Rings',
     },
     {
       name: '86_bex',
-      alt: '',
+      description: 'Bex, Me',
     },
     {
       name: '87_plava_laguna',
-      alt: '',
+      description: 'Plava Laguna, Fifth Element',
     },
   ])
 
   const is_desc = ref(true)
 
   const sort_photos = () => {
-    photos.value.sort((a, b) => {
+    pictures.value.sort((a, b) => {
       const numA = parseInt(a.name.split('_')[0], 10)
       const numB = parseInt(b.name.split('_')[0], 10)
       return is_desc.value ? numB - numA : numA - numB
@@ -371,5 +371,5 @@ export const useArt = defineStore('Art', () => {
 
   sort_photos()
 
-  return { is_desc, photos }
+  return { is_desc, pictures }
 })

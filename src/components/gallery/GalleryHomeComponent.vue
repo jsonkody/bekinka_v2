@@ -3,7 +3,7 @@ import FancyboxWrapper from './FancyboxWrapper.vue'
 import { useGalleryHome } from '../../stores/GalleryHome'
 const galery = useGalleryHome()
 
-const photos = galery.photos
+const photos = galery.pictures
 </script>
 
 <template>
@@ -13,15 +13,15 @@ const photos = galery.photos
         <a
           class="gallery-item"
           v-for="photo in photos"
-          :key="photo.alt"
+          :key="photo.description"
           :href="`/images/cesta_new/${photo.name}.avif`"
           data-fancybox="gallery"
-          :data-caption="photo.alt"
+          :data-caption="photo.description"
         >
           <img
             class="thumbnail"
             :src="`/images/cesta_new/thumb/${photo.name}.avif`"
-            :alt="photo.alt"
+            :alt="photo.description"
           />
         </a>
       </div>

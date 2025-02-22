@@ -10,9 +10,9 @@ type IconName =
   | 'Youtube'
   | 'Twitch'
 
-interface Photo {
+interface Picture {
   name: string
-  alt: string
+  description: string
 }
 
 interface Game {
@@ -45,4 +45,4 @@ enum Genre {
   MMO = 114,
 }
 
-export type { Genre, IconName, Photo, Game }
+export type { Genre, IconName, Picture, Game }
