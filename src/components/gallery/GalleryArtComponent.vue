@@ -24,6 +24,7 @@ const paintings = art.pictures
 
     <FancyboxWrapper>
       <TransitionGroup tag="div" name="wrapper" class="gallery-wrapper">
+        <!-- <div class="gallery-wrapper"> -->
         <a
           class="gallery-item"
           v-for="paint in paintings"
@@ -32,8 +33,13 @@ const paintings = art.pictures
           data-fancybox="gallery"
           :data-caption="paint.description"
         >
-          <img class="thumbnail" :src="`/images/art/thumb/${paint.name}.avif`" :alt="paint.description" />
+          <img
+            class="thumbnail"
+            :src="`/images/art/thumb/${paint.name}.avif`"
+            :alt="paint.description"
+          />
         </a>
+        <!-- </div> -->
       </TransitionGroup>
     </FancyboxWrapper>
   </div>

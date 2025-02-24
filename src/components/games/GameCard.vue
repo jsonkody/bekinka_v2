@@ -158,7 +158,7 @@ const scoreColor = (score: number) => {
     rgb(111, 0, 255) 5%,
     rgb(255, 193, 249) 35%,
     rgb(255, 240, 156) 60%,
-    rgb(0, 255, 179) 100%
+    rgb(80, 255, 202) 100%
   );
   z-index: 0;
   transition: opacity 0.1s linear;
@@ -218,7 +218,7 @@ const scoreColor = (score: number) => {
 }
 
 .window:hover .window-title {
-  transition: color 0.15s;
+  transition: all 0.15s;
   color: black;
 }
 

@@ -357,12 +357,12 @@ export const useGalleryArt = defineStore('GalleryArt', () => {
 
   const is_desc = ref(true)
 
-  const shuffle = () => {
-    for (let i = pictures.value.length - 1; i > 0; i--) {
-      const j = Math.floor(Math.random() * (i + 1))
-      ;[pictures.value[i], pictures.value[j]] = [pictures.value[j], pictures.value[i]]
-    }
-  }
+  // const shuffle = () => {
+  //   for (let i = pictures.value.length - 1; i > 0; i--) {
+  //     const j = Math.floor(Math.random() * (i + 1))
+  //     ;[pictures.value[i], pictures.value[j]] = [pictures.value[j], pictures.value[i]]
+  //   }
+  // }
 
   const sort_photos = () => {
     pictures.value.sort((a, b) => {
@@ -378,23 +378,26 @@ export const useGalleryArt = defineStore('GalleryArt', () => {
   })
 
   const animate_and_sort = () => {
-    if (is_mobile.value) {
-      sort_photos()
-      return
-    }
+    sort_photos()
 
-    // on PC shuffle then sort - better animation
-    shuffle()
-    setTimeout(() => {
-      sort_photos()
-    }, 300)
+    // if (is_mobile.value) {
+    //   sort_photos()
+    //   return
+    // }
+
+    // // on PC shuffle then sort - better animation
+    // shuffle()
+    // setTimeout(() => {
+    //   sort_photos()
+    // }, 300)
   }
 
   watch(is_desc, () => {
     animate_and_sort()
   })
 
-  animate_and_sort()
+  // animate_and_sort()
+  sort_photos()
 
   return { is_desc, pictures }
 })
