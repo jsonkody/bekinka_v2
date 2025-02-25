@@ -34,6 +34,9 @@ Hry můžeš editovat v souboru:
 
 📍 `/src/stores/Games.ts`
 
+Btw v tech stores můžeš i editovat popis `description` u fotek v galeriích -> `GalleryArt.ts` jsou tvoje kresby
+a `GalleryHome.ts` jsou ty fotky dole na hlavní stránce.
+
 > _"🧠 Tady můžeš měnit pravidla, přidávat nové nápady nebo cokoli, co tě napadne – je to tvoje hřiště!"_
 
 ### 🚀 5. Nahraj změny na GitHub a web
