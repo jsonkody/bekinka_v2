@@ -1450,11 +1450,11 @@ export const useGames = defineStore('Games', () => {
         },
       },
       {
-        index: Genre.Adventure,
+        index: 101,
         title: 'Yes, Your Grace',
         requested: undefined,
         rating: undefined,
-        genre: [],
+        genre: [Genre.Adventure, Genre.RPG, Genre.Simulator],
         emoji: ``,
         text: ``,
         img: {
@@ -1462,11 +1462,11 @@ export const useGames = defineStore('Games', () => {
         },
       },
       {
-        index: Genre.RPG,
-        title: 'Resident Evil 4 Remake',
+        index: 102,
+        title: 'Resident Evil 4 remake',
         requested: undefined,
-        rating: undefined,
-        genre: [],
+        rating: 92,
+        genre: [Genre.Shooter, Genre.Adventure],
         emoji: ``,
         text: ``,
         img: {
@@ -1474,11 +1474,11 @@ export const useGames = defineStore('Games', () => {
         },
       },
       {
-        index: Genre.FPS,
+        index: 103,
         title: 'God of War Ragnarök',
         requested: undefined,
         rating: undefined,
-        genre: [],
+        genre: [Genre.RPG, Genre.HackNslash, Genre.Adventure],
         emoji: ``,
         text: ``,
         img: {
@@ -1486,11 +1486,11 @@ export const useGames = defineStore('Games', () => {
         },
       },
       {
-        index: Genre.Shooter,
+        index: 104,
         title: 'God of War (2005)',
         requested: undefined,
         rating: undefined,
-        genre: [],
+        genre: [Genre.Puzzle, Genre.HackNslash, Genre.Adventure],
         emoji: ``,
         text: ``,
         img: {
@@ -1498,11 +1498,11 @@ export const useGames = defineStore('Games', () => {
         },
       },
       {
-        index: Genre.Racing,
+        index: 105,
         title: 'Star Wars Jedi: Survivor',
         requested: undefined,
         rating: undefined,
-        genre: [],
+        genre: [Genre.Adventure],
         emoji: ``,
         text: ``,
         img: {
@@ -1510,11 +1510,11 @@ export const useGames = defineStore('Games', () => {
         },
       },
       {
-        index: Genre.HackNslash,
+        index: 106,
         title: "Senua's Saga: Hellblade 2",
         requested: undefined,
         rating: undefined,
-        genre: [],
+        genre: [Genre.Adventure],
         emoji: ``,
         text: ``,
         img: {
@@ -1522,11 +1522,11 @@ export const useGames = defineStore('Games', () => {
         },
       },
       {
-        index: Genre.Horror,
+        index: 107,
         title: 'The Casting of Frank Stone',
         requested: undefined,
         rating: undefined,
-        genre: [],
+        genre: [Genre.Adventure],
         emoji: ``,
         text: ``,
         img: {
@@ -1534,11 +1534,11 @@ export const useGames = defineStore('Games', () => {
         },
       },
       {
-        index: Genre.Survival,
+        index: 108,
         title: 'Road 96: Mile 0',
         requested: undefined,
         rating: undefined,
-        genre: [],
+        genre: [Genre.Adventure, Genre.Puzzle, Genre.Indie],
         emoji: ``,
         text: ``,
         img: {
@@ -1546,11 +1546,11 @@ export const useGames = defineStore('Games', () => {
         },
       },
       {
-        index: Genre.Puzzle,
+        index: 109,
         title: 'Silent Hill 2 Remake',
         requested: undefined,
         rating: undefined,
-        genre: [],
+        genre: [Genre.Adventure, Genre.Puzzle],
         emoji: ``,
         text: ``,
         img: {
@@ -1558,11 +1558,11 @@ export const useGames = defineStore('Games', () => {
         },
       },
       {
-        index: Genre.Platform,
+        index: 110,
         title: 'Chained Together',
         requested: undefined,
         rating: undefined,
-        genre: [],
+        genre: [Genre.Adventure, Genre.Indie],
         emoji: ``,
         text: ``,
         img: {
@@ -1570,11 +1570,11 @@ export const useGames = defineStore('Games', () => {
         },
       },
       {
-        index: Genre.Simulator,
+        index: 111,
         title: 'Doki Doki Literature Club!',
         requested: undefined,
         rating: undefined,
-        genre: [],
+        genre: [Genre.Adventure, Genre.Indie],
         emoji: ``,
         text: ``,
         img: {
@@ -1582,11 +1582,11 @@ export const useGames = defineStore('Games', () => {
         },
       },
       {
-        index: Genre.Souls,
+        index: 112,
         title: 'The Invincible',
         requested: undefined,
         rating: undefined,
-        genre: [],
+        genre: [Genre.Adventure, Genre.Indie],
         emoji: ``,
         text: ``,
         img: {
