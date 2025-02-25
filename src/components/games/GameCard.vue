@@ -51,7 +51,7 @@ const scoreColor = (score: number) => {
       <!-- Okno obsah -->
       <div class="font-inter flex text-gray-900 minHRating leading-6 tracking-normal">
         <!-- rating & image -->
-        <div v-if="game.rating" class="p-3">
+        <div v-if="Number.isInteger(game.rating)" class="p-3">
           <div
             class="font-pixel group rounded-lg overflow-hidden inline-block relative"
             :class="[scoreColor(game.rating), { 'border-t-4': game.rating }]"
@@ -71,7 +71,7 @@ const scoreColor = (score: number) => {
         </div>
 
         <!-- if Nehodnoceno -->
-        <div v-if="!game.rating" class="py-5 text-3xl text-red-600 window-content text-center">
+        <div v-if="!Number.isInteger(game.rating)" class="py-5 text-3xl text-red-600 window-content text-center">
           <div class="font-pixel">
             <span class="mr-1">🚧</span>
             připravujeme
@@ -80,7 +80,7 @@ const scoreColor = (score: number) => {
           <div class="font-roboto-mono">( ͡° ͜ʖ ͡°)</div>
         </div>
         <!-- Content -->
-        <div v-if="game.rating" class="p-3 pl-1 window-content text-center">
+        <div v-if="Number.isInteger(game.rating)" class="p-3 pl-1 window-content text-center">
           <!-- Žánr -->
           <div class="mb-1 flex justify-end flex-wrap text-xs text-gray-600">
             <div

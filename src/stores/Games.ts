@@ -1465,7 +1465,7 @@ export const useGames = defineStore('Games', () => {
         index: 102,
         title: 'Resident Evil 4 remake',
         requested: undefined,
-        rating: 1,
+        rating: undefined,
         genre: [Genre.Shooter, Genre.Adventure],
         emoji: ``,
         text: ``,
