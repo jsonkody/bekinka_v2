@@ -116,7 +116,7 @@ import GalleryHomeComponent from '@/components/gallery/GalleryHomeComponent.vue'
       <div id="andullie" class="my-24 flex items-center justify-center">
         <div>
           <h2 class="mb-5 text-xl text-green-400">
-            <EmoComponent>Clap andullHello </EmoComponent>
+            <EmoComponent>:Clap :andullHello </EmoComponent>
             <a
               target="_blank"
               rel="noreferrer"
@@ -127,8 +127,8 @@ import GalleryHomeComponent from '@/components/gallery/GalleryHomeComponent.vue'
               <TbExternalLink class="external_link" />
             </a>
             <EmoComponent>
-              zorganizovala stream na podporu Beky bekiPray bekiPog bekiAha bekiLurk
-              bekiBlankies</EmoComponent
+              zorganizovala stream na podporu Beky :bekiPray :bekiPog :bekiAha :bekiLurk
+              :bekiBlankies</EmoComponent
             >
           </h2>
 
@@ -148,7 +148,7 @@ import GalleryHomeComponent from '@/components/gallery/GalleryHomeComponent.vue'
       <div id="shilou" class="my-24 flex items-center justify-center">
         <div>
           <h2 class="mb-5 text-xl text-green-400">
-            <EmoComponent>Clap shilLove Charitativní stream od </EmoComponent>
+            <EmoComponent>:Clap :shilLove Charitativní stream od </EmoComponent>
             <a
               target="_blank"
               rel="noreferrer"
@@ -159,8 +159,8 @@ import GalleryHomeComponent from '@/components/gallery/GalleryHomeComponent.vue'
               <TbExternalLink class="external_link" />
             </a>
             <EmoComponent
-              >shilEZY na podporu Bekinky bekiPray bekiPog bekiAha bekiBlankies
-              shilLove</EmoComponent
+              >:shilEZY na podporu Bekinky :bekiPray :bekiPog :bekiAha :bekiBlankies
+              :shilLove</EmoComponent
             >
           </h2>
 

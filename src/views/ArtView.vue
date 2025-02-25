@@ -10,8 +10,8 @@ import EmoComponent from '@/components/EmoComponent.vue'
       <div class="mt-4">
         <p class="text-center">
           <EmoComponent
-            >Zde je vystaven vzorek Bekinčina úžasného umění bekiPog a nesporný důkaz jejího génia
-            bekiNerd bekiSure bekiKek</EmoComponent
+            >Zde je vystaven vzorek Bekinčina úžasného umění :bekiPog a nesporný důkaz jejího génia
+            :bekiNerd :bekiSure :bekiKek</EmoComponent
           >
         </p>
         <p class="py-4">
@@ -19,7 +19,7 @@ import EmoComponent from '@/components/EmoComponent.vue'
           <a class="px-1 text-lg link" target="_blank" href="https://www.artstation.com/rebecapro">
             Artstation
           </a>
-          <EmoComponent>bekiDementos bekiChamp</EmoComponent>
+          <EmoComponent>:bekiDementos :bekiChamp</EmoComponent>
         </p>
       </div>
     </div>

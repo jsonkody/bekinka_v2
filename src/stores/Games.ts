@@ -1444,7 +1444,7 @@ export const useGames = defineStore('Games', () => {
         emoji: `👺`,
         text: `Příběh jsem hrála v coopu a bylo to bezvadný. Hlavní příběh, atmosféra, hudba i lokace jsou skvělý.
       Za mně super zážitek, jen pokud jste na nějaký další grind, tam už sláva upadá.
-      Nové sezony jsou prázdné a nového kontentu skoro nepřibývá, pokud nepočítáte skiny za tisíce bekiSure`,
+      Nové sezony jsou prázdné a nového kontentu skoro nepřibývá, pokud nepočítáte skiny za tisíce :bekiSure`,
         img: {
           url: 'co69sm',
         },
