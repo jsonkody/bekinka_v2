@@ -93,7 +93,12 @@ enum Genre {
 
   <!-- Emo test -->
   <div id="emo"></div>
-  <p class="mt-12">Testuji emouty v textu ...</p>
+  <p class="mt-12">
+    Tohle jsou dostupne emouty:
+    vzdycky pred to jmeno napis <span>beki</span> .. treba bekiKek
+    atd.
+  </p>
+  <p class="mb-4">Clap je jen Clap, a ty cizi emouty jen opis bez pomlcky</p>
   <div class="flex flex-wrap">
     <EmoComponent>
       bekiSmile Smile bekiNerd Nerd bekiLurk Lurk bekiKek Kek bekiPog Pog bekiSure Sure bekiPray
@@ -101,7 +106,7 @@ enum Genre {
       bekiCmon Cmon bekiOk Ok bekiStar Star bekiStare Stare catJAM JAM bekiPls Pls pogTasty Tasty
       oooo Oooo LUL lul KEKLEO kekleo KEKW kekw bekiBlankies Blankies bekiMlady Mlady bekiAha Aha
       bekiClown Clown bekiCoze Coze bekiKona Kona bekiRagey Ragey bekiSleeper Sleeper bekiTired
-      Tired bekiWeirdo Weirdo Clap clap andullHello andull_hello shilLove shil_love shilEZY shil_EZY
+      Tired bekiWeirdo Weirdo Clap clap andullHello andull-Hello shilLove shil-Love shilEZY shil-EZY
     </EmoComponent>
   </div>
 </template>

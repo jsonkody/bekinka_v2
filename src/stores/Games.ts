@@ -1464,13 +1464,13 @@ export const useGames = defineStore('Games', () => {
       {
         index: 102,
         title: 'Resident Evil 4 remake',
-        requested: undefined,
+        requested: 'JsonKody Bekinka Patrick',
         rating: 92,
         genre: [Genre.Shooter, Genre.Adventure],
-        emoji: ``,
-        text: ``,
+        emoji: `❤️`,
+        text: `test bekiJAM test andullHello test test bekiSure test test test test test test test test `,
         img: {
-          url: '',
+          url: 'co6bo0',
         },
       },
       {
@@ -1479,7 +1479,7 @@ export const useGames = defineStore('Games', () => {
         requested: undefined,
         rating: undefined,
         genre: [Genre.RPG, Genre.HackNslash, Genre.Adventure],
-        emoji: ``,
+        emoji: `co6bo0`,
         text: ``,
         img: {
           url: '',
