@@ -54,7 +54,7 @@ const scoreColor = (score: number) => {
         <div v-if="Number.isInteger(game.rating)" class="p-3">
           <div
             class="font-pixel group rounded-lg overflow-hidden inline-block relative"
-            :class="[scoreColor(game.rating), { 'border-t-4': game.rating }]"
+            :class="[scoreColor(game.rating || 0), { 'border-t-4': game.rating }]"
           >
             <div v-if="game.img.url" class="image">
               <img
