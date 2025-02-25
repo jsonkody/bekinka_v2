@@ -64,14 +64,23 @@ const scoreColor = (score: number) => {
                 :src="`https://images.igdb.com/igdb/image/upload/t_cover_small/${game.img.url}.jpg`"
               />
             </div>
-            <div v-if="game.rating" class="score">
+            <div class="score">
               <span>{{ game.rating }}%</span>
             </div>
           </div>
         </div>
 
+        <!-- if Nehodnoceno -->
+        <div v-if="!game.rating" class="py-5 text-3xl text-red-600 window-content text-center">
+          <div class="font-pixel">
+            <span class="mr-1">🚧</span>
+            připravujeme
+            <span class="mr-1">🚧</span>
+          </div>
+          <div class="font-roboto-mono">( ͡° ͜ʖ ͡°)</div>
+        </div>
         <!-- Content -->
-        <div class="p-3 pl-1 window-content text-center">
+        <div v-if="game.rating" class="p-3 pl-1 window-content text-center">
           <!-- Žánr -->
           <div class="mb-1 flex justify-end flex-wrap text-xs text-gray-600">
             <div
@@ -97,16 +106,6 @@ const scoreColor = (score: number) => {
           <div class="text-left sm:select-text">
             <span class="text-2xl mr-2">{{ game.emoji }}</span>
             <EmoComponent>{{ game.text }}</EmoComponent>
-          </div>
-
-          <!-- Nehodnoceno -->
-          <div v-if="!game.rating" class="p-2 text-3xl text-red-600">
-            <div class="font-pixel">
-              <span class="mr-1">🚧</span>
-              připravujeme
-              <span class="mr-1">🚧</span>
-            </div>
-            <div class="font-roboto-mono">( ͡° ͜ʖ ͡°)</div>
           </div>
 
           <!-- Request -->

@@ -93,20 +93,20 @@ enum Genre {
 
   <!-- Emo test -->
   <div id="emo"></div>
-  <p class="mt-12">
-    Tohle jsou dostupne emouty:
-    vzdycky pred to jmeno napis <span>beki</span> .. treba bekiKek
-    atd.
+  <p class="mt-12 mb-4">
+    Tohle jsou dostupne emouty, staci pred jmeno napsat dvojtecku napr.
+    <code>:bekiSmile</code>
   </p>
-  <p class="mb-4">Clap je jen Clap, a ty cizi emouty jen opis bez pomlcky</p>
   <div class="flex flex-wrap">
     <EmoComponent>
-      bekiSmile Smile bekiNerd Nerd bekiLurk Lurk bekiKek Kek bekiPog Pog bekiSure Sure bekiPray
-      Pray bekiChamp Champ bekiMald Mald bekiMeh Meh bekiDementos Dementos bekiDiosMios bekiDios
-      bekiCmon Cmon bekiOk Ok bekiStar Star bekiStare Stare catJAM JAM bekiPls Pls pogTasty Tasty
-      oooo Oooo LUL lul KEKLEO kekleo KEKW kekw bekiBlankies Blankies bekiMlady Mlady bekiAha Aha
-      bekiClown Clown bekiCoze Coze bekiKona Kona bekiRagey Ragey bekiSleeper Sleeper bekiTired
-      Tired bekiWeirdo Weirdo Clap clap andullHello andull-Hello shilLove shil-Love shilEZY shil-EZY
+      :bekiSmile bekiSmile :bekiLurk bekiLurk :bekiChamp bekiChamp :bekiRagey bekiRagey :bekiSleeper
+      bekiSleeper :bekiStare bekiStare :bekiSure bekiSure :bekiKek bekiKek :bekiMald bekiMald
+      :bekiStar bekiStar :bekiPray bekiPray :bekiPog bekiPog :bekiMeh bekiMeh :bekiKona bekiKona
+      :bekiAha bekiAha :bekiClown bekiClown :bekiCmon bekiCmon :bekiCoze bekiCoze :bekiDementos
+      bekiDementos :bekiDiosMios bekiDiosMios :bekiOk bekiOk :bekiTired bekiTired :bekiWeirdo
+      bekiWeirdo :bekiNerd bekiNerd :bekiMlady bekiMlady :bekiBlankies bekiBlankies :KEKW KEKW
+      :KEKLEO KEKLEO :LUL LUL :oooo oooo :pogTasty pogTasty :bekiPls bekiPls :Clap Clap :catJAM
+      catJAM :andullHello andullHello :shilLove shilLove :shilEZY shilEZY
     </EmoComponent>
   </div>
 </template>

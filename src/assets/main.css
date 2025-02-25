@@ -439,7 +439,6 @@ input[type='number'] {
   gap: 0.1rem;
 }
 
-
 .gallery-item {
   transition: transform 0.3s ease;
 
@@ -475,4 +474,8 @@ input[type='number'] {
     border-color: #e7aaff;
     box-shadow: 0 6px 16px #dd87ffd0;
   }
+}
+
+code {
+  @apply px-1 rounded bg-purple-600/40 text-purple-200;
 }

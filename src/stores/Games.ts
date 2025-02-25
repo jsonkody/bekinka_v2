@@ -1458,17 +1458,17 @@ export const useGames = defineStore('Games', () => {
         emoji: ``,
         text: ``,
         img: {
-          url: '',
+          url: 'co2c8o',
         },
       },
       {
         index: 102,
         title: 'Resident Evil 4 remake',
-        requested: 'JsonKody Bekinka Patrick',
-        rating: 92,
+        requested: undefined,
+        rating: 1,
         genre: [Genre.Shooter, Genre.Adventure],
-        emoji: `❤️`,
-        text: `test bekiJAM test andullHello test test bekiSure test test test test test test test test `,
+        emoji: ``,
+        text: ``,
         img: {
           url: 'co6bo0',
         },
@@ -1482,7 +1482,7 @@ export const useGames = defineStore('Games', () => {
         emoji: `co6bo0`,
         text: ``,
         img: {
-          url: '',
+          url: 'co5s5v',
         },
       },
       {
@@ -1494,7 +1494,7 @@ export const useGames = defineStore('Games', () => {
         emoji: ``,
         text: ``,
         img: {
-          url: '',
+          url: 'co3ddc',
         },
       },
       {
@@ -1506,19 +1506,19 @@ export const useGames = defineStore('Games', () => {
         emoji: ``,
         text: ``,
         img: {
-          url: '',
+          url: 'co5uzk',
         },
       },
       {
         index: 106,
-        title: "Senua's Saga: Hellblade 2",
+        title: "Senua's Saga: Hellblade II",
         requested: undefined,
         rating: undefined,
         genre: [Genre.Adventure],
         emoji: ``,
         text: ``,
         img: {
-          url: '',
+          url: 'co81i4',
         },
       },
       {
@@ -1530,7 +1530,7 @@ export const useGames = defineStore('Games', () => {
         emoji: ``,
         text: ``,
         img: {
-          url: '',
+          url: 'co8j6w',
         },
       },
       {
@@ -1542,7 +1542,7 @@ export const useGames = defineStore('Games', () => {
         emoji: ``,
         text: ``,
         img: {
-          url: '',
+          url: 'co6c4z',
         },
       },
       {
@@ -1554,7 +1554,7 @@ export const useGames = defineStore('Games', () => {
         emoji: ``,
         text: ``,
         img: {
-          url: '',
+          url: 'co5l7s',
         },
       },
       {
@@ -1566,7 +1566,7 @@ export const useGames = defineStore('Games', () => {
         emoji: ``,
         text: ``,
         img: {
-          url: '',
+          url: 'co8cvi',
         },
       },
       {
@@ -1578,7 +1578,7 @@ export const useGames = defineStore('Games', () => {
         emoji: ``,
         text: ``,
         img: {
-          url: '',
+          url: 'co6p5e',
         },
       },
       {
@@ -1590,7 +1590,7 @@ export const useGames = defineStore('Games', () => {
         emoji: ``,
         text: ``,
         img: {
-          url: '',
+          url: 'co61ol',
         },
       },
     ]

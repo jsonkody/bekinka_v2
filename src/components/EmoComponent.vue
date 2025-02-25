@@ -14,154 +14,154 @@ const emoteSize = 30
 const processedHtml = ref('')
 
 const emotes: EmotesObj = {
-  '&lt;3': { type: 'emoji', emoji: '💜' },
+  '<3': { type: 'emoji', emoji: '💜' },
   ':)': { type: 'emoji', emoji: '😃' },
   ':D': { type: 'emoji', emoji: '😄' },
-  bekiSmile: {
+  ':bekiSmile': {
     type: 'webp',
     name: 'bekiSmile',
   },
-  bekiLurk: {
+  ':bekiLurk': {
     type: 'webp',
     name: 'bekiLurk',
   },
-  KEKW: {
+  ':KEKW': {
     type: 'webp',
     name: 'KEKW',
   },
-  KEKLEO: {
+  ':KEKLEO': {
     type: 'webp',
     name: 'KEKLEO',
   },
-  bekiChamp: {
+  ':bekiChamp': {
     type: 'webp',
     name: 'bekiChamp',
   },
-  bekiRagey: {
+  ':bekiRagey': {
     type: 'webp',
     name: 'bekiRagey',
   },
-  bekiSleeper: {
+  ':bekiSleeper': {
     type: 'webp',
     name: 'bekiSleeper',
   },
-  bekiStare: {
+  ':bekiStare': {
     type: 'webp',
     name: 'bekiStare',
   },
-  bekiSure: {
+  ':bekiSure': {
     type: 'webp',
     name: 'bekiSure',
   },
-  bekiKek: {
+  ':bekiKek': {
     type: 'webp',
     name: 'bekiKek',
   },
-  bekiMald: {
+  ':bekiMald': {
     type: 'webp',
     name: 'bekiMald',
   },
-  bekiStar: {
+  ':bekiStar': {
     type: 'webp',
     name: 'bekiStar',
   },
-  bekiPray: {
+  ':bekiPray': {
     type: 'webp',
     name: 'bekiPray',
   },
-  bekiPog: {
+  ':bekiPog': {
     type: 'webp',
     name: 'bekiPog',
   },
-  bekiMeh: {
+  ':bekiMeh': {
     type: 'webp',
     name: 'bekiMeh',
   },
-  bekiKona: {
+  ':bekiKona': {
     type: 'webp',
     name: 'bekiKona',
   },
-  bekiAha: {
+  ':bekiAha': {
     type: 'webp',
     name: 'bekiAha',
   },
-  bekiClown: {
+  ':bekiClown': {
     type: 'webp',
     name: 'bekiClown',
   },
-  bekiCmon: {
+  ':bekiCmon': {
     type: 'webp',
     name: 'bekiCmon',
   },
-  bekiCoze: {
+  ':bekiCoze': {
     type: 'webp',
     name: 'bekiCoze',
   },
-  bekiDementos: {
+  ':bekiDementos': {
     type: 'webp',
     name: 'bekiDementos',
   },
-  bekiDiosMios: {
+  ':bekiDiosMios': {
     type: 'webp',
     name: 'bekiDiosMios',
   },
-  bekiOk: {
+  ':bekiOk': {
     type: 'webp',
     name: 'bekiOk',
   },
-  bekiTired: {
+  ':bekiTired': {
     type: 'webp',
     name: 'bekiTired',
   },
-  bekiWeirdo: {
+  ':bekiWeirdo': {
     type: 'webp',
     name: 'bekiWeirdo',
   },
-  LUL: {
+  ':LUL': {
     type: 'webp',
     name: 'LUL',
   },
-  bekiMlady: {
+  ':bekiMlady': {
     type: 'webp',
     name: 'bekiMlady',
   },
-  bekiBlankies: {
+  ':bekiBlankies': {
     type: 'webp',
     name: 'bekiBlankies',
   },
-  oooo: {
+  ':oooo': {
     type: 'webp',
     name: 'oooo',
   },
-  pogTasty: {
+  ':pogTasty': {
     type: 'webp',
     name: 'pogTasty',
   },
-  bekiPls: {
+  ':bekiPls': {
     type: 'webp',
     name: 'bekiPls',
   },
-  Clap: {
+  ':Clap': {
     type: 'webp',
     name: 'Clap',
   },
-  catJAM: {
+  ':catJAM': {
     type: 'webp',
     name: 'catJAM',
   },
-  andullHello: {
+  ':andullHello': {
     type: 'webp',
     name: 'andullHello',
   },
-  shilLove: {
+  ':shilLove': {
     type: 'webp',
     name: 'shilLove',
   },
-  shilEZY: {
+  ':shilEZY': {
     type: 'webp',
     name: 'shilEZY',
   },
-  bekiNerd: {
+  ':bekiNerd': {
     type: 'webp',
     name: 'bekiNerd',
   },
@@ -173,6 +173,7 @@ const processContent = (text: string) => {
     .map((word) => {
       const emote = emotes[word.trim()]
       if (!emote) return word
+      console.log(emote)
 
       if (emote.type === 'emoji') {
         return emote.emoji
