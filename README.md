@@ -23,7 +23,7 @@ pnpm i
 Když máš všechno ready, spustíš si to lokálně příkazem:
 
 ```sh
-pnmp dev
+pnpm dev
 ```
 
 > _"🎨 Projekt se spustí a můžeš ho otestovat v prohlížeči (obvykle na http://localhost:5173). Další užitečné příkazy najdeš v souboru package.json! 😉"_
