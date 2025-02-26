@@ -71,7 +71,10 @@ const scoreColor = (score: number) => {
         </div>
 
         <!-- if Nehodnoceno -->
-        <div v-if="!Number.isInteger(game.rating)" class="py-5 text-3xl text-red-600 window-content text-center">
+        <div
+          v-if="!Number.isInteger(game.rating)"
+          class="py-5 text-3xl text-red-600 window-content text-center"
+        >
           <div class="font-pixel">
             <span class="mr-1">🚧</span>
             připravujeme
@@ -216,11 +219,6 @@ const scoreColor = (score: number) => {
   opacity: 1;
 }
 
-.window:hover .window-title {
-  transition: all 0.15s;
-  color: black;
-}
-
 .window:hover .score {
   height: 100%;
   font-size: 2.4rem;
@@ -270,14 +268,20 @@ const scoreColor = (score: number) => {
   transition: all 0.2s ease-in-out;
 }
 
+.window:hover .window-title {
+  color: black;
+}
+
 .window-title {
   overflow-x: auto;
   text-wrap: nowrap;
+  max-height: 2rem;
+  transition: all 0.2s;
+
   /* width */
   &::-webkit-scrollbar {
-    height: 0.3rem;
-    width: 0.3rem;
-    transition: all 0.2s;
+    height: 0.2rem;
+    width: 0.2rem;
   }
 
   /* Track */
@@ -293,7 +297,7 @@ const scoreColor = (score: number) => {
 
   /* Handle on hover */
   &::-webkit-scrollbar-thumb:hover {
-    background: #ffffffd8;
+    background: #1600336b;
     cursor: pointer;
   }
 }
