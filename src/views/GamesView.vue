@@ -31,7 +31,7 @@ enum Genre {
     <div class="flex justify-center intems-center">
       <input
         placeholder="Vyhledej hru ..."
-        class="bg-white font-asap font-semibold text-purple-950 text-xl px-3 mb-2 rounded-md border-2 border-purple-400 hover:border-green-400 focus:border-green-400 focus:outline-none trans"
+        class="cursor-text bg-white font-asap font-semibold text-purple-950 text-xl px-3 mb-2 rounded-md border-2 border-purple-400 hover:border-green-400 focus:border-green-400 focus:outline-none trans"
         type="text"
         :value="games.gameName"
         @input="games.setSearch"
