@@ -453,18 +453,17 @@ input[type='number'] {
   transition: all 0.15s ease;
   overflow: hidden;
 
-  &:hover {
-    border-color: #e7aaff;
-    box-shadow: 0 6px 16px #dd87ffd0;
-  }
-
   .thumbnail-img {
     transition: transform 0.3s ease;
     transform-origin: top;
-    /* transform-origin: center; */
+  }
 
-    &:hover {
-      transform: scale(1.25);
+  &:hover {
+    border-color: #e7aaff;
+    box-shadow: 0 6px 16px #dd87ffd0;
+
+    .thumbnail-img {
+      transform: scale(1.15);
     }
   }
 }
