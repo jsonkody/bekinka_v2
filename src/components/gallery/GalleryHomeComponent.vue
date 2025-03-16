@@ -18,11 +18,13 @@ const photos = galery.pictures
           data-fancybox="gallery"
           :data-caption="photo.description"
         >
-          <img
-            class="thumbnail"
-            :src="`/images/cesta_new/thumb/${photo.name}.avif`"
-            :alt="photo.description"
-          />
+          <div class="thumbnail">
+            <img
+              class="thumbnail-img"
+              :src="`/images/cesta_new/thumb/${photo.name}.avif`"
+              :alt="photo.description"
+            />
+          </div>
         </a>
       </div>
     </FancyboxWrapper>
