@@ -33,12 +33,14 @@ const paintings = art.pictures
           data-fancybox="gallery"
           :data-caption="paint.description"
         >
-          <img
-            v-pop:bottom="paint.description"
-            class="thumbnail"
-            :src="`/images/art/thumb/${paint.name}.avif`"
-            :alt="paint.description"
-          />
+          <div class="rd inline-block thumbnail">
+            <img
+              class="thumbnail-img"
+              v-pop:bottom="paint.description"
+              :src="`/images/art/thumb/${paint.name}.avif`"
+              :alt="paint.description"
+            />
+          </div>
         </a>
         <!-- </div> -->
       </TransitionGroup>

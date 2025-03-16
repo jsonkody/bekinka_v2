@@ -429,13 +429,6 @@ input[type='number'] {
 }
 
 .gallery-item {
-  transition: transform 0.3s ease;
-
-  &:hover {
-    transform: scale(1.03);
-    z-index: 1;
-  }
-
   @media (max-width: 1024px) {
     flex-basis: calc(33.33% - 1rem); /* 3 sloupce */
   }
@@ -458,10 +451,19 @@ input[type='number'] {
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
   border: 2px solid transparent;
   transition: all 0.15s ease;
+  overflow: hidden;
 
   &:hover {
     border-color: #e7aaff;
     box-shadow: 0 6px 16px #dd87ffd0;
+  }
+
+  .thumbnail-img {
+    transition: transform 0.3s ease;
+
+    &:hover {
+      transform: scale(1.2);
+    }
   }
 }
 
