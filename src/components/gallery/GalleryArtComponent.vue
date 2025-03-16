@@ -32,11 +32,11 @@ const paintings = art.pictures
           :href="`/images/art/${paint.name}.avif`"
           data-fancybox="gallery"
           :data-caption="paint.description"
+          v-pop:bottom="paint.description"
         >
-          <div class="rd inline-block thumbnail">
+          <div class="thumbnail">
             <img
               class="thumbnail-img"
-              v-pop:bottom="paint.description"
               :src="`/images/art/thumb/${paint.name}.avif`"
               :alt="paint.description"
             />
