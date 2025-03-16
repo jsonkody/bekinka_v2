@@ -112,7 +112,7 @@ const scoreColor = (score: number) => {
           </div>
 
           <!-- Request -->
-          <div v-if="game.requested" class="font-inter mt-3">
+          <div v-if="game.requested" class="text-right font-inter mt-3">
             <span class="text-gray-600">requested by: </span>
             <span class="font-semibold text-purple-700 hover:text-purple-500 trans-200">
               {{ game.requested }}
