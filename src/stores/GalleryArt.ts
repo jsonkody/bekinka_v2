@@ -5,18 +5,18 @@ import { ref, watch } from 'vue'
 
 export const useGalleryArt = defineStore('GalleryArt', () => {
   const pictures = ref<Picture[]>([
-    {
-      name: '1_sylvanas',
-      description: 'sylvanas #1',
-    },
-    {
-      name: '2_grogu',
-      description: 'grogu #2',
-    },
-    {
-      name: '3_ned',
-      description: 'ned #3',
-    },
+    // {
+    //   name: '1_sylvanas',
+    //   description: 'sylvanas #1',
+    // },
+    // {
+    //   name: '2_grogu',
+    //   description: 'grogu #2',
+    // },
+    // {
+    //   name: '3_ned',
+    //   description: 'ned #3',
+    // },
     {
       name: '4_malenia',
       description: 'malenia #4',
@@ -41,18 +41,18 @@ export const useGalleryArt = defineStore('GalleryArt', () => {
       name: '9_runningupthehill',
       description: 'runningupthehill #9',
     },
-    {
-      name: '10_shepherd',
-      description: 'Pastýř',
-    },
-    {
-      name: '11_elf_with_butterfly',
-      description: 'Elf with butterfly',
-    },
-    {
-      name: '12_good_hunter',
-      description: 'Bloodborne, Good hunter',
-    },
+    // {
+    //   name: '10_shepherd',
+    //   description: 'Pastýř',
+    // },
+    // {
+    //   name: '11_elf_with_butterfly',
+    //   description: 'Elf with butterfly',
+    // },
+    // {
+    //   name: '12_good_hunter',
+    //   description: 'Bloodborne, Good hunter',
+    // },
     {
       name: '13_hamster',
       description: 'Spirited Away, hamster',
@@ -81,34 +81,34 @@ export const useGalleryArt = defineStore('GalleryArt', () => {
       name: '19_bmt_horizon',
       description: 'Bring me the Horizon',
     },
-    {
-      name: '20_medisa',
-      description: 'Medisā, Medusa of Death',
-    },
-    {
-      name: '21_munai',
-      description: 'Munåi, The Moon seed',
-    },
-    {
-      name: '22_auerra',
-      description: 'Auerra, The Shadow rogue',
-    },
+    // {
+    //   name: '20_medisa',
+    //   description: 'Medisā, Medusa of Death',
+    // },
+    // {
+    //   name: '21_munai',
+    //   description: 'Munåi, The Moon seed',
+    // },
+    // {
+    //   name: '22_auerra',
+    //   description: 'Auerra, The Shadow rogue',
+    // },
     {
       name: '23_hjom',
       description: 'Hjôm, The Tired djin',
     },
-    {
-      name: '24_ravena',
-      description: 'Ravena, dangerous beauty',
-    },
+    // {
+    //   name: '24_ravena',
+    //   description: 'Ravena, dangerous beauty',
+    // },
     {
       name: '25_zayda',
       description: 'Zayda, the rabbit',
     },
-    {
-      name: '26_kasandra',
-      description: 'Kasandra, shadow hunter',
-    },
+    // {
+    //   name: '26_kasandra',
+    //   description: 'Kasandra, shadow hunter',
+    // },
     {
       name: '27_d3monia',
       description: 'D3MONÌA',
@@ -153,10 +153,10 @@ export const useGalleryArt = defineStore('GalleryArt', () => {
       name: '37_hida',
       description: 'Hida',
     },
-    {
-      name: '38_darrke',
-      description: 'Darrkē',
-    },
+    // {
+    //   name: '38_darrke',
+    //   description: 'Darrkē',
+    // },
     {
       name: '39_beauty',
       description: 'Every body is beautiful in some way',
@@ -217,10 +217,10 @@ export const useGalleryArt = defineStore('GalleryArt', () => {
       name: '53_darka',
       description: 'Darka',
     },
-    {
-      name: '54_sleepy',
-      description: 'ii sleepy',
-    },
+    // {
+    //   name: '54_sleepy',
+    //   description: 'ii sleepy',
+    // },
     {
       name: '55_vessel',
       description: 'Vessel, Sleep Token',
@@ -317,10 +317,10 @@ export const useGalleryArt = defineStore('GalleryArt', () => {
       name: '78_jack_skelington',
       description: 'Jack Skelington - Snowman',
     },
-    {
-      name: '79_studiez_2',
-      description: 'Studiez2',
-    },
+    // {
+    //   name: '79_studiez_2',
+    //   description: 'Studiez2',
+    // },
     {
       name: '80_lilith',
       description: 'Lilith, Diablo IV',
@@ -329,10 +329,10 @@ export const useGalleryArt = defineStore('GalleryArt', () => {
       name: '81_mantis',
       description: 'Mantis, Marvel Rivals',
     },
-    {
-      name: '82_corsets_study',
-      description: 'Corsets, study',
-    },
+    // {
+    //   name: '82_corsets_study',
+    //   description: 'Corsets, study',
+    // },
     {
       name: '83_bayonetta',
       description: 'Bayonetta',
