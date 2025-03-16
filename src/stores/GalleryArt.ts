@@ -353,6 +353,18 @@ export const useGalleryArt = defineStore('GalleryArt', () => {
       name: '87_plava_laguna',
       description: 'Plava Laguna, Fifth Element',
     },
+    {
+      name: '88_malenia',
+      description: 'Malenia, Elden Ring',
+    },
+    {
+      name: '89_nightblade',
+      description: 'Nightblade',
+    },
+    {
+      name: '90_orin_the_red',
+      description: 'Orin The Red, Baldurs Gate 3',
+    },
   ])
 
   const is_desc = ref(true)
