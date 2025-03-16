@@ -24,6 +24,13 @@
     default;
 }
 
+@utility trans-150 {
+  transition: all 0.15s ease-in-out;
+}
+@utility trans-200 {
+  transition: all 0.2s ease-in-out;
+}
+
 @utility rd {
   border: 1px solid red;
 }

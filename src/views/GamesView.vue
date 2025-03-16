@@ -31,7 +31,7 @@ enum Genre {
     <div class="flex justify-center intems-center">
       <input
         placeholder="Vyhledej hru ..."
-        class="cursor-text bg-white font-asap font-semibold text-purple-950 text-xl px-3 mb-2 rounded-md border-2 border-purple-400 hover:border-green-400 focus:border-green-400 focus:outline-none trans"
+        class="cursor-text bg-white font-asap font-semibold text-purple-950 text-xl px-3 mb-2 rounded-md border-2 border-purple-400 hover:border-green-400 focus:border-green-400 focus:outline-none trans-200"
         type="text"
         :value="games.gameName"
         @input="games.setSearch"
@@ -45,10 +45,10 @@ enum Genre {
       <div v-for="g in Object.keys(games.genres)" :key="g" class="cursor-pointer">
         <div
           @click="games.changeGenre(Number(g) as Genre)"
-          class="select-none font-asap mr-1 mb-1 py-1 px-3 text-sm rounded trans"
+          class="select-none font-asap mr-1 mb-1 py-1 px-3 text-sm rounded-md trans-150"
           :class="{
-            'bg-green-300/90 text-black': games.genre === Number(g),
-            'bg-black/25 text-white hover:bg-black/70': games.genre !== Number(g),
+            'border border-green-300/90 bg-green-300/90 text-black': games.genre === Number(g),
+            'border border-white/20 hover:border-green-300/90 bg-black/25 text-white hover:bg-black/70': games.genre !== Number(g),
           }"
         >
           {{ games.genres[Number(g) as Genre].title }}
@@ -72,7 +72,7 @@ enum Genre {
   <!-- Hláška -->
   <div class="my-3 text-center">
     <h2>
-      <span class="font-asap text-sm text-white/50 hover:text-white/90 trans">
+      <span class="font-asap text-sm text-white/50 hover:text-white/90 trans-200">
         Hodnocení = míra zábavy pro Beku. Neslouží jako náhrada profesionálních recenzí ;)
       </span>
     </h2>

@@ -114,7 +114,7 @@ const scoreColor = (score: number) => {
           <!-- Request -->
           <div v-if="game.requested" class="font-inter mt-3">
             <span class="text-gray-600">requested by: </span>
-            <span class="font-semibold text-purple-700 hover:text-purple-500 trans">
+            <span class="font-semibold text-purple-700 hover:text-purple-500 trans-200">
               {{ game.requested }}
             </span>
           </div>
@@ -262,10 +262,6 @@ const scoreColor = (score: number) => {
 .image {
   width: 90px;
   height: 120px;
-}
-
-.trans {
-  transition: all 0.2s ease-in-out;
 }
 
 .window:hover .window-title {

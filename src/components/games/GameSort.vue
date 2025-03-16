@@ -33,7 +33,7 @@ const handleScoreClick = () => {
     <!-- Date Sort -->
     <button
       @click="handleDateClick"
-      class="select-none font-asap font-semibold text-lg cursor-pointer p-2 focus:outline-none trans"
+      class="select-none font-asap font-semibold text-lg cursor-pointer p-2 focus:outline-none trans-200"
       :class="{
         'text-pink-400 hover:text-pink-300': sortByDate,
         'text-purple-300/30 hover:text-purple-300/50': !sortByDate,
@@ -52,7 +52,7 @@ const handleScoreClick = () => {
     <!-- Score Sort -->
     <button
       @click="handleScoreClick"
-      class="select-none font-asap font-semibold text-lg cursor-pointer p-2 focus:outline-none trans"
+      class="select-none font-asap font-semibold text-lg cursor-pointer p-2 focus:outline-none trans-200"
       :class="{
         'text-purple-300/30 hover:text-purple-300/50': sortByDate,
         'text-pink-400 hover:text-pink-300': !sortByDate,
@@ -66,8 +66,3 @@ const handleScoreClick = () => {
   </div>
 </template>
 
-<style scoped>
-.trans {
-  transition: all 0.2s ease-in-out;
-}
-</style>

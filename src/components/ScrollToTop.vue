@@ -10,7 +10,7 @@ const scrollToTop = () => {
 <template>
   <div
     @click="scrollToTop"
-    class="trans text-purple-600/30 hover:text-purple-600/80 scroll-to-top cursor-pointer"
+    class="trans-200 text-purple-600/30 hover:text-purple-600/80 scroll-to-top cursor-pointer"
   >
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -49,7 +49,4 @@ const scrollToTop = () => {
   }
 }
 
-.trans {
-  transition: all 0.2s ease-in-out;
-}
 </style>

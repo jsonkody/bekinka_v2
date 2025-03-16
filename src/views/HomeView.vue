@@ -133,7 +133,7 @@ import GalleryHomeComponent from '@/components/gallery/GalleryHomeComponent.vue'
           </h2>
 
           <div
-            class="video_container border-4 trans border-purple-600 rounded-3xl hover:border-green-400"
+            class="video_container border-4 trans-200 border-purple-600 rounded-3xl hover:border-green-400"
           >
             <div>
               <LiteYouTubeEmbed
@@ -165,7 +165,7 @@ import GalleryHomeComponent from '@/components/gallery/GalleryHomeComponent.vue'
           </h2>
 
           <div
-            class="video_container border-4 trans border-purple-600 rounded-3xl hover:border-green-400"
+            class="video_container border-4 trans-200 border-purple-600 rounded-3xl hover:border-green-400"
           >
             <div>
               <LiteYouTubeEmbed
