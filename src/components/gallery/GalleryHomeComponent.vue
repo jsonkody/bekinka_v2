@@ -17,6 +17,7 @@ const photos = galery.pictures
           :href="`/images/cesta_new/${photo.name}.avif`"
           data-fancybox="gallery"
           :data-caption="photo.description"
+          v-pop:bottom="photo.description"
         >
           <div class="thumbnail">
             <img
