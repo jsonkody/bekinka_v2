@@ -34,7 +34,7 @@ const paintings = art.pictures
           :data-caption="paint.description"
         >
           <img
-            v-pop="paint.description"
+            v-pop:bottom="paint.description"
             class="thumbnail"
             :src="`/images/art/thumb/${paint.name}.avif`"
             :alt="paint.description"
