@@ -5,8 +5,8 @@ import EmoComponent from '@/components/EmoComponent.vue'
 
 <template>
   <div class="text-center">
-    <div class="mb-6 dark-wrap font-asap">
-      <h2 class="py-5 mb-1 text-4xl text-emerald-400 font-semibold text-center">Bekinki Art</h2>
+    <div class="mb-2 dark-wrap font-asap">
+      <h2 class="py-2 mb-1 text-4xl text-emerald-400 font-semibold text-center">Bekinki Art</h2>
       <div class="mt-4">
         <p class="text-center">
           <EmoComponent
