@@ -31,6 +31,7 @@ const paintings = art.pictures
           :key="paint.name"
           :href="`/images/art/${paint.name}.avif`"
           data-fancybox="gallery"
+          :data-slug="paint.name"
           :data-caption="paint.description"
           v-pop:bottom="paint.description"
         >
