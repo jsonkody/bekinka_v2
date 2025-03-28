@@ -4,10 +4,26 @@ import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
 import vueDevTools from 'vite-plugin-vue-devtools'
 import tailwindcss from '@tailwindcss/vite'
+// import { chunkSplitPlugin } from 'vite-plugin-chunk-split'
+import viteCompression from 'vite-plugin-compression'
 
 // https://vite.dev/config/
 export default defineConfig({
-  plugins: [vue(), vueDevTools(), tailwindcss()],
+  plugins: [
+    vue(),
+    vueDevTools(),
+    tailwindcss(),
+    // chunkSplitPlugin({
+    //   strategy: 'default',
+    //   customSplitting: {
+    //     'vue-vendor': ['vue', 'vue-router', 'pinia'],
+    //     'ui-library': ['tailwindcss'],
+    //   },
+    // }),
+    viteCompression({
+      algorithm: 'brotliCompress',
+    }),
+  ],
   resolve: {
     alias: {
       '@': fileURLToPath(new URL('./src', import.meta.url)),
