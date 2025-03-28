@@ -58,7 +58,6 @@ export default defineConfig({
     },
   },
   optimizeDeps: {
-    include: ['vue', 'vue-router', 'pinia', '@heroicons/vue'],
-    exclude: ['vue-demi'],
+    include: ['vue', 'vue-router', 'pinia',],
   },
 })
