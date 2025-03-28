@@ -4,7 +4,6 @@ import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
 import vueDevTools from 'vite-plugin-vue-devtools'
 import tailwindcss from '@tailwindcss/vite'
-// import { chunkSplitPlugin } from 'vite-plugin-chunk-split'
 import viteCompression from 'vite-plugin-compression'
 
 // https://vite.dev/config/
@@ -13,13 +12,6 @@ export default defineConfig({
     vue(),
     vueDevTools(),
     tailwindcss(),
-    // chunkSplitPlugin({
-    //   strategy: 'default',
-    //   customSplitting: {
-    //     'vue-vendor': ['vue', 'vue-router', 'pinia'],
-    //     'ui-library': ['tailwindcss'],
-    //   },
-    // }),
     viteCompression({
       algorithm: 'brotliCompress',
     }),
@@ -39,28 +31,19 @@ export default defineConfig({
         manualChunks(id) {
           // Advanced chunk splitting strategy
           if (id.includes('node_modules')) {
-            if (id.includes('vue')) {
-              return 'vue' // Vue core
-            }
-            if (id.includes('vue-router')) {
-              return 'vue-router'
-            }
-            if (id.includes('pinia')) {
-              return 'pinia'
-            }
-            if (id.includes('lodash') || id.includes('ramda')) {
-              return 'utils'
-            }
-            if (id.includes('axios') || id.includes('fetch')) {
-              return 'network'
-            }
-            return 'vendor' // Other node_modules
-          }
+            // priradí knihovny do samostatných chunku podle názvu balícku
+            const modules = [
+              'vue',
+              'vue-router',
+              'pinia',
+              'lodash',
+              'axios',
+              '@floating-ui/dom',
+              // a další knihovny, které by mohly tvorit významné cásti vašeho kódu
+            ]
 
-          // Split large UI components
-          if (id.includes('src/components/') && id.endsWith('.vue')) {
-            const match = id.match(/components\/(.*)\//)
-            return match ? `ui-${match[1]}` : 'ui'
+            const chunkName = modules.find((module) => id.includes(module))
+            return chunkName ? `vendor-${chunkName}` : 'vendor-others'
           }
         },
         chunkFileNames: 'assets/[name]-[hash].js',
