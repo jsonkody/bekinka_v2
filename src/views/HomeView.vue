@@ -11,6 +11,16 @@ import GalleryHomeComponent from '@/components/gallery/GalleryHomeComponent.vue'
     <div class="text-center">
       <div class="mb-6 p-3 md:p-8 leading-relaxed rounded-xl bg-black/50 text-left">
         <h1 class="mt-2 font-semibold mb-8 text-center text-emerald-400 text-2xl font-asap">
+          🐰🥕 Novinka 🥚🐣
+        </h1>
+        <p class="my-3 font-asap text-lg">
+          Někde na stránce je schován nově malý easter-egg .. někde mezi Bekinkou a týpkem. Je to
+          první funkční prototyp a ještě na tom bude asi hodně práce, ale už nyní si to můžete
+          vyzkoušet ( ͡° ͜ʖ ͡°)
+        </p>
+      </div>
+      <div class="mb-6 p-3 md:p-8 leading-relaxed rounded-xl bg-black/50 text-left">
+        <h1 class="mt-2 font-semibold mb-8 text-center text-emerald-400 text-2xl font-asap">
           Update - Březen 2024
         </h1>
         <p class="my-3 font-asap text-lg">

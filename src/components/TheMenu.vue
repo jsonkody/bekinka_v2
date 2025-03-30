@@ -21,15 +21,18 @@ const route = useRoute()
                 Bekinka
               </div>
               <div class="kata text-purple-400 group-hover:text-purple-200 trans-200">ベキンカ</div>
-              <div class="hira text-purple-400 group-hover:text-purple-200 trans-200">なに これ</div>
+              <div class="hira text-purple-400 group-hover:text-purple-200 trans-200">
+                なに これ
+              </div>
             </div>
           </div>
         </div>
       </router-link>
 
       <!-- meme secret -->
-      <router-link
-        to="/"
+      <a
+        target="_blank"
+        href="https://snejk.bekinka.cz"
         class="z-20 absolute left-1 top-1 sm:left-5 sm:top-5 lg:left-52 lg:top-5 md:hidden lg:block"
       >
         <img
@@ -39,18 +42,14 @@ const route = useRoute()
           height="65"
           src="/images/logo_smile.webp"
         />
-      </router-link>
+      </a>
     </div>
 
     <div class="pt-13 sm:pt-0">
       <nav class="font-pixel flex flex-col sm:flex-row justify-center items-center">
         <!-- Home -->
         <router-link to="/" custom v-slot="{ navigate, isExactActive }">
-          <div
-            class="menu-link"
-            :class="{ active: isExactActive }"
-            @click="navigate"
-          >
+          <div class="menu-link" :class="{ active: isExactActive }" @click="navigate">
             <span class="left" :class="{ invisible: !isExactActive }">{</span>
             Sbírka
             <span class="right" :class="{ invisible: !isExactActive }">}</span>
@@ -59,11 +58,7 @@ const route = useRoute()
 
         <!-- Games -->
         <router-link to="/games" custom v-slot="{ navigate, isExactActive }">
-          <div
-            class="menu-link"
-            :class="{ active: isExactActive }"
-            @click="navigate"
-          >
+          <div class="menu-link" :class="{ active: isExactActive }" @click="navigate">
             <span class="left" :class="{ invisible: !isExactActive }">{</span>
             Games
             <span class="right" :class="{ invisible: !isExactActive }">}</span>
@@ -72,11 +67,7 @@ const route = useRoute()
 
         <!-- Art -->
         <router-link to="/art" custom v-slot="{ navigate, isExactActive }">
-          <div
-            class="menu-link"
-            :class="{ active: isExactActive }"
-            @click="navigate"
-          >
+          <div class="menu-link" :class="{ active: isExactActive }" @click="navigate">
             <span class="left" :class="{ invisible: !isExactActive }">{</span>
             Art
             <span class="right" :class="{ invisible: !isExactActive }">}</span>
