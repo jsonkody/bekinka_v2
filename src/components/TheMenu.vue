@@ -40,7 +40,7 @@ const route = useRoute()
           alt="beki smile"
           width="65"
           height="65"
-          src="/images/logo_smile.webp"
+          src="/images/beki_smile.avif"
         />
       </a>
     </div>
