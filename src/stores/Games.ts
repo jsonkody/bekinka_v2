@@ -1547,6 +1547,18 @@ export const useGames = defineStore('Games', () => {
       },
       {
         index: 109,
+        title: 'Path of Exile 2',
+        requested: undefined,
+        rating: undefined,
+        genre: [Genre.RPG, Genre.HackNslash],
+        emoji: ``,
+        text: ``,
+        img: {
+          url: 'co8ae0',
+        },
+      },
+      {
+        index: 110,
         title: 'Silent Hill 2 Remake',
         requested: undefined,
         rating: undefined,
@@ -1558,7 +1570,7 @@ export const useGames = defineStore('Games', () => {
         },
       },
       {
-        index: 110,
+        index: 111,
         title: 'Chained Together',
         requested: undefined,
         rating: undefined,
@@ -1570,7 +1582,7 @@ export const useGames = defineStore('Games', () => {
         },
       },
       {
-        index: 111,
+        index: 112,
         title: 'Doki Doki Literature Club!',
         requested: undefined,
         rating: undefined,
@@ -1582,7 +1594,7 @@ export const useGames = defineStore('Games', () => {
         },
       },
       {
-        index: 112,
+        index: 113,
         title: 'The Invincible',
         requested: undefined,
         rating: undefined,
@@ -1594,7 +1606,7 @@ export const useGames = defineStore('Games', () => {
         },
       },
       {
-        index: 113,
+        index: 114,
         title: 'Bad Parenting 1: Mr Red Face',
         requested: undefined,
         rating: undefined,
@@ -1606,7 +1618,7 @@ export const useGames = defineStore('Games', () => {
         },
       },
       {
-        index: 114,
+        index: 115,
         title: 'How Fish Is Made',
         requested: undefined,
         rating: undefined,
@@ -1618,7 +1630,7 @@ export const useGames = defineStore('Games', () => {
         },
       },
       {
-        index: 115,
+        index: 116,
         title: 'Elden Ring: Nightreign',
         requested: undefined,
         rating: undefined,
@@ -1630,7 +1642,7 @@ export const useGames = defineStore('Games', () => {
         },
       },
       {
-        index: 116,
+        index: 117,
         title: 'Clair Obscur: Expedition 33',
         requested: undefined,
         rating: undefined,
@@ -1642,7 +1654,7 @@ export const useGames = defineStore('Games', () => {
         },
       },
       {
-        index: 117,
+        index: 118,
         title: 'Kingdom Come: Deliverance II',
         requested: undefined,
         rating: undefined,
