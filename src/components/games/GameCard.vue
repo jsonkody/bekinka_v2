@@ -51,7 +51,8 @@ const scoreColor = (score: number) => {
       <!-- Okno obsah -->
       <div class="font-inter flex text-gray-900 minHRating leading-6 tracking-normal">
         <!-- rating & image -->
-        <div v-if="Number.isInteger(game.rating)" class="p-3">
+        <!-- <div v-if="Number.isInteger(game.rating)" class="p-3"> -->
+        <div class="p-3">
           <div
             class="font-pixel group rounded-lg overflow-hidden inline-block relative"
             :class="[scoreColor(game.rating || 0), { 'border-t-4': game.rating }]"
@@ -64,7 +65,7 @@ const scoreColor = (score: number) => {
                 :src="`https://images.igdb.com/igdb/image/upload/t_cover_small/${game.img.url}.jpg`"
               />
             </div>
-            <div class="score">
+            <div v-if="Number.isInteger(game.rating)" class="score">
               <span>{{ game.rating }}%</span>
             </div>
           </div>
@@ -73,7 +74,7 @@ const scoreColor = (score: number) => {
         <!-- if Nehodnoceno -->
         <div
           v-if="!Number.isInteger(game.rating)"
-          class="py-5 text-3xl text-red-600 window-content text-center"
+          class="py-5 text-2xl text-red-600 window-content text-center"
         >
           <div class="font-pixel">
             <span class="mr-1">🚧</span>
