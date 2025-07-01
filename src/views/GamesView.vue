@@ -1,5 +1,6 @@
 <script setup lang="ts">
 // import type { Genre } from '@/stores/Games'
+import { IconX } from '@tabler/icons-vue'
 import GameCard from '@/components/games/GameCard.vue'
 import GameSort from '@/components/games/GameSort.vue'
 import EmoComponent from '@/components/EmoComponent.vue'
@@ -29,13 +30,23 @@ enum Genre {
   <div class="pt-6 px-3 pb-2 bg-black/40 rounded-2xl">
     <!-- Vyhledávání -->
     <div class="flex justify-center intems-center">
-      <input
-        placeholder="Vyhledej hru ..."
-        class="cursor-text bg-white font-asap font-semibold text-purple-950 text-xl px-3 mb-2 rounded-md border-2 border-purple-400 hover:border-green-400 focus:border-green-400 focus:outline-none trans-200"
-        type="text"
-        :value="games.gameName"
-        @input="games.setSearch"
-      />
+      <div class="mb-2 relative">
+        <input
+          placeholder="Vyhledej hru ..."
+          class="pl-3 pr-6 cursor-text bg-white font-asap font-semibold text-purple-950 text-xl rounded-md border-2 border-purple-400 hover:border-green-400 focus:border-green-400 focus:outline-none trans-200"
+          type="text"
+          ref="search-input"
+          v-model="games.search"
+        />
+
+        <IconX
+          @click="games.search = ''"
+          :size="24"
+          stroke-width="3"
+          :class="{ 'opacity-100': games.search, 'opacity-0': !games.search }"
+          class="mr-1 h-full cursor-pointer trans absolute top-0 right-0 text-slate-300 hover:text-slate-500"
+        />
+      </div>
     </div>
 
     <!-- Žánry -->
@@ -48,7 +59,8 @@ enum Genre {
           class="select-none font-asap mr-1 mb-1 py-1 px-3 text-sm rounded-md trans-150"
           :class="{
             'border border-green-300/90 bg-green-300/90 text-black': games.genre === Number(g),
-            'border border-white/20 hover:border-green-300/90 bg-black/25 text-white hover:bg-black/70': games.genre !== Number(g),
+            'border border-white/20 hover:border-green-300/90 bg-black/25 text-white hover:bg-black/70':
+              games.genre !== Number(g),
           }"
         >
           {{ games.genres[Number(g) as Genre].title }}

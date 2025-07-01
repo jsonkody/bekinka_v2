@@ -1,10 +1,12 @@
 <script setup lang="ts">
 import type { Game } from '@/typings/types'
+import { useHighlightText } from '@/composables/useHighlightText'
 import EmoComponent from '../EmoComponent.vue'
 import { useGames } from '@/stores/Games'
 import { ref } from 'vue'
 
 const games = useGames()
+const { highlightText } = useHighlightText()
 
 const { game } = defineProps<{
   game: Game
@@ -42,7 +44,11 @@ const scoreColor = (score: number) => {
         }"
       >
         <span class="mx-1">{{ game.index ? `${game.index}.` : '' }}</span>
-        <span class="mx-1 window-title overflow-x-scroll">{{ game.title }}</span>
+
+        <span
+          class="mx-1 window-title overflow-x-scroll"
+          v-html="highlightText(game.title, games.search)"
+        ></span>
         <span class="cursor-pointer button justify-self-end mr-1">
           <span class="select-none font-normal text-gray-700 buttonX">x</span>
         </span>

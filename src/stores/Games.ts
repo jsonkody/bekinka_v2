@@ -1,6 +1,7 @@
 import { ref, computed } from 'vue'
 import type { Game } from '@/typings/types'
 import { defineStore } from 'pinia'
+import { watch } from 'vue'
 
 export const useGames = defineStore('Games', () => {
   enum Genre {
@@ -49,6 +50,7 @@ export const useGames = defineStore('Games', () => {
   const fromBest = ref(true)
   const sortByDate = ref(true)
   const games = get_data()
+  const search = ref('')
 
   const handleChangeGenre = (new_genre: Genre) => {
     if (new_genre === genre.value) {
@@ -64,10 +66,14 @@ export const useGames = defineStore('Games', () => {
     genre.value = genre.value === g ? undefined : g
   }
 
-  const setSearch = (e: Event) => {
+  const setSearch = (s: string) => {
     genre.value = undefined
-    gameName.value = (e.target as HTMLInputElement).value
+    gameName.value = s
   }
+
+  watch(search, (val) => {
+    setSearch(val)
+  })
 
   // Computed property pro filtrované hry
   const filteredGames = computed(() => {
@@ -1671,6 +1677,7 @@ export const useGames = defineStore('Games', () => {
   // export type { Genre }
 
   return {
+    search,
     games,
     gameName,
     genre,

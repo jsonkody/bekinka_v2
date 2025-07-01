@@ -24,6 +24,11 @@
     default;
 }
 
+.highlight {
+  background-color: #f5e15f;
+  color: black;
+}
+
 @utility trans-150 {
   transition: all 0.15s ease-in-out;
 }
