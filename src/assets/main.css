@@ -27,6 +27,9 @@
 .highlight {
   background-color: #00ff9e;
   color: black;
+  padding: 3px;
+  font-weight: bold;
+  border-radius: 5px;
 }
 
 @utility trans-150 {
