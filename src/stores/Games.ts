@@ -1671,6 +1671,30 @@ export const useGames = defineStore('Games', () => {
           url: 'co8qmv',
         },
       },
+      {
+        index: 119,
+        title: 'Guild Wars',
+        requested: undefined,
+        rating: undefined,
+        genre: [Genre.Adventure, Genre.RPG, Genre.MMO],
+        emoji: ``,
+        text: ``,
+        img: {
+          url: 'co2smt',
+        },
+      },
+      {
+        index: 120,
+        title: 'Guild Wars 2',
+        requested: undefined,
+        rating: undefined,
+        genre: [Genre.Adventure, Genre.RPG, Genre.MMO],
+        emoji: ``,
+        text: ``,
+        img: {
+          url: 'co54tr',
+        },
+      },
     ]
   }
 
