@@ -130,6 +130,11 @@ select {
   cursor: var(--cursor-pointer);
 }
 
+.video_container,
+.yt-lite {
+  cursor: var(--cursor-pointer) !important;
+}
+
 .link {
   transition-property: all;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
