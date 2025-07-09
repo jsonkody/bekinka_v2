@@ -130,8 +130,7 @@ select {
   cursor: var(--cursor-pointer);
 }
 
-.video_container,
-.yt-lite {
+.video_container * {
   cursor: var(--cursor-pointer) !important;
 }
 
