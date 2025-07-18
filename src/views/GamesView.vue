@@ -105,7 +105,7 @@ function clear_search() {
         :genres="games.genres"
         :from-best="games.fromBest"
         :genre="games.genre"
-        @change-genre="games.handleChangeGenre"
+        @change-genre="games.changeGenre"
       />
     </div>
 

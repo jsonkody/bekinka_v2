@@ -50,18 +50,19 @@ export const useGames = defineStore('Games', () => {
   const games = get_data()
   const search = ref('')
 
-  const handleChangeGenre = (new_genre: Genre) => {
-    genre.value = genre.value === new_genre ? undefined : new_genre
-  }
-
-  // Metody
-  const changeGenre = (g: Genre | undefined) => {
+  const changeGenre = (new_genre: Genre) => {
     search.value = ''
-    genre.value = genre.value === g ? undefined : g
+    if (new_genre === genre.value) {
+      genre.value = undefined
+      return
+    }
+    genre.value = new_genre
   }
 
-  watch(search, () => {
-    genre.value = undefined
+  watch(search, (val) => {
+    if (val) {
+      genre.value = undefined
+    }
   })
 
   // Computed property pro filtrované hry
@@ -1444,246 +1445,246 @@ export const useGames = defineStore('Games', () => {
           url: 'co69sm',
         },
       },
-      {
-        index: 101,
-        title: 'Yes, Your Grace',
-        requested: undefined,
-        rating: undefined,
-        genre: [Genre.Adventure, Genre.RPG, Genre.Simulator],
-        emoji: ``,
-        text: ``,
-        img: {
-          url: 'co2c8o',
-        },
-      },
-      {
-        index: 102,
-        title: 'Resident Evil 4 remake',
-        requested: undefined,
-        rating: undefined,
-        genre: [Genre.Shooter, Genre.Adventure],
-        emoji: ``,
-        text: ``,
-        img: {
-          url: 'co6bo0',
-        },
-      },
-      {
-        index: 103,
-        title: 'God of War Ragnarök',
-        requested: undefined,
-        rating: undefined,
-        genre: [Genre.RPG, Genre.HackNslash, Genre.Adventure],
-        emoji: `co6bo0`,
-        text: ``,
-        img: {
-          url: 'co5s5v',
-        },
-      },
-      {
-        index: 104,
-        title: 'God of War (2005)',
-        requested: undefined,
-        rating: undefined,
-        genre: [Genre.Puzzle, Genre.HackNslash, Genre.Adventure],
-        emoji: ``,
-        text: ``,
-        img: {
-          url: 'co3ddc',
-        },
-      },
-      {
-        index: 105,
-        title: 'Star Wars Jedi: Survivor',
-        requested: undefined,
-        rating: undefined,
-        genre: [Genre.Adventure],
-        emoji: ``,
-        text: ``,
-        img: {
-          url: 'co5uzk',
-        },
-      },
-      {
-        index: 106,
-        title: "Senua's Saga: Hellblade II",
-        requested: undefined,
-        rating: undefined,
-        genre: [Genre.Adventure],
-        emoji: ``,
-        text: ``,
-        img: {
-          url: 'co81i4',
-        },
-      },
-      {
-        index: 107,
-        title: 'The Casting of Frank Stone',
-        requested: undefined,
-        rating: undefined,
-        genre: [Genre.Adventure],
-        emoji: ``,
-        text: ``,
-        img: {
-          url: 'co8j6w',
-        },
-      },
-      {
-        index: 108,
-        title: 'Road 96: Mile 0',
-        requested: undefined,
-        rating: undefined,
-        genre: [Genre.Adventure, Genre.Puzzle, Genre.Indie],
-        emoji: ``,
-        text: ``,
-        img: {
-          url: 'co6c4z',
-        },
-      },
-      {
-        index: 109,
-        title: 'Path of Exile 2',
-        requested: undefined,
-        rating: undefined,
-        genre: [Genre.RPG, Genre.HackNslash],
-        emoji: ``,
-        text: ``,
-        img: {
-          url: 'co8ae0',
-        },
-      },
-      {
-        index: 110,
-        title: 'Silent Hill 2 Remake',
-        requested: undefined,
-        rating: undefined,
-        genre: [Genre.Adventure, Genre.Puzzle],
-        emoji: ``,
-        text: ``,
-        img: {
-          url: 'co5l7s',
-        },
-      },
-      {
-        index: 111,
-        title: 'Chained Together',
-        requested: undefined,
-        rating: undefined,
-        genre: [Genre.Adventure, Genre.Indie],
-        emoji: ``,
-        text: ``,
-        img: {
-          url: 'co8cvi',
-        },
-      },
-      {
-        index: 112,
-        title: 'Doki Doki Literature Club!',
-        requested: undefined,
-        rating: undefined,
-        genre: [Genre.Adventure, Genre.Indie],
-        emoji: ``,
-        text: ``,
-        img: {
-          url: 'co6p5e',
-        },
-      },
-      {
-        index: 113,
-        title: 'The Invincible',
-        requested: undefined,
-        rating: undefined,
-        genre: [Genre.Adventure, Genre.Indie],
-        emoji: ``,
-        text: ``,
-        img: {
-          url: 'co61ol',
-        },
-      },
-      {
-        index: 114,
-        title: 'Bad Parenting 1: Mr Red Face',
-        requested: undefined,
-        rating: undefined,
-        genre: [Genre.Adventure, Genre.Indie],
-        emoji: ``,
-        text: ``,
-        img: {
-          url: 'co8zwb',
-        },
-      },
-      {
-        index: 115,
-        title: 'How Fish Is Made',
-        requested: undefined,
-        rating: undefined,
-        genre: [Genre.Adventure, Genre.Indie],
-        emoji: ``,
-        text: ``,
-        img: {
-          url: 'co9emx',
-        },
-      },
-      {
-        index: 116,
-        title: 'Elden Ring: Nightreign',
-        requested: undefined,
-        rating: undefined,
-        genre: [Genre.RPG],
-        emoji: ``,
-        text: ``,
-        img: {
-          url: 'co95gk',
-        },
-      },
-      {
-        index: 117,
-        title: 'Clair Obscur: Expedition 33',
-        requested: undefined,
-        rating: undefined,
-        genre: [Genre.Adventure, Genre.RPG],
-        emoji: ``,
-        text: ``,
-        img: {
-          url: 'co9gam',
-        },
-      },
-      {
-        index: 118,
-        title: 'Kingdom Come: Deliverance II',
-        requested: undefined,
-        rating: undefined,
-        genre: [Genre.Adventure, Genre.RPG, Genre.Simulator],
-        emoji: ``,
-        text: ``,
-        img: {
-          url: 'co8qmv',
-        },
-      },
-      {
-        index: 119,
-        title: 'Guild Wars',
-        requested: undefined,
-        rating: undefined,
-        genre: [Genre.Adventure, Genre.RPG, Genre.MMO],
-        emoji: ``,
-        text: ``,
-        img: {
-          url: 'co2smt',
-        },
-      },
-      {
-        index: 120,
-        title: 'Guild Wars 2',
-        requested: undefined,
-        rating: undefined,
-        genre: [Genre.Adventure, Genre.RPG, Genre.MMO],
-        emoji: ``,
-        text: ``,
-        img: {
-          url: 'co54tr',
-        },
-      },
+      // {
+      //   index: 101,
+      //   title: 'Yes, Your Grace',
+      //   requested: undefined,
+      //   rating: undefined,
+      //   genre: [Genre.Adventure, Genre.RPG, Genre.Simulator],
+      //   emoji: ``,
+      //   text: ``,
+      //   img: {
+      //     url: 'co2c8o',
+      //   },
+      // },
+      // {
+      //   index: 102,
+      //   title: 'Resident Evil 4 remake',
+      //   requested: undefined,
+      //   rating: undefined,
+      //   genre: [Genre.Shooter, Genre.Adventure],
+      //   emoji: ``,
+      //   text: ``,
+      //   img: {
+      //     url: 'co6bo0',
+      //   },
+      // },
+      // {
+      //   index: 103,
+      //   title: 'God of War Ragnarök',
+      //   requested: undefined,
+      //   rating: undefined,
+      //   genre: [Genre.RPG, Genre.HackNslash, Genre.Adventure],
+      //   emoji: `co6bo0`,
+      //   text: ``,
+      //   img: {
+      //     url: 'co5s5v',
+      //   },
+      // },
+      // {
+      //   index: 104,
+      //   title: 'God of War (2005)',
+      //   requested: undefined,
+      //   rating: undefined,
+      //   genre: [Genre.Puzzle, Genre.HackNslash, Genre.Adventure],
+      //   emoji: ``,
+      //   text: ``,
+      //   img: {
+      //     url: 'co3ddc',
+      //   },
+      // },
+      // {
+      //   index: 105,
+      //   title: 'Star Wars Jedi: Survivor',
+      //   requested: undefined,
+      //   rating: undefined,
+      //   genre: [Genre.Adventure],
+      //   emoji: ``,
+      //   text: ``,
+      //   img: {
+      //     url: 'co5uzk',
+      //   },
+      // },
+      // {
+      //   index: 106,
+      //   title: "Senua's Saga: Hellblade II",
+      //   requested: undefined,
+      //   rating: undefined,
+      //   genre: [Genre.Adventure],
+      //   emoji: ``,
+      //   text: ``,
+      //   img: {
+      //     url: 'co81i4',
+      //   },
+      // },
+      // {
+      //   index: 107,
+      //   title: 'The Casting of Frank Stone',
+      //   requested: undefined,
+      //   rating: undefined,
+      //   genre: [Genre.Adventure],
+      //   emoji: ``,
+      //   text: ``,
+      //   img: {
+      //     url: 'co8j6w',
+      //   },
+      // },
+      // {
+      //   index: 108,
+      //   title: 'Road 96: Mile 0',
+      //   requested: undefined,
+      //   rating: undefined,
+      //   genre: [Genre.Adventure, Genre.Puzzle, Genre.Indie],
+      //   emoji: ``,
+      //   text: ``,
+      //   img: {
+      //     url: 'co6c4z',
+      //   },
+      // },
+      // {
+      //   index: 109,
+      //   title: 'Path of Exile 2',
+      //   requested: undefined,
+      //   rating: undefined,
+      //   genre: [Genre.RPG, Genre.HackNslash],
+      //   emoji: ``,
+      //   text: ``,
+      //   img: {
+      //     url: 'co8ae0',
+      //   },
+      // },
+      // {
+      //   index: 110,
+      //   title: 'Silent Hill 2 Remake',
+      //   requested: undefined,
+      //   rating: undefined,
+      //   genre: [Genre.Adventure, Genre.Puzzle],
+      //   emoji: ``,
+      //   text: ``,
+      //   img: {
+      //     url: 'co5l7s',
+      //   },
+      // },
+      // {
+      //   index: 111,
+      //   title: 'Chained Together',
+      //   requested: undefined,
+      //   rating: undefined,
+      //   genre: [Genre.Adventure, Genre.Indie],
+      //   emoji: ``,
+      //   text: ``,
+      //   img: {
+      //     url: 'co8cvi',
+      //   },
+      // },
+      // {
+      //   index: 112,
+      //   title: 'Doki Doki Literature Club!',
+      //   requested: undefined,
+      //   rating: undefined,
+      //   genre: [Genre.Adventure, Genre.Indie],
+      //   emoji: ``,
+      //   text: ``,
+      //   img: {
+      //     url: 'co6p5e',
+      //   },
+      // },
+      // {
+      //   index: 113,
+      //   title: 'The Invincible',
+      //   requested: undefined,
+      //   rating: undefined,
+      //   genre: [Genre.Adventure, Genre.Indie],
+      //   emoji: ``,
+      //   text: ``,
+      //   img: {
+      //     url: 'co61ol',
+      //   },
+      // },
+      // {
+      //   index: 114,
+      //   title: 'Bad Parenting 1: Mr Red Face',
+      //   requested: undefined,
+      //   rating: undefined,
+      //   genre: [Genre.Adventure, Genre.Indie],
+      //   emoji: ``,
+      //   text: ``,
+      //   img: {
+      //     url: 'co8zwb',
+      //   },
+      // },
+      // {
+      //   index: 115,
+      //   title: 'How Fish Is Made',
+      //   requested: undefined,
+      //   rating: undefined,
+      //   genre: [Genre.Adventure, Genre.Indie],
+      //   emoji: ``,
+      //   text: ``,
+      //   img: {
+      //     url: 'co9emx',
+      //   },
+      // },
+      // {
+      //   index: 116,
+      //   title: 'Elden Ring: Nightreign',
+      //   requested: undefined,
+      //   rating: undefined,
+      //   genre: [Genre.RPG],
+      //   emoji: ``,
+      //   text: ``,
+      //   img: {
+      //     url: 'co95gk',
+      //   },
+      // },
+      // {
+      //   index: 117,
+      //   title: 'Clair Obscur: Expedition 33',
+      //   requested: undefined,
+      //   rating: undefined,
+      //   genre: [Genre.Adventure, Genre.RPG],
+      //   emoji: ``,
+      //   text: ``,
+      //   img: {
+      //     url: 'co9gam',
+      //   },
+      // },
+      // {
+      //   index: 118,
+      //   title: 'Kingdom Come: Deliverance II',
+      //   requested: undefined,
+      //   rating: undefined,
+      //   genre: [Genre.Adventure, Genre.RPG, Genre.Simulator],
+      //   emoji: ``,
+      //   text: ``,
+      //   img: {
+      //     url: 'co8qmv',
+      //   },
+      // },
+      // {
+      //   index: 119,
+      //   title: 'Guild Wars',
+      //   requested: undefined,
+      //   rating: undefined,
+      //   genre: [Genre.Adventure, Genre.RPG, Genre.MMO],
+      //   emoji: ``,
+      //   text: ``,
+      //   img: {
+      //     url: 'co2smt',
+      //   },
+      // },
+      // {
+      //   index: 120,
+      //   title: 'Guild Wars 2',
+      //   requested: undefined,
+      //   rating: undefined,
+      //   genre: [Genre.Adventure, Genre.RPG, Genre.MMO],
+      //   emoji: ``,
+      //   text: ``,
+      //   img: {
+      //     url: 'co54tr',
+      //   },
+      // },
     ]
   }
 
@@ -1699,7 +1700,6 @@ export const useGames = defineStore('Games', () => {
     fromBest,
     sortByDate,
     changeGenre,
-    handleChangeGenre,
     filteredGames,
   }
 })
