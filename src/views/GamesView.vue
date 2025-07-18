@@ -24,6 +24,10 @@ enum Genre {
   Indie = 113,
   MMO = 114,
 }
+
+function clear_search() {
+  games.search = ''
+}
 </script>
 
 <template>
@@ -32,6 +36,7 @@ enum Genre {
     <div class="flex justify-center intems-center">
       <div class="mb-2 relative">
         <input
+          @keydown.esc="clear_search"
           placeholder="Vyhledej hru ..."
           class="pl-3 pr-6 cursor-text bg-white font-asap font-semibold text-purple-950 text-xl rounded-md border-2 border-purple-400 hover:border-green-400 focus:border-green-400 focus:outline-none trans-200"
           type="text"
