@@ -173,7 +173,7 @@ const processContent = (text: string) => {
     .map((word) => {
       const emote = emotes[word.trim()]
       if (!emote) return word
-      console.log(emote)
+      // console.log(emote)
 
       if (emote.type === 'emoji') {
         return emote.emoji

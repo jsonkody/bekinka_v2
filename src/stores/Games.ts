@@ -43,8 +43,6 @@ export const useGames = defineStore('Games', () => {
     [Genre.MMO]: { title: 'MMO', id: Genre.MMO },
   }
 
-  // Reaktivní stav
-  const gameName = ref('')
   const genre = ref<Genre>()
   const isDesc = ref(true)
   const fromBest = ref(true)
@@ -53,26 +51,17 @@ export const useGames = defineStore('Games', () => {
   const search = ref('')
 
   const handleChangeGenre = (new_genre: Genre) => {
-    if (new_genre === genre.value) {
-      genre.value = undefined
-      return
-    }
-    genre.value = new_genre
+    genre.value = genre.value === new_genre ? undefined : new_genre
   }
 
   // Metody
   const changeGenre = (g: Genre | undefined) => {
-    gameName.value = ''
+    search.value = ''
     genre.value = genre.value === g ? undefined : g
   }
 
-  const setSearch = (s: string) => {
+  watch(search, () => {
     genre.value = undefined
-    gameName.value = s
-  }
-
-  watch(search, (val) => {
-    setSearch(val)
   })
 
   // Computed property pro filtrované hry
@@ -90,7 +79,7 @@ export const useGames = defineStore('Games', () => {
         if (genre.value) return game.genre.includes(genre.value)
         return true
       })
-      .filter((game) => game.title.toLowerCase().includes(gameName.value.toLowerCase()))
+      .filter((game) => game.title.toLowerCase().includes(search.value.toLowerCase()))
   })
 
   function get_data(): Game[] {
@@ -1703,16 +1692,14 @@ export const useGames = defineStore('Games', () => {
   return {
     search,
     games,
-    gameName,
     genre,
     Genre,
     genres,
     isDesc,
     fromBest,
     sortByDate,
-    handleChangeGenre,
     changeGenre,
-    setSearch,
+    handleChangeGenre,
     filteredGames,
   }
 })

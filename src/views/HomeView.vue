@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { IconExternalLink } from '@tabler/icons-vue'
 import LiteYouTubeEmbed from 'vue-lite-youtube-embed'
 import 'vue-lite-youtube-embed/style.css'
 import EmoComponent from '@/components/EmoComponent.vue'
@@ -134,7 +135,7 @@ import GalleryHomeComponent from '@/components/gallery/GalleryHomeComponent.vue'
               class="whitespace-nowrap mx-2 link"
             >
               Andullie
-              <TbExternalLink class="external_link" />
+              <IconExternalLink :size="20" class="external_link" />
             </a>
             <EmoComponent>
               zorganizovala stream na podporu Beky :bekiPray :bekiPog :bekiAha :bekiLurk
@@ -166,7 +167,7 @@ import GalleryHomeComponent from '@/components/gallery/GalleryHomeComponent.vue'
               class="whitespace-nowrap mx-2 link"
             >
               Shil0u_
-              <TbExternalLink class="external_link" />
+              <IconExternalLink :size="20" class="external_link" />
             </a>
             <EmoComponent
               >:shilEZY na podporu Bekinky :bekiPray :bekiPog :bekiAha :bekiBlankies
