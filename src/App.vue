@@ -28,9 +28,9 @@ import TheFooter from '@/components/TheFooter.vue'
         class="z-10 border border-purple-400/30 container content mx-auto pb-20 px-2 pt-2 md:pt-6 md:p-5 md:pb-20 relative"
       >
         <router-view v-slot="{ Component }">
-          <transition name="fade" mode="out-in">
+          <!-- <transition name="fade" mode="out-in"> -->
             <component :is="Component" />
-          </transition>
+          <!-- </transition> -->
         </router-view>
       </div>
     </main>
