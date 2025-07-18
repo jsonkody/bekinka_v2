@@ -41,8 +41,7 @@
     "sass-embedded": "^1.89.2",
     "terser": "^5.43.1",
     "typescript": "~5.8.3",
-    "vite": "npm:rolldown-vite@latest",
-    "vite-plugin-compression": "^0.5.1",
+    "vite": "^7.0.5",
     "vite-plugin-vue-devtools": "^7.7.7",
     "vue-tsc": "^3.0.2"
   }

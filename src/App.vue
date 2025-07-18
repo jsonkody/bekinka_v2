@@ -27,11 +27,10 @@ import TheFooter from '@/components/TheFooter.vue'
       <div
         class="z-10 border border-purple-400/30 container content mx-auto pb-20 px-2 pt-2 md:pt-6 md:p-5 md:pb-20 relative"
       >
-
         <router-view v-slot="{ Component }">
-          <!-- <transition name="fade" mode="out-in"> -->
+          <transition name="fade" mode="out-in">
             <component :is="Component" />
-          <!-- </transition> -->
+          </transition>
         </router-view>
       </div>
     </main>
@@ -65,7 +64,7 @@ import TheFooter from '@/components/TheFooter.vue'
 
 .fade-enter-active,
 .fade-leave-active {
-  transition: opacity 0.1s ease;
+  transition: opacity 0.12s ease-in-out;
 }
 
 .fade-enter-from,
