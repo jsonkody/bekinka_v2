@@ -766,7 +766,7 @@ export const useGames = defineStore('Games', () => {
         title: 'Until Dawn',
         requested: undefined,
         rating: 88,
-        genre: [Genre.Adventure],
+        genre: [Genre.Horror, Genre.Adventure],
         emoji: `🎥🔪`,
         text: `Hororovka se studenty na chatě,ve které jsou jejich životy jen ve tvých rukách.
           Pokud neumíš střílet nebo jakkoliv hrát, nevadí, zde totiž pouze rozhoduješ o tom co jaká postava udělá.
