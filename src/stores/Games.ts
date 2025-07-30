@@ -894,7 +894,7 @@ export const useGames = defineStore('Games', () => {
         requested: undefined,
         rating: 70,
         genre: [Genre.Puzzle, Genre.Indie],
-        emoji: `🦆`,
+        emoji: `🪿🦆`,
         text: `Krásná a roztomilá odreagovačka na pár hodin. Hrála jsem hru když spadly servery v ESO a neměla jsem co dělat se životem.
           Ze srandy jsem ji zapla, ale hra je tak zábavná, že jsem ji rovnou dohrála. Dokonce má v sobě i jednoduchý příběh s v tipným koncem.`,
         img: {
