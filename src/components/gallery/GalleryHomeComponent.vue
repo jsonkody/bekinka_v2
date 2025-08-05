@@ -21,6 +21,8 @@ const photos = galery.pictures
         >
           <div class="thumbnail">
             <img
+              width="120"
+              height="120"
               class="thumbnail-img"
               :src="`/images/cesta_new/thumb/${photo.name}.avif`"
               :alt="photo.description"

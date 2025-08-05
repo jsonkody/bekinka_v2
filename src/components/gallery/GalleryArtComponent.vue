@@ -37,8 +37,8 @@ const paintings = art.pictures
         >
           <div class="thumbnail">
             <img
-              width="98"
-              height="98"
+              width="100"
+              height="100"
               class="thumbnail-img"
               :src="`/images/art/thumb/${paint.name}.avif`"
               :alt="paint.description"
