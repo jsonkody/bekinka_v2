@@ -365,6 +365,10 @@ export const useGalleryArt = defineStore('GalleryArt', () => {
       name: '90_orin_the_red',
       description: 'Orin The Red, Baldurs Gate 3',
     },
+    {
+      name: '91_revenant_nightreign',
+      description: 'Revenant, Elden Ring Nightreign',
+    },
   ])
 
   const is_desc = ref(true)
