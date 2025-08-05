@@ -8,7 +8,7 @@ const photos = galery.pictures
 
 <template>
   <div>
-    <FancyboxWrapper>
+    <FancyboxWrapper :fancybox-options="galery.fancybox_config">
       <div class="gallery-wrapper">
         <a
           class="gallery-item"

@@ -22,7 +22,7 @@ const paintings = art.pictures
       </template>
     </button>
 
-    <FancyboxWrapper>
+    <FancyboxWrapper :fancybox-options="art.fancybox_config">
       <TransitionGroup tag="div" name="wrapper" class="gallery-wrapper">
         <!-- <div class="gallery-wrapper"> -->
         <a

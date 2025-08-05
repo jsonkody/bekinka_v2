@@ -1,35 +1,44 @@
-<!-- components/FancyboxWrapper.vue -->
 <script setup lang="ts">
-import { onMounted, onUnmounted } from 'vue'
-import { Fancybox } from '@fancyapps/ui'
+import { ref, onMounted, onUpdated, onUnmounted } from 'vue'
+import { Fancybox } from '@fancyapps/ui/dist/fancybox/'
 import '@fancyapps/ui/dist/fancybox/fancybox.css'
 
 const props = defineProps<{
-  delegate?: string
-  options?: object
+  fancyboxOptions?: object
 }>()
 
+const container = ref<HTMLElement | null>(null)
+
+
 onMounted(() => {
-  Fancybox.bind('[data-fancybox="gallery"]', props.options || {
-        Thumbs: { type: 'modern' },
-        Toolbar: {
-          display: {
-            left: [],
-            middle: [],
-            right: ['fullscreen', 'close'],
-          },
-        },
-        groupAll: true,
-      })
+  if (container.value) {
+    Fancybox.bind(container.value, '[data-fancybox]', {
+      ...(props.fancyboxOptions || {}),
+    })
+  }
+})
+
+onUpdated(() => {
+  if (container.value) {
+    Fancybox.unbind(container.value)
+    Fancybox.close()
+
+    Fancybox.bind(container.value, '[data-fancybox]', {
+      ...(props.fancyboxOptions || {}),
+    })
+  }
 })
 
 onUnmounted(() => {
-  Fancybox.destroy()
+  if (container.value) {
+    Fancybox.unbind(container.value)
+    Fancybox.close()
+  }
 })
 </script>
 
 <template>
-  <div class="z-100">
+  <div ref="container">
     <slot></slot>
   </div>
 </template>

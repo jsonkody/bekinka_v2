@@ -3,6 +3,21 @@ import { defineStore } from 'pinia'
 import { ref } from 'vue'
 
 export const useGalleryHome = defineStore('GalleryHome', () => {
+  const fancybox_config = {
+    Thumbs: {
+      type: 'modern' as const,
+    },
+    Carousel: {
+      Toolbar: {
+        display: {
+          left: [],
+          middle: [],
+          right: ['fullscreen', 'close'],
+        },
+      },
+    },
+  }
+
   const pictures = ref<Picture[]>([
     {
       name: '1',
@@ -126,5 +141,5 @@ export const useGalleryHome = defineStore('GalleryHome', () => {
     },
   ])
 
-  return { pictures }
+  return { pictures, fancybox_config }
 })

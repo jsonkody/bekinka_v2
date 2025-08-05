@@ -4,6 +4,21 @@ import { defineStore } from 'pinia'
 import { ref, watch } from 'vue'
 
 export const useGalleryArt = defineStore('GalleryArt', () => {
+  const fancybox_config = {
+    Thumbs: {
+      type: 'modern' as const,
+    },
+    Carousel: {
+      Toolbar: {
+        display: {
+          left: [],
+          middle: [],
+          right: ['fullscreen', 'close'],
+        },
+      },
+    },
+  }
+
   const pictures = ref<Picture[]>([
     // {
     //   name: '1_sylvanas',
@@ -415,5 +430,5 @@ export const useGalleryArt = defineStore('GalleryArt', () => {
   // animate_and_sort()
   sort_photos()
 
-  return { is_desc, pictures }
+  return { is_desc, pictures, fancybox_config }
 })
