@@ -10,7 +10,7 @@ export const useGalleryHome = defineStore('GalleryHome', () => {
     Carousel: {
       Toolbar: {
         display: {
-          left: [],
+          left: ["counter"],
           middle: [],
           right: ['fullscreen', 'close'],
         },

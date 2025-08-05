@@ -11,7 +11,7 @@ export const useGalleryArt = defineStore('GalleryArt', () => {
     Carousel: {
       Toolbar: {
         display: {
-          left: [],
+          left: ["counter"],
           middle: [],
           right: ['fullscreen', 'close'],
         },
