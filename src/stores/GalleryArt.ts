@@ -11,7 +11,7 @@ export const useGalleryArt = defineStore('GalleryArt', () => {
     Carousel: {
       Toolbar: {
         display: {
-          left: ["counter"],
+          left: ['counter'],
           middle: [],
           right: ['fullscreen', 'close'],
         },
@@ -397,8 +397,8 @@ export const useGalleryArt = defineStore('GalleryArt', () => {
 
   const sort_photos = () => {
     pictures.value.sort((a, b) => {
-      const numA = parseInt(a.name.split('_')[0], 10)
-      const numB = parseInt(b.name.split('_')[0], 10)
+      const numA = parseInt(a.name.split('_')[0] || '', 10)
+      const numB = parseInt(b.name.split('_')[0] || '', 10)
       return is_desc.value ? numB - numA : numA - numB
     })
   }

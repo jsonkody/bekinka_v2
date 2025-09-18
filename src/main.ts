@@ -6,11 +6,11 @@ import { createPinia } from 'pinia'
 import App from './App.vue'
 import router from './router/router'
 import IconComponent from '@/components/IconComponent.vue'
-import { pop } from 'toolpop'
+import Toolpop from 'toolpop'
 
 const app = createApp(App)
 app.component('IconComponent', IconComponent)
-app.directive('pop', pop)
+app.use(Toolpop)
 
 app.use(createPinia())
 app.use(router)
