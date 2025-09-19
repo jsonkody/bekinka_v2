@@ -121,7 +121,8 @@ onMounted(() => {
   <div>
     <div class="pt-6 px-3 pb-2 bg-black/40 rounded-2xl">
       <div class="flex justify-center intems-center">
-        <div class="mb-2 relative">
+        <div class="grow"></div>
+        <div class="relative">
           <input
             @keydown.esc="clearSearch"
             placeholder="Vyhledej hru ..."
@@ -136,6 +137,13 @@ onMounted(() => {
             stroke-width="3"
             class="mr-1 h-full cursor-pointer trans absolute top-0 right-0 text-slate-400 hover:text-slate-600"
           />
+        </div>
+        <div class="grow flex items-center">
+          <div :class="{ invisible: !loading }" class="ml-2" role="status">
+            <div
+              class="h-5 w-5 animate-spin rounded-full border-4 border-transparent border-l-green-400 border-t-green-400"
+            ></div>
+          </div>
         </div>
       </div>
 
