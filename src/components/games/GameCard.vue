@@ -11,7 +11,8 @@ const props = defineProps<{
   review: RecordModel
   pb: PocketBase
   searchQuery: string
-  selectedGenre: string | null // <-- PŘIDAT TUTO PROP
+  selectedGenre: string | null
+  loading: boolean
 }>()
 
 const emit = defineEmits(['update-genre-filter'])
@@ -41,7 +42,7 @@ const scoreColor = (score: number) => {
 
 <template>
   <div v-if="game" class="font-pixel group p-2 inline-block w-full md:w-1/2 xl:w-1/3">
-    <div class="shadow-lg hover:shadow-2xl window">
+    <div class="shadow-lg hover:shadow-2xl window" :class="{ 'animate-pulse': loading }">
       <div
         class="lista flex items-center justify-between"
         :class="{

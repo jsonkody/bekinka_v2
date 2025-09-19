@@ -265,6 +265,10 @@ input[type='number'] {
   max-height: 75vh;
 }
 
+@utility trans {
+  @apply transition duration-150;
+}
+
 @utility glitch {
   transition: text-shadow 0.2s ease;
   text-shadow: -2px 2px 1px #8c00ffe1;

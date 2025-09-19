@@ -29,7 +29,7 @@ const fetchReviews = async (loadMore = false) => {
     // Pokud nenačítáme další stránku, resetujeme pole
     if (!loadMore) {
       page.value = 1
-      reviews.value = []
+      // reviews.value = []
     }
 
     // Sestavení filtru pro PocketBase
@@ -61,6 +61,9 @@ const fetchReviews = async (loadMore = false) => {
     console.error('Chyba při načítání recenzí:', error)
   } finally {
     loading.value = false
+    // setTimeout(() => {
+
+    // },3000)
   }
 }
 
@@ -168,7 +171,7 @@ onMounted(() => {
       </h2>
     </div>
 
-    <div v-if="reviews.length" class="flex flex-wrap">
+    <!-- <div v-if="reviews.length" class="flex flex-wrap">
       <GameCard
         v-for="review in reviews"
         :key="review.id"
@@ -185,29 +188,49 @@ onMounted(() => {
     </div>
     <div v-if="!loading && !reviews.length" class="text-center p-10 text-white/80">
       Žádné hry neodpovídají zadaným kritériím.
+    </div> -->
+
+    <div v-if="reviews.length" class="flex flex-wrap">
+      <GameCard
+        v-for="review in reviews"
+        :key="review.id"
+        :review="review"
+        :pb="pb"
+        :loading="loading"
+        :search-query="searchQuery"
+        :selected-genre="selectedGenre"
+        @update-genre-filter="toggleGenre($event)"
+      />
     </div>
 
-    <div v-if="!loading && page < totalPages" class="text-center my-24">
-      <button @click="loadMore" class="btn-cyber">Načíst další</button>
+    <div v-if="loading && !reviews.length" class="text-center p-10 text-white/80">
+      Načítám hry...
     </div>
+    <div v-if="!loading && !reviews.length" class="text-center p-10 text-white/80">
+      Žádné hry neodpovídají zadaným kritériím.
+    </div>
+  </div>
 
-    <div id="emo"></div>
-    <p class="mt-12 mb-4">
-      Tohle jsou dostupne emouty, staci pred jmeno napsat dvojtecku napr.
-      <code>:bekiSmile</code>
-    </p>
-    <div class="flex flex-wrap">
-      <EmoComponent>
-        :bekiSmile bekiSmile :bekiLurk bekiLurk :bekiChamp bekiChamp :bekiRagey bekiRagey
-        :bekiSleeper bekiSleeper :bekiStare bekiStare :bekiSure bekiSure :bekiKek bekiKek :bekiMald
-        bekiMald :bekiStar bekiStar :bekiPray bekiPray :bekiPog bekiPog :bekiMeh bekiMeh :bekiKona
-        bekiKona :bekiAha bekiAha :bekiClown bekiClown :bekiCmon bekiCmon :bekiCoze bekiCoze
-        :bekiDementos bekiDementos :bekiDiosMios bekiDiosMios :bekiOk bekiOk :bekiTired bekiTired
-        :bekiWeirdo bekiWeirdo :bekiNerd bekiNerd :bekiMlady bekiMlady :bekiBlankies bekiBlankies
-        :KEKW KEKW :KEKLEO KEKLEO :LUL LUL :oooo oooo :pogTasty pogTasty :bekiPls bekiPls :Clap Clap
-        :catJAM catJAM :andullHello andullHello :shilLove shilLove :shilEZY shilEZY
-      </EmoComponent>
-    </div>
+  <div v-if="!loading && page < totalPages" class="text-center my-24">
+    <button @click="loadMore" class="btn-cyber">Načíst další</button>
+  </div>
+
+  <div id="emo"></div>
+  <p class="mt-12 mb-4">
+    Tohle jsou dostupne emouty, staci pred jmeno napsat dvojtecku napr.
+    <code>:bekiSmile</code>
+  </p>
+  <div class="flex flex-wrap">
+    <EmoComponent>
+      :bekiSmile bekiSmile :bekiLurk bekiLurk :bekiChamp bekiChamp :bekiRagey bekiRagey :bekiSleeper
+      bekiSleeper :bekiStare bekiStare :bekiSure bekiSure :bekiKek bekiKek :bekiMald bekiMald
+      :bekiStar bekiStar :bekiPray bekiPray :bekiPog bekiPog :bekiMeh bekiMeh :bekiKona bekiKona
+      :bekiAha bekiAha :bekiClown bekiClown :bekiCmon bekiCmon :bekiCoze bekiCoze :bekiDementos
+      bekiDementos :bekiDiosMios bekiDiosMios :bekiOk bekiOk :bekiTired bekiTired :bekiWeirdo
+      bekiWeirdo :bekiNerd bekiNerd :bekiMlady bekiMlady :bekiBlankies bekiBlankies :KEKW KEKW
+      :KEKLEO KEKLEO :LUL LUL :oooo oooo :pogTasty pogTasty :bekiPls bekiPls :Clap Clap :catJAM
+      catJAM :andullHello andullHello :shilLove shilLove :shilEZY shilEZY
+    </EmoComponent>
   </div>
 </template>
 
