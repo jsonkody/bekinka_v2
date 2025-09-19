@@ -10,7 +10,9 @@ import Toolpop from 'toolpop'
 
 const app = createApp(App)
 app.component('IconComponent', IconComponent)
-app.use(Toolpop)
+app.use(Toolpop, {
+   fontFamily: 'Inter'
+})
 
 app.use(createPinia())
 app.use(router)

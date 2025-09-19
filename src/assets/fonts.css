@@ -27,7 +27,7 @@
 
 /* Test - trying new main font (Asap) */
 @font-face {
-  font-family: 'AsapI';
+  font-family: 'Asap';
   src: url('/fonts/asap.ttf') format('truetype');
   font-weight: 100 900;
   font-style: italic oblique 0deg 10deg;
@@ -58,5 +58,5 @@
 }
 
 .font-asap {
-  font-family: 'AsapI';
+  font-family: 'Asap';
 }
