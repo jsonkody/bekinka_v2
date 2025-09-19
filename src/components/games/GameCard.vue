@@ -1,4 +1,3 @@
-// GameCard.vue
 <script setup lang="ts">
 import type { RecordModel } from 'pocketbase'
 import type PocketBase from 'pocketbase'
@@ -11,7 +10,11 @@ const { highlightText } = useHighlightText()
 const props = defineProps<{
   review: RecordModel
   pb: PocketBase
+  searchQuery: string
+  selectedGenre: string | null // <-- PŘIDAT TUTO PROP
 }>()
+
+const emit = defineEmits(['update-genre-filter'])
 
 // Používáme 'computed' pro lepší přehlednost a reaktivitu
 const game = computed(() => props.review.expand?.game)
@@ -50,7 +53,7 @@ const scoreColor = (score: number) => {
 
         <span
           class="mx-1 window-title overflow-x-scroll"
-          v-html="highlightText(game.title, '')"
+          v-html="highlightText(game.title, searchQuery)"
         ></span>
         <span class="cursor-pointer button justify-self-end mr-1">
           <span class="select-none font-normal text-gray-700 buttonX">x</span>
@@ -73,13 +76,26 @@ const scoreColor = (score: number) => {
         </div>
 
         <div class="p-3 pl-1 window-content text-center">
-          <div v-if="game.expand?.genres" class="mb-1 flex justify-end flex-wrap text-xs text-gray-600">
+          <div
+            v-if="game.expand?.genres"
+            class="mb-1 flex justify-end flex-wrap text-xs text-gray-600"
+          >
             <div
               v-for="genre in game.expand.genres"
               :key="genre.id"
-              class="pt-0.5 px-1 m-0.5 border rounded border-gray-400"
+              class="cursor-pointer"
+              @click.stop="emit('update-genre-filter', genre.id)"
             >
-              {{ genre.name_cs }}
+              <div
+                class="pt-0.5 px-1 m-0.5 border rounded trans-150"
+                :class="{
+                  'border-blue-600 text-blue-600': genre.id === selectedGenre,
+                  'border-gray-400 hover:border-gray-600 hover:text-gray-900':
+                    genre.id !== selectedGenre,
+                }"
+              >
+                {{ genre.name_cs }}
+              </div>
             </div>
           </div>
 

@@ -1,4 +1,3 @@
-// GamesView.vue
 <script setup lang="ts">
 import { ref, watch, onMounted } from 'vue'
 import PocketBase, { type RecordModel } from 'pocketbase'
@@ -170,7 +169,15 @@ onMounted(() => {
     </div>
 
     <div v-if="reviews.length" class="flex flex-wrap">
-      <GameCard v-for="review in reviews" :key="review.id" :review="review" :pb="pb" />
+      <GameCard
+        v-for="review in reviews"
+        :key="review.id"
+        :review="review"
+        :pb="pb"
+        :search-query="searchQuery"
+        :selected-genre="selectedGenre"
+        @update-genre-filter="toggleGenre($event)"
+      />
     </div>
 
     <div v-if="loading && !reviews.length" class="text-center p-10 text-white/80">
