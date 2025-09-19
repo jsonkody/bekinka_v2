@@ -126,11 +126,12 @@ onMounted(() => {
           <input
             @keydown.esc="clearSearch"
             placeholder="Vyhledej hru ..."
-            class="pl-3 pr-8 cursor-text bg-white font-asap font-semibold text-purple-950 text-xl rounded-md border-2 border-purple-400 hover:border-green-400 focus:border-green-400 focus:outline-none trans-200 w-64"
+            class="pl-3 pr-8 cursor-text bg-white font-asap font-semibold text-purple-950 text-xl rounded-md border-2 border-purple-400 hover:border-green-400 focus:border-green-400 focus:outline-none trans w-64"
             type="text"
             v-model="searchQuery"
           />
           <IconX
+            v-pop:right="'Zrušit'"
             v-if="searchQuery"
             @click="clearSearch"
             :size="24"
@@ -153,10 +154,11 @@ onMounted(() => {
       >
         <div v-for="genre in genres" :key="genre.id" class="cursor-pointer">
           <div
+            v-pop:bottom="genre.id === selectedGenre ? 'Zrušit žánr' : 'Vybrat žánr'"
             @click="toggleGenre(genre.id)"
-            class="select-none font-asap mr-1 mb-1 py-1 px-3 text-sm rounded-md trans-150"
+            class="select-none font-asap mr-1 mb-1 py-1 px-3 text-sm rounded-md trans"
             :class="{
-              'border border-green-300/90 bg-green-300/90 text-black': selectedGenre === genre.id,
+              'border border-green-300/90 bg-green-300/90 text-black': genre.id === selectedGenre,
               'border border-white/20 hover:border-green-300/90 bg-black/25 text-white hover:bg-black/70':
                 selectedGenre !== genre.id,
             }"
@@ -173,7 +175,7 @@ onMounted(() => {
 
     <div class="my-3 text-center">
       <h2>
-        <span class="font-asap text-sm text-white/50 hover:text-white/90 trans-200">
+        <span class="font-asap text-sm text-white/50 hover:text-white/90 trans">
           Hodnocení = míra zábavy pro Beku. Neslouží jako náhrada profesionálních recenzí ;)
         </span>
       </h2>

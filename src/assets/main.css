@@ -32,11 +32,8 @@
   border-radius: 5px;
 }
 
-@utility trans-150 {
+@utility trans {
   transition: all 0.15s ease-in-out;
-}
-@utility trans-200 {
-  transition: all 0.2s ease-in-out;
 }
 
 @utility rd {

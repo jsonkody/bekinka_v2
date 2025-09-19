@@ -10,7 +10,7 @@ const paintings = art.pictures
   <div>
     <button
       @click="art.is_desc = !art.is_desc"
-      class="mb-2 text-pink-400 hover:text-pink-300 select-none font-asap font-semibold text-lg cursor-pointer p-2 focus:outline-none trans-200"
+      class="mb-2 text-pink-400 hover:text-pink-300 select-none font-asap font-semibold text-lg cursor-pointer p-2 focus:outline-none trans"
     >
       <template v-if="art.is_desc">
         Od nejnovějších

@@ -38,7 +38,7 @@ const handleScoreClick = () => {
   <div class="flex items-center space-x-4">
     <button
       @click="handleDateClick"
-      class="select-none font-asap font-semibold text-lg cursor-pointer p-2 focus:outline-none trans-200 inline-flex items-center"
+      class="select-none font-asap font-semibold text-lg cursor-pointer p-2 focus:outline-none trans inline-flex items-center"
       :class="{
         'text-pink-400 hover:text-pink-300': isSortedByDate,
         'text-purple-300/30 hover:text-purple-300/50': !isSortedByDate,
@@ -59,7 +59,7 @@ const handleScoreClick = () => {
 
     <button
       @click="handleScoreClick"
-      class="select-none font-asap font-semibold text-lg cursor-pointer p-2 focus:outline-none trans-200 inline-flex items-center"
+      class="select-none font-asap font-semibold text-lg cursor-pointer p-2 focus:outline-none trans inline-flex items-center"
       :class="{
         'text-pink-400 hover:text-pink-300': !isSortedByDate,
         'text-purple-300/30 hover:text-purple-300/50': isSortedByDate,

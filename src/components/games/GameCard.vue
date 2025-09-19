@@ -56,7 +56,7 @@ const scoreColor = (score: number) => {
           class="mx-1 window-title overflow-x-scroll"
           v-html="highlightText(game.title, searchQuery)"
         ></span>
-        <span class="cursor-pointer button justify-self-end mr-1">
+        <span v-pop="'( ͡° ͜ʖ ͡°)'" class="cursor-pointer button justify-self-end mr-1">
           <span class="select-none font-normal text-gray-700 buttonX">x</span>
         </span>
       </div>
@@ -88,7 +88,8 @@ const scoreColor = (score: number) => {
               @click.stop="emit('update-genre-filter', genre.id)"
             >
               <div
-                class="pt-0.5 px-1 m-0.5 border rounded trans-150"
+                v-pop="genre.id === selectedGenre ? 'Zrušit žánr' : 'Vybrat žánr'"
+                class="pt-0.5 px-1 m-0.5 border rounded trans"
                 :class="{
                   'border-blue-600 text-blue-600': genre.id === selectedGenre,
                   'border-gray-400 hover:border-gray-600 hover:text-gray-900':
@@ -105,9 +106,9 @@ const scoreColor = (score: number) => {
             <EmoComponent>{{ review.text }}</EmoComponent>
           </div>
 
-          <div v-if="requestedBy" class="text-right font-inter mt-3">
-            <span class="text-gray-600">requested by: </span>
-            <span class="font-semibold text-purple-700 hover:text-purple-500 trans-200">
+          <div v-if="requestedBy" class="text-left font-inter mt-3">
+            <span class="text-violet-900">requested by: </span>
+            <span class="font-semibold text-violet-700 hover:text-violet-700 trans">
               {{ requestedBy }}
             </span>
           </div>

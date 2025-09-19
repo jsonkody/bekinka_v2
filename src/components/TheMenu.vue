@@ -16,14 +16,12 @@ const route = useRoute()
           <div class="inline-block flex h-full">
             <div class="glitch group ml-2 relative inline-block w-32">
               <div
-                class="bekinka-logo text-5xl font-streamster text-purple-400 group-hover:text-purple-200 trans-200"
+                class="bekinka-logo text-5xl font-streamster text-purple-400 group-hover:text-purple-200 trans"
               >
                 Bekinka
               </div>
-              <div class="kata text-purple-400 group-hover:text-purple-200 trans-200">ベキンカ</div>
-              <div class="hira text-purple-400 group-hover:text-purple-200 trans-200">
-                なに これ
-              </div>
+              <div class="kata text-purple-400 group-hover:text-purple-200 trans">ベキンカ</div>
+              <div class="hira text-purple-400 group-hover:text-purple-200 trans">なに これ</div>
             </div>
           </div>
         </div>
@@ -36,7 +34,7 @@ const route = useRoute()
         class="z-20 absolute left-1 top-1 sm:left-5 sm:top-5 lg:left-52 lg:top-5 md:hidden lg:block"
       >
         <img
-          class="opacity-0 hover:opacity-100 trans-200"
+          class="opacity-0 hover:opacity-100 trans"
           alt="beki smile"
           width="65"
           height="65"
