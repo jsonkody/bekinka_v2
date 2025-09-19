@@ -20,6 +20,9 @@ importers:
       pinia:
         specifier: ^3.0.3
         version: 3.0.3(typescript@5.9.2)(vue@3.5.21(typescript@5.9.2))
+      pocketbase:
+        specifier: ^0.26.2
+        version: 0.26.2
       tailwindcss:
         specifier: ^4.1.13
         version: 4.1.13
@@ -1755,6 +1758,9 @@ packages:
     peerDependenciesMeta:
       typescript:
         optional: true
+
+  pocketbase@0.26.2:
+    resolution: {integrity: sha512-WA8EOBc3QnSJh8rJ3iYoi9DmmPOMFIgVfAmIGux7wwruUEIzXgvrO4u0W2htfQjGIcyezJkdZOy5Xmh7SxAftw==}
 
   postcss-selector-parser@6.1.2:
     resolution: {integrity: sha512-Q8qQfPiZ+THO/3ZrOrO0cJJKfpYCagtMUkXbnEfmgUjwXg6z/WBeOyS9APBBPCTSiDV+s4SwQGu8yFsiMRIudg==}
@@ -3804,6 +3810,8 @@ snapshots:
       vue: 3.5.21(typescript@5.9.2)
     optionalDependencies:
       typescript: 5.9.2
+
+  pocketbase@0.26.2: {}
 
   postcss-selector-parser@6.1.2:
     dependencies:

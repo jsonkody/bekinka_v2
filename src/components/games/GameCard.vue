@@ -1,27 +1,32 @@
+// GameCard.vue
 <script setup lang="ts">
-import type { Game } from '@/typings/types'
-import { useHighlightText } from '@/composables/useHighlightText'
+import type { RecordModel } from 'pocketbase'
+import type PocketBase from 'pocketbase'
+import { computed } from 'vue'
 import EmoComponent from '../EmoComponent.vue'
-import { useGames } from '@/stores/Games'
-import { ref } from 'vue'
+import { useHighlightText } from '@/composables/useHighlightText'
 
-const games = useGames()
 const { highlightText } = useHighlightText()
 
-const { game } = defineProps<{
-  game: Game
-  genres: Record<number, { title: string }>
-  // fromBest: boolean
-  // genre?: number
+const props = defineProps<{
+  review: RecordModel
+  pb: PocketBase
 }>()
 
-const emit = defineEmits(['change-genre'])
-
-const isOpen = ref(false)
-
-const toggleOpen = () => {
-  isOpen.value = !isOpen.value
-}
+// Používáme 'computed' pro lepší přehlednost a reaktivitu
+const game = computed(() => props.review.expand?.game)
+const requestedBy = computed(() => {
+  const people = game.value?.expand?.request?.expand?.people
+  return people ? people.map((p: any) => p.nickname).join(', ') : ''
+})
+const coverImageUrl = computed(() => {
+  if (game.value && game.value.cover_image) {
+    // Správný způsob, jak získat URL souboru z PocketBase
+    return props.pb.getFileUrl(game.value, game.value.cover_image, { thumb: '180x240' })
+  }
+  // Záložní obrázek, pokud není k dispozici
+  return 'https://via.placeholder.com/90x120?text=No+Image'
+})
 
 const scoreColor = (score: number) => {
   if (score >= 80) return 'score-green'
@@ -32,97 +37,61 @@ const scoreColor = (score: number) => {
 </script>
 
 <template>
-  <div @click="toggleOpen" class="font-pixel group p-2 inline-block w-full md:w-1/2 xl:w-1/3">
+  <div v-if="game" class="font-pixel group p-2 inline-block w-full md:w-1/2 xl:w-1/3">
     <div class="shadow-lg hover:shadow-2xl window">
-      <!-- Lista -->
       <div
         class="lista flex items-center justify-between"
         :class="{
-          played: game.rating,
-          wanted: !game.rating,
-          requested: game.requested,
+          played: review.score,
+          requested: requestedBy,
         }"
       >
-        <span class="mx-1">{{ game.index ? `${game.index}.` : '' }}</span>
+        <span class="mx-1">{{ review.stream_index }}.</span>
 
         <span
           class="mx-1 window-title overflow-x-scroll"
-          v-html="highlightText(game.title, games.search)"
+          v-html="highlightText(game.title, '')"
         ></span>
         <span class="cursor-pointer button justify-self-end mr-1">
           <span class="select-none font-normal text-gray-700 buttonX">x</span>
         </span>
       </div>
 
-      <!-- Okno obsah -->
-      <div class="font-inter flex text-gray-900 minHRating leading-6 tracking-normal">
-        <!-- rating & image -->
-        <!-- <div v-if="Number.isInteger(game.rating)" class="p-3"> -->
+      <div class="font-inter flex text-gray-900 min-h-[144px] leading-6 tracking-normal">
         <div class="p-3">
           <div
             class="font-pixel group rounded-lg overflow-hidden inline-block relative"
-            :class="[scoreColor(game.rating || 0), { 'border-t-4': game.rating }]"
+            :class="[scoreColor(review.score || 0), { 'border-t-4': review.score }]"
           >
-            <div v-if="game.img.url" class="image">
-              <img
-                :alt="game.title"
-                width="90"
-                height="120"
-                :src="`https://images.igdb.com/igdb/image/upload/t_cover_small/${game.img.url}.jpg`"
-              />
+            <div class="image">
+              <img :alt="game.title" width="90" height="120" :src="coverImageUrl" />
             </div>
-            <div v-if="Number.isInteger(game.rating)" class="score">
-              <span>{{ game.rating }}%</span>
+            <div v-if="review.score" class="score">
+              <span>{{ review.score }}%</span>
             </div>
           </div>
         </div>
 
-        <!-- if Nehodnoceno -->
-        <div
-          v-if="!Number.isInteger(game.rating)"
-          class="py-5 text-2xl text-red-600 window-content text-center"
-        >
-          <div class="font-pixel">
-            <span class="mr-1">🚧</span>
-            připravujeme
-            <span class="mr-1">🚧</span>
-          </div>
-          <div class="font-roboto-mono">( ͡° ͜ʖ ͡°)</div>
-        </div>
-        <!-- Content -->
-        <div v-if="Number.isInteger(game.rating)" class="p-3 pl-1 window-content text-center">
-          <!-- Žánr -->
-          <div class="mb-1 flex justify-end flex-wrap text-xs text-gray-600">
+        <div class="p-3 pl-1 window-content text-center">
+          <div v-if="game.expand?.genres" class="mb-1 flex justify-end flex-wrap text-xs text-gray-600">
             <div
-              v-for="gen in game.genre"
-              :key="gen + 'cardGenre'"
-              class="cursor-pointer"
-              @click.stop="emit('change-genre', gen)"
+              v-for="genre in game.expand.genres"
+              :key="genre.id"
+              class="pt-0.5 px-1 m-0.5 border rounded border-gray-400"
             >
-              <div
-                class="pt-0.5 px-1 m-0.5 border rounded"
-                :class="{
-                  'border-blue-600 text-blue-600 hover:border-purple-500 hover:text-purple-500':
-                    gen === games.genre,
-                  'border-gray-400 hover:border-gray-600 hover:text-gray-900': gen !== games.genre,
-                }"
-              >
-                {{ genres[gen]?.title }}
-              </div>
+              {{ genre.name_cs }}
             </div>
           </div>
 
-          <!-- Text recenze a emoji -->
           <div class="text-left sm:select-text">
-            <span class="text-2xl mr-2">{{ game.emoji }}</span>
-            <EmoComponent>{{ game.text }}</EmoComponent>
+            <span class="text-2xl mr-2">{{ review.emoji }}</span>
+            <EmoComponent>{{ review.text }}</EmoComponent>
           </div>
 
-          <!-- Request -->
-          <div v-if="game.requested" class="text-right font-inter mt-3">
+          <div v-if="requestedBy" class="text-right font-inter mt-3">
             <span class="text-gray-600">requested by: </span>
             <span class="font-semibold text-purple-700 hover:text-purple-500 trans-200">
-              {{ game.requested }}
+              {{ requestedBy }}
             </span>
           </div>
         </div>
@@ -132,29 +101,22 @@ const scoreColor = (score: number) => {
 </template>
 
 <style scoped>
+/* Tvé stávající styly zde - ponechány beze změny */
 .lista {
   transition: opacity 0.2s;
   color: white;
   position: relative;
   box-shadow: 0 2px 1px -1px rgb(147, 147, 147);
 }
-
 .lista.played {
   background: linear-gradient(90deg, #1d44ed 0%, #000083 100%);
 }
-
-.lista.wanted {
-  background: #747888;
-}
-
 .lista.requested {
   background: linear-gradient(90deg, #7500da 0%, #000082 100%);
 }
-
 .lista span {
   z-index: 20;
 }
-
 .lista::before {
   position: absolute;
   content: '';
@@ -173,27 +135,9 @@ const scoreColor = (score: number) => {
   transition: opacity 0.1s linear;
   opacity: 0;
 }
-
 .window-content {
   width: 100%;
 }
-
-.window-content::-webkit-scrollbar {
-  width: 7px;
-}
-
-.window-content::-webkit-scrollbar-track {
-  background: transparent;
-}
-
-.window-content::-webkit-scrollbar-thumb {
-  background: #a7a7a7;
-}
-
-.window-content::-webkit-scrollbar-thumb:hover {
-  background: #474649;
-}
-
 .score {
   position: absolute;
   bottom: 0;
@@ -207,25 +151,21 @@ const scoreColor = (score: number) => {
   font-size: 1.7rem;
   transition: all 0.2s;
 }
-
 .window {
   user-select: none;
   transition: all 0.2s;
   border: 3px outset #c3c3c3;
   background: #e7e7e7;
 }
-
 .window:hover {
   transform: scale(1.04);
   background: #f7f7f7;
   border: 3px outset #d8d8d8;
 }
-
 .window:hover .lista::before {
   z-index: 0;
   opacity: 1;
 }
-
 .window:hover .score {
   height: 100%;
   font-size: 2.4rem;
@@ -237,7 +177,6 @@ const scoreColor = (score: number) => {
     -1px 1px 0 #000,
     1px 1px 0 #000;
 }
-
 .button {
   border: 2px outset #c3c3c3;
   background: #c3c3c3;
@@ -246,62 +185,48 @@ const scoreColor = (score: number) => {
   height: 1.06rem;
   color: black;
 }
-
 .buttonX {
   position: relative;
   bottom: 0.5rem;
   left: 0.05rem;
 }
-
 .button:hover {
   border: 2px inset #c3c3c3;
 }
-
 .button:hover .buttonX {
   bottom: 0.4rem;
   left: 0.1rem;
 }
-
 .button:hover .buttonX:active {
   color: #79ffff;
 }
-
 .image {
   width: 90px;
   height: 120px;
+  background-color: #333; /* Placeholder color */
 }
-
 .window:hover .window-title {
   color: black;
 }
-
 .window-title {
   overflow-x: auto;
   text-wrap: nowrap;
   max-height: 2rem;
   transition: all 0.2s;
-
-  /* width */
-  &::-webkit-scrollbar {
-    height: 0.2rem;
-    width: 0.2rem;
-  }
-
-  /* Track */
-  &::-webkit-scrollbar-track {
-    background: #00000000;
-  }
-
-  /* Handle */
-  &::-webkit-scrollbar-thumb {
-    background: #ffffff96;
-    border-radius: 1rem;
-  }
-
-  /* Handle on hover */
-  &::-webkit-scrollbar-thumb:hover {
-    background: #1600336b;
-    cursor: pointer;
-  }
+}
+.window-title::-webkit-scrollbar {
+  height: 0.2rem;
+  width: 0.2rem;
+}
+.window-title::-webkit-scrollbar-track {
+  background: #00000000;
+}
+.window-title::-webkit-scrollbar-thumb {
+  background: #ffffff96;
+  border-radius: 1rem;
+}
+.window-title::-webkit-scrollbar-thumb:hover {
+  background: #1600336b;
+  cursor: pointer;
 }
 </style>

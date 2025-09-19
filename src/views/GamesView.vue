@@ -1,93 +1,166 @@
+// GamesView.vue
 <script setup lang="ts">
-// import type { Genre } from '@/stores/Games'
-import { IconX } from '@tabler/icons-vue'
+import { ref, watch, onMounted } from 'vue'
+import PocketBase, { type RecordModel } from 'pocketbase'
 import GameCard from '@/components/games/GameCard.vue'
 import GameSort from '@/components/games/GameSort.vue'
 import EmoComponent from '@/components/EmoComponent.vue'
-import { useGames } from '@/stores/Games'
+import { IconX } from '@tabler/icons-vue'
 
-const games = useGames()
+// --- State Management ---
+const reviews = ref<RecordModel[]>([])
+const genres = ref<RecordModel[]>([])
+const page = ref(1)
+const perPage = 12 // Kolik her se načte na jednu stránku
+const totalPages = ref(1)
+const loading = ref(false)
+const searchQuery = ref('')
+const selectedGenre = ref<string | null>(null) // ID vybraného žánru
+const sortBy = ref('-stream_index') // Defaultní řazení
 
-enum Genre {
-  Adventure = 101,
-  RPG = 102,
-  FPS = 103,
-  Shooter = 104,
-  Racing = 105,
-  HackNslash = 106,
-  Horror = 107,
-  Survival = 108,
-  Puzzle = 109,
-  Platform = 110,
-  Simulator = 111,
-  Souls = 112,
-  Indie = 113,
-  MMO = 114,
+// --- PocketBase Initialization ---
+const pb = new PocketBase('https://bekinka-db.bekinka.cz')
+// const pb = new PocketBase('http://127.0.0.1:8090') // Pro lokální vývoj
+
+// --- Data Fetching ---
+let debounceTimer: number
+const fetchReviews = async (loadMore = false) => {
+  loading.value = true
+  try {
+    // Pokud nenačítáme další stránku, resetujeme pole
+    if (!loadMore) {
+      page.value = 1
+      reviews.value = []
+    }
+
+    // Sestavení filtru pro PocketBase
+    const filterParts: string[] = ['score != 0']
+    if (searchQuery.value) {
+      // Filtrujeme v expandovaném poli 'game' podle 'title'
+      filterParts.push(`game.title ~ "${searchQuery.value}"`)
+    }
+    if (selectedGenre.value) {
+      // Filtrujeme podle ID žánru v expandovaném poli 'genres'
+      filterParts.push(`game.genres.id ?= "${selectedGenre.value}"`)
+    }
+    const filter = filterParts.join(' && ')
+
+    const resultList = await pb.collection('reviews').getList(page.value, perPage, {
+      sort: sortBy.value,
+      filter: filter || undefined, // Pokud je filtr prázdný, pošli undefined
+      expand: 'game, game.genres, game.request.people',
+    })
+
+    if (loadMore) {
+      reviews.value.push(...resultList.items)
+    } else {
+      reviews.value = resultList.items
+    }
+
+    totalPages.value = resultList.totalPages
+  } catch (error) {
+    console.error('Chyba při načítání recenzí:', error)
+  } finally {
+    loading.value = false
+  }
 }
 
-function clear_search() {
-  games.search = ''
+const fetchGenres = async () => {
+  try {
+    const allGenres = await pb.collection('genres').getFullList({ sort: 'name_cs' })
+    genres.value = allGenres
+  } catch (error) {
+    console.error('Chyba při načítání žánrů:', error)
+  }
 }
+
+// --- Event Handlers & Watchers ---
+const loadMore = () => {
+  if (page.value < totalPages.value) {
+    page.value++
+    fetchReviews(true)
+  }
+}
+
+const clearSearch = () => {
+  searchQuery.value = ''
+}
+
+const toggleGenre = (genreId: string) => {
+  if (selectedGenre.value === genreId) {
+    selectedGenre.value = null // Odznačení žánru
+  } else {
+    selectedGenre.value = genreId
+  }
+}
+
+// Sledování změn a volání API
+watch(searchQuery, (newValue, oldValue) => {
+  if (newValue !== oldValue) {
+    clearTimeout(debounceTimer)
+    debounceTimer = setTimeout(() => {
+      fetchReviews()
+    }, 300) // Debounce 300ms
+  }
+})
+
+watch([selectedGenre, sortBy], () => {
+  fetchReviews()
+})
+
+// --- Lifecycle Hooks ---
+onMounted(() => {
+  fetchGenres()
+  fetchReviews()
+})
 </script>
 
 <template>
   <div>
     <div class="pt-6 px-3 pb-2 bg-black/40 rounded-2xl">
-      <!-- Vyhledávání -->
       <div class="flex justify-center intems-center">
         <div class="mb-2 relative">
           <input
-            @keydown.esc="clear_search"
+            @keydown.esc="clearSearch"
             placeholder="Vyhledej hru ..."
-            class="pl-3 pr-6 cursor-text bg-white font-asap font-semibold text-purple-950 text-xl rounded-md border-2 border-purple-400 hover:border-green-400 focus:border-green-400 focus:outline-none trans-200"
+            class="pl-3 pr-8 cursor-text bg-white font-asap font-semibold text-purple-950 text-xl rounded-md border-2 border-purple-400 hover:border-green-400 focus:border-green-400 focus:outline-none trans-200 w-64"
             type="text"
-            ref="search-input"
-            v-model="games.search"
+            v-model="searchQuery"
           />
-
           <IconX
-            @click="games.search = ''"
+            v-if="searchQuery"
+            @click="clearSearch"
             :size="24"
             stroke-width="3"
-            :class="{ 'opacity-100': games.search, 'opacity-0': !games.search }"
-            class="mr-1 h-full cursor-pointer trans absolute top-0 right-0 text-slate-300 hover:text-slate-500"
+            class="mr-1 h-full cursor-pointer trans absolute top-0 right-0 text-slate-400 hover:text-slate-600"
           />
         </div>
       </div>
 
-      <!-- Žánry -->
       <div
+        v-if="genres.length"
         class="border border-purple-400/10 bg-purple-400/10 pb-1 pt-2 rounded-md mb-2 mt-3 font-sans font-medium flex flex-wrap items-center justify-center"
       >
-        <div v-for="g in Object.keys(games.genres)" :key="g" class="cursor-pointer">
+        <div v-for="genre in genres" :key="genre.id" class="cursor-pointer">
           <div
-            @click="games.changeGenre(Number(g) as Genre)"
+            @click="toggleGenre(genre.id)"
             class="select-none font-asap mr-1 mb-1 py-1 px-3 text-sm rounded-md trans-150"
             :class="{
-              'border border-green-300/90 bg-green-300/90 text-black': games.genre === Number(g),
+              'border border-green-300/90 bg-green-300/90 text-black': selectedGenre === genre.id,
               'border border-white/20 hover:border-green-300/90 bg-black/25 text-white hover:bg-black/70':
-                games.genre !== Number(g),
+                selectedGenre !== genre.id,
             }"
           >
-            {{ games.genres[Number(g) as Genre].title }}
+            {{ genre.name_cs }}
           </div>
         </div>
       </div>
 
-      <!-- Třídění -->
       <div class="flex items-center justify-center">
-        <GameSort
-          :is-desc="games.isDesc"
-          :from-best="games.fromBest"
-          :sort-by-date="games.sortByDate"
-          @update:is-desc="games.isDesc = $event"
-          @update:from-best="games.fromBest = $event"
-          @update:sort-by-date="games.sortByDate = $event"
-        />
+        <GameSort v-model="sortBy" />
       </div>
     </div>
 
-    <!-- Hláška -->
     <div class="my-3 text-center">
       <h2>
         <span class="font-asap text-sm text-white/50 hover:text-white/90 trans-200">
@@ -96,20 +169,21 @@ function clear_search() {
       </h2>
     </div>
 
-    <!-- Seznam her -->
-    <div class="flex flex-wrap">
-      <GameCard
-        v-for="game in games.filteredGames"
-        :key="game.index + 'game'"
-        :game="game"
-        :genres="games.genres"
-        :from-best="games.fromBest"
-        :genre="games.genre"
-        @change-genre="games.changeGenre"
-      />
+    <div v-if="reviews.length" class="flex flex-wrap">
+      <GameCard v-for="review in reviews" :key="review.id" :review="review" :pb="pb" />
     </div>
 
-    <!-- Emo test -->
+    <div v-if="loading && !reviews.length" class="text-center p-10 text-white/80">
+      Načítám hry...
+    </div>
+    <div v-if="!loading && !reviews.length" class="text-center p-10 text-white/80">
+      Žádné hry neodpovídají zadaným kritériím.
+    </div>
+
+    <div v-if="!loading && page < totalPages" class="text-center my-24">
+      <button @click="loadMore" class="btn-cyber">Načíst další</button>
+    </div>
+
     <div id="emo"></div>
     <p class="mt-12 mb-4">
       Tohle jsou dostupne emouty, staci pred jmeno napsat dvojtecku napr.
@@ -129,3 +203,102 @@ function clear_search() {
     </div>
   </div>
 </template>
+
+<style scoped>
+.btn-cyber,
+.btn-cyber::after {
+  /* Upravil jsem velikosti a font, aby to lépe sedělo */
+  width: 250px;
+  height: 50px;
+  font-size: 25px;
+  font-family: 'Pixel';
+
+  /* Původní styl z tvého příkladu */
+  position: relative;
+  background: linear-gradient(45deg, transparent 5%, #5600b8 5%);
+  border: 0;
+  color: #a2f4fd;
+  /* letter-spacing: 3px; */
+  font-weight: bold;
+  line-height: 52px;
+  /* Mírně upraveno pro zarovnání */
+  box-shadow: 6px 0 0 #ff00aa;
+  outline: transparent;
+  cursor: pointer;
+}
+
+.btn-cyber::after {
+  --slice-0: inset(50% 50% 50% 50%);
+  --slice-1: inset(80% -6px 0 0);
+  --slice-2: inset(50% -6px 30% 0);
+  --slice-3: inset(10% -6px 85% 0);
+  --slice-4: inset(40% -6px 43% 0);
+  --slice-5: inset(80% -6px 5% 0);
+
+  content: 'Načíst další';
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(45deg, transparent 3%, #ff00aa 3%, #ff00aa 5%, #5600b8 5%);
+  text-shadow:
+    -3px -3px 0px #a2f4fd,
+    3px 3px 0px #ff00aa;
+  clip-path: var(--slice-0);
+}
+
+.btn-cyber:hover::after {
+  animation: 1.5s glitch;
+  /* 'steps' zajistí trhaný, digitální pohyb */
+  animation-timing-function: steps(2, end);
+}
+
+@keyframes glitch {
+  0% {
+    clip-path: var(--slice-1);
+    transform: translate(-20px, -10px);
+  }
+  10% {
+    clip-path: var(--slice-3);
+    transform: translate(10px, 10px);
+  }
+  20% {
+    clip-path: var(--slice-1);
+    transform: translate(-10px, 10px);
+  }
+  30% {
+    clip-path: var(--slice-3);
+    transform: translate(0px, 5px);
+  }
+  40% {
+    clip-path: var(--slice-2);
+    transform: translate(-5px, 0px);
+  }
+  50% {
+    clip-path: var(--slice-3);
+    transform: translate(5px, 0px);
+  }
+  60% {
+    clip-path: var(--slice-4);
+    transform: translate(5px, 10px);
+  }
+  70% {
+    clip-path: var(--slice-2);
+    transform: translate(-10px, 10px);
+  }
+  80% {
+    clip-path: var(--slice-5);
+    transform: translate(20px, -10px);
+  }
+  90% {
+    clip-path: var(--slice-1);
+    transform: translate(-10px, 0px);
+  }
+  100% {
+    clip-path: var(--slice-1);
+    transform: translate(0);
+  }
+}
+</style>
