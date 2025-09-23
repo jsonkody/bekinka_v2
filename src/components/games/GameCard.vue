@@ -102,7 +102,7 @@ const scoreColor = (score: number) => {
           </div>
 
           <div class="text-left sm:select-text">
-            <span class="text-2xl mr-2">{{ review.emoji }}</span>
+            <span v-if="review.emoji" class="text-2xl mr-2">{{ review.emoji }}</span>
             <EmoComponent>{{ review.text }}</EmoComponent>
           </div>
 
