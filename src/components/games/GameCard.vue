@@ -46,7 +46,7 @@ const scoreColor = (score: number) => {
       <div
         class="lista flex items-center justify-between"
         :class="{
-          played: review.score,
+          played: review.score > -1,
           requested: requestedBy,
         }"
       >

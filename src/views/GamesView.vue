@@ -33,7 +33,7 @@ const fetchReviews = async (loadMore = false) => {
     }
 
     // Sestavení filtru pro PocketBase
-    const filterParts: string[] = ['score != 0']
+    const filterParts: string[] = ['score != -1']
     if (searchQuery.value) {
       // Filtrujeme v expandovaném poli 'game' podle 'title'
       filterParts.push(`game.title ~ "${searchQuery.value}"`)
