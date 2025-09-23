@@ -201,5 +201,5 @@ watchEffect(() => {
 </script>
 
 <template>
-  <span class="font-asap" v-html="processedHtml"></span>
+  <span class="font-inter" v-html="processedHtml"></span>
 </template>
