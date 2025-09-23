@@ -53,7 +53,7 @@ const scoreColor = (score: number) => {
         <span class="mx-1">{{ review.stream_index }}.</span>
 
         <span
-          class="mx-1 window-title overflow-x-scroll"
+          class="mx-1 window-title overflow-x-scroll select-text"
           v-html="highlightText(game.title, searchQuery)"
         ></span>
         <span v-pop="'( ͡° ͜ʖ ͡°)'" class="cursor-pointer button justify-self-end mr-1">
