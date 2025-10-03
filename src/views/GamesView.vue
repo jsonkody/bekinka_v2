@@ -41,8 +41,13 @@ const fetchReviews = async (loadMore = false) => {
     if (selectedGenre.value) {
       // Filtrujeme podle ID žánru v expandovaném poli 'genres'
       filterParts.push(`game.genres.id ?= "${selectedGenre.value}"`)
+    }
+
+    // pokud radime dle score NEBO je vybran zanr. nezobrazuj prazdne recenze
+    if (sortBy.value.slice(1) === 'score' || selectedGenre.value) {
       filterParts.push('score > 0')
     } else {
+      // jinak nezobrazuj pouze "nezverejnene" recenze (score -1)
       filterParts.push('score != -1')
     }
 
@@ -173,6 +178,7 @@ onMounted(() => {
       </div>
 
       <div class="flex items-center justify-center">
+        <!-- {{ sortBy }} -->
         <GameSort v-model="sortBy" />
       </div>
     </div>
