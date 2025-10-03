@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import type { RecordModel } from 'pocketbase'
 import type PocketBase from 'pocketbase'
-import { computed } from 'vue'
+import { ref, computed } from 'vue'
 import EmoComponent from '../EmoComponent.vue'
 import { useHighlightText } from '@/composables/useHighlightText'
 
@@ -38,6 +38,23 @@ const scoreColor = (score: number) => {
   if (score >= 45) return 'score-red'
   return 'score-gray'
 }
+
+const blink_val = ref(false)
+const TIMEOUT = 1000
+let last_time = 0
+function blink() {
+  const now = Date.now()
+
+  if (now - last_time < TIMEOUT) {
+    return
+  }
+
+  blink_val.value = true
+  setTimeout(() => {
+    blink_val.value = false
+  }, TIMEOUT)
+  last_time = now
+}
 </script>
 
 <template>
@@ -50,13 +67,17 @@ const scoreColor = (score: number) => {
           requested: requestedBy,
         }"
       >
-        <span class="mx-1">{{ review.stream_index }}.</span>
+        <span class="mx-1" v-pop="`Pořadí dohrání na streamu`">{{ review.stream_index }}.</span>
 
         <span
           class="mx-1 window-title overflow-x-scroll select-text"
           v-html="highlightText(game.title, searchQuery)"
         ></span>
-        <span v-pop="'( ͡° ͜ʖ ͡°)'" class="cursor-pointer button justify-self-end mr-1">
+        <span
+          v-pop="blink_val ? '( ͡~ ͜ʖ ͡°)' : '( ͡° ͜ʖ ͡°)'"
+          @mousedown="blink"
+          class="cursor-pointer button justify-self-end mr-1"
+        >
           <span class="select-none font-normal text-gray-700 buttonX">x</span>
         </span>
       </div>
@@ -88,7 +109,7 @@ const scoreColor = (score: number) => {
               @click.stop="emit('update-genre-filter', genre.id)"
             >
               <div
-                v-pop="genre.id === selectedGenre ? 'Zrušit žánr' : 'Vybrat žánr'"
+                v-pop:left="genre.id === selectedGenre ? 'Zrušit žánr' : 'Vybrat žánr'"
                 class="pt-0.5 px-1 m-0.5 border rounded trans"
                 :class="{
                   'border-blue-600 text-blue-600': genre.id === selectedGenre,
