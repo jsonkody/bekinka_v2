@@ -33,7 +33,7 @@ const fetchReviews = async (loadMore = false) => {
     }
 
     // Sestavení filtru pro PocketBase
-    const filterParts: string[] = ['score != -1']
+    const filterParts: string[] = []
     if (searchQuery.value) {
       // Filtrujeme v expandovaném poli 'game' podle 'title'
       filterParts.push(`game.title ~ "${searchQuery.value}"`)
@@ -42,7 +42,10 @@ const fetchReviews = async (loadMore = false) => {
       // Filtrujeme podle ID žánru v expandovaném poli 'genres'
       filterParts.push(`game.genres.id ?= "${selectedGenre.value}"`)
       filterParts.push('score > 0')
+    } else {
+      filterParts.push('score != -1')
     }
+
     const filter = filterParts.join(' && ')
 
     const resultList = await pb.collection('reviews').getList(page.value, perPage, {
