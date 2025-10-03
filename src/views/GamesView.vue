@@ -41,6 +41,7 @@ const fetchReviews = async (loadMore = false) => {
     if (selectedGenre.value) {
       // Filtrujeme podle ID žánru v expandovaném poli 'genres'
       filterParts.push(`game.genres.id ?= "${selectedGenre.value}"`)
+      filterParts.push('score > 0')
     }
     const filter = filterParts.join(' && ')
 
