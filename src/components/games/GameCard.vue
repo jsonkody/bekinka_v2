@@ -254,8 +254,8 @@ function blink() {
   transition: all 0.2s;
 }
 .window-title::-webkit-scrollbar {
-  height: 0.2rem;
-  width: 0.2rem;
+  height: 3px;
+  width: 0;
 }
 .window-title::-webkit-scrollbar-track {
   background: #00000000;
