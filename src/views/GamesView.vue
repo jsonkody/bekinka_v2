@@ -121,7 +121,10 @@ watch([selectedGenre, sortBy], () => {
 
 // --- Lifecycle Hooks ---
 onMounted(() => {
-  fetchGenres()
+  // loading.value = true
+  // setTimeout(() => {
+    fetchGenres()
+  // }, 300000)
   fetchReviews()
 })
 </script>
@@ -177,6 +180,22 @@ onMounted(() => {
         </div>
       </div>
 
+      <div
+        v-else
+        class="mb-2 mt-3 pb-1 pt-2 flex flex-wrap items-center justify-center animate-pulse border border-purple-400/10 bg-purple-400/10 rounded-md font-sans font-medium"
+      >
+        <div v-for="n in 15" :key="n" class="mr-1 mb-1 py-1">
+          <div
+            class="h-[22px] rounded-md bg-black/25"
+            :class="{
+              'w-16': n % 3 === 0,
+              'w-24': n % 3 === 1,
+              'w-20': n % 3 === 2,
+            }"
+          ></div>
+        </div>
+      </div>
+
       <div class="flex items-center justify-center">
         <!-- {{ sortBy }} -->
         <GameSort v-model="sortBy" />
@@ -223,8 +242,39 @@ onMounted(() => {
       />
     </div>
 
-    <div v-if="loading && !reviews.length" class="text-center p-10 text-white/80">
-      Načítám hry...
+    <div v-if="loading && !reviews.length" class="flex flex-wrap -m-2">
+      <div
+        v-for="n in perPage"
+        :key="n"
+        class="font-pixel p-1 inline-block w-full md:w-1/2 xl:w-1/3"
+      >
+        <div class="pr-2 pt-1 rounded bg-white/5 m-2 animate-pulse">
+          <div class="lista-skeleton flex items-center justify-between px-1 h-[25px]">
+            <div class="h-5 grow mx-2 bg-white/5 rounded-sm"></div>
+            <div class="h-5 w-5 bg-white/10 rounded-sm"></div>
+          </div>
+
+          <div class="flex min-h-[144px]">
+            <div class="p-3">
+              <div class="w-[90px] h-[120px] bg-white/10 rounded-xl"></div>
+            </div>
+            <div class="p-3 pl-1 grow flex flex-col">
+              <div class="flex justify-end gap-1 mb-2">
+                <div class="h-4 w-12 bg-white/5 rounded"></div>
+                <div class="h-4 w-16 bg-white/5 rounded"></div>
+              </div>
+              <div class="grow space-y-2">
+                <div class="h-3 w-full bg-white/5 rounded"></div>
+                <div class="h-3 w-5/6 bg-white/5 rounded"></div>
+                <div class="h-3 w-3/4 bg-white/5 rounded"></div>
+              </div>
+              <div class="mt-3">
+                <div class="h-3 w-1/2 bg-white/5 rounded"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
     <div v-if="!loading && !reviews.length" class="text-center p-10 text-white/80">
       Žádné hry neodpovídají zadaným kritériím.

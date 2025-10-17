@@ -26,7 +26,7 @@ const requestedBy = computed(() => {
 const coverImageUrl = computed(() => {
   if (game.value && game.value.cover_image) {
     // Správný způsob, jak získat URL souboru z PocketBase
-    return props.pb.getFileUrl(game.value, game.value.cover_image, { thumb: '180x240' })
+    return props.pb.files.getURL(game.value, game.value.cover_image, { thumb: '180x240' })
   }
   // Záložní obrázek, pokud není k dispozici
   return 'https://via.placeholder.com/90x120?text=No+Image'
@@ -97,7 +97,7 @@ function blink() {
           </div>
         </div>
 
-        <div class="p-3 pl-1 window-content text-center">
+        <div class="p-3 pl-1 window-content text-center flex flex-col">
           <div
             v-if="game.expand?.genres"
             class="mb-1 flex justify-end flex-wrap text-xs text-gray-600"
@@ -122,7 +122,7 @@ function blink() {
             </div>
           </div>
 
-          <div class="text-left sm:select-text">
+          <div class="grow text-left sm:select-text">
             <span v-if="review.emoji" class="text-2xl mr-2">{{ review.emoji }}</span>
             <EmoComponent>{{ review.text }}</EmoComponent>
           </div>

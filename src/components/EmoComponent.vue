@@ -180,7 +180,7 @@ const processContent = (text: string) => {
       }
 
       if (['avif', 'gif', 'webp'].includes(emote.type)) {
-        return `<img class="inline-block rounded"
+        return `<img class="inline-block rounded-sm"
                  src="/images/emo/${emote.name}.${emote.type}"
                  title="${emote.name}"
                  alt="${emote.name}"
