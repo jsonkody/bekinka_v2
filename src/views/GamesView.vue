@@ -18,7 +18,7 @@ const selectedGenre = ref<string | null>(null) // ID vybraného žánru
 const sortBy = ref('-stream_index') // Defaultní řazení
 
 // --- PocketBase Initialization ---
-const pb = new PocketBase('https://bekinka-db.bekinka.cz')
+const pb = new PocketBase('https://db.bekinka.cz')
 // const pb = new PocketBase('http://127.0.0.1:8090') // Pro lokální vývoj
 
 // --- Data Fetching ---
