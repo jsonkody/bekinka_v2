@@ -18,10 +18,12 @@ const route = useRoute()
               <div
                 class="bekinka-logo text-5xl font-streamster text-purple-400 group-hover:text-purple-200 trans"
               >
-                Bekinka
+                <!-- Bekinka -->
+                 Bexhex
               </div>
-              <div class="kata text-purple-400 group-hover:text-purple-200 trans">ベキンカ</div>
-              <div class="hira text-purple-400 group-hover:text-purple-200 trans">なに これ</div>
+              <!-- <div class="kata text-purple-400 group-hover:text-purple-200 trans">ベキンカ</div> -->
+              <div class="kata text-purple-400 group-hover:text-purple-200 trans">ベックス</div>
+              <!-- <div class="hira text-purple-400 group-hover:text-purple-200 trans">なに これ</div> -->
             </div>
           </div>
         </div>

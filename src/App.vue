@@ -21,15 +21,20 @@ import TheFooter from '@/components/TheFooter.vue'
       <div
         class="floating_animation pointer-events-none inline-block absolute right-0 -top-1 mr-6 sm:mr-8 lg:mr-40"
       >
-        <img alt="bekinka japanese" src="/images/bekinka_jpn.webp" width="480" height="140" />
+        <img alt="bekinka japanese" src="/images/bex_jpn.avif" width="499" height="142" />
       </div>
+      <!-- <div
+        class="floating_animation pointer-events-none inline-block absolute right-0 -top-1 mr-6 sm:mr-8 lg:mr-40"
+      >
+        <img alt="bekinka japanese" src="/images/bekinka_jpn.webp" width="480" height="140" />
+      </div> -->
 
       <div
         class="z-10 border border-purple-400/30 container content mx-auto pb-20 px-2 pt-2 md:pt-6 md:p-5 md:pb-20 relative"
       >
         <router-view v-slot="{ Component }">
           <!-- <transition name="fade" mode="out-in"> -->
-            <component :is="Component" />
+          <component :is="Component" />
           <!-- </transition> -->
         </router-view>
       </div>
