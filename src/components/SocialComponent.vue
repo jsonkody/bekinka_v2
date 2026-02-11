@@ -8,7 +8,7 @@
         class="social-link"
         rel="noreferrer"
         target="_blank"
-        href="https://www.instagram.com/bekinka__/"
+        href="https://www.instagram.com/bexhex__/?hl=en"
         aria-label="Odkaz na Instagram"
       >
         <IconComponent name="Instagram" size="1.6rem" />
@@ -41,7 +41,7 @@
         class="social-link"
         rel="noreferrer"
         target="_blank"
-        href="https://www.youtube.com/channel/UCJM8kUylpahRnHHFh3-z7tg/videos"
+        href="https://www.youtube.com/@bekinka"
         aria-label="Odkaz na YouTube"
       >
         <IconComponent name="Youtube" size="1.6rem" />
