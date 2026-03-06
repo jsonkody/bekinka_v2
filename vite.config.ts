@@ -8,7 +8,9 @@ import tailwindcss from '@tailwindcss/vite'
 export default defineConfig({
   plugins: [
     vue(),
-    vueDevTools(),
+    vueDevTools({
+       launchEditor: 'zed'
+    }),
     tailwindcss(),
   ],
   resolve: {
@@ -19,6 +21,5 @@ export default defineConfig({
   build: {
     sourcemap: false,
     cssCodeSplit: true,
-
   },
 })
