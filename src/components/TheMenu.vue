@@ -49,7 +49,7 @@ const route = useRoute()
         <router-link to="/" custom v-slot="{ navigate, isExactActive }">
           <div class="menu-link" :class="{ active: isExactActive }" @click="navigate">
             <span class="left" :class="{ invisible: !isExactActive }">{</span>
-            Sbírka
+            News
             <span class="right" :class="{ invisible: !isExactActive }">}</span>
           </div>
         </router-link>
