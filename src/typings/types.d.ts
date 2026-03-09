@@ -45,4 +45,12 @@ enum Genre {
   MMO = 114,
 }
 
-export type { Genre, IconName, Picture, Game }
+interface EmoteObj {
+  type: 'emoji' | 'webp' | 'avif' | 'gif'
+  emoji?: string
+  name?: string
+}
+
+type EmotesObj = Record<string, EmoteObj>
+
+export type { Genre, IconName, Picture, Game, EmoteObj, EmotesObj }

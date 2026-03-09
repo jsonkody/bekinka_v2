@@ -1,205 +1,82 @@
 <script setup lang="ts">
-import { ref, watchEffect, useSlots } from 'vue'
-
-interface EmoteObj {
-  type: 'emoji' | 'webp' | 'avif' | 'gif'
-  emoji?: string
-  name?: string
-}
-
-type EmotesObj = Record<string, EmoteObj>
+import type { EmoteObj } from '@/typings/types'
+import { computed, useSlots, ref, watchEffect } from 'vue'
+import { emotes } from './Emotes'
 
 const slots = useSlots()
-const emoteSize = 30
-const processedHtml = ref('')
+const emote_size = 30
+const raw_text = ref('')
 
-const emotes: EmotesObj = {
-  '<3': { type: 'emoji', emoji: '💜' },
-  ':)': { type: 'emoji', emoji: '😃' },
-  ':D': { type: 'emoji', emoji: '😄' },
-  ':bekiSmile': {
-    type: 'webp',
-    name: 'bekiSmile',
-  },
-  ':bekiLurk': {
-    type: 'webp',
-    name: 'bekiLurk',
-  },
-  ':KEKW': {
-    type: 'webp',
-    name: 'KEKW',
-  },
-  ':KEKLEO': {
-    type: 'webp',
-    name: 'KEKLEO',
-  },
-  ':bekiChamp': {
-    type: 'webp',
-    name: 'bekiChamp',
-  },
-  ':bekiRagey': {
-    type: 'webp',
-    name: 'bekiRagey',
-  },
-  ':bekiSleeper': {
-    type: 'webp',
-    name: 'bekiSleeper',
-  },
-  ':bekiStare': {
-    type: 'webp',
-    name: 'bekiStare',
-  },
-  ':bekiSure': {
-    type: 'webp',
-    name: 'bekiSure',
-  },
-  ':bekiKek': {
-    type: 'webp',
-    name: 'bekiKek',
-  },
-  ':bekiMald': {
-    type: 'webp',
-    name: 'bekiMald',
-  },
-  ':bekiStar': {
-    type: 'webp',
-    name: 'bekiStar',
-  },
-  ':bekiPray': {
-    type: 'webp',
-    name: 'bekiPray',
-  },
-  ':bekiPog': {
-    type: 'webp',
-    name: 'bekiPog',
-  },
-  ':bekiMeh': {
-    type: 'webp',
-    name: 'bekiMeh',
-  },
-  ':bekiKona': {
-    type: 'webp',
-    name: 'bekiKona',
-  },
-  ':bekiAha': {
-    type: 'webp',
-    name: 'bekiAha',
-  },
-  ':bekiClown': {
-    type: 'webp',
-    name: 'bekiClown',
-  },
-  ':bekiCmon': {
-    type: 'webp',
-    name: 'bekiCmon',
-  },
-  ':bekiCoze': {
-    type: 'webp',
-    name: 'bekiCoze',
-  },
-  ':bekiDementos': {
-    type: 'webp',
-    name: 'bekiDementos',
-  },
-  ':bekiDiosMios': {
-    type: 'webp',
-    name: 'bekiDiosMios',
-  },
-  ':bekiOk': {
-    type: 'webp',
-    name: 'bekiOk',
-  },
-  ':bekiTired': {
-    type: 'webp',
-    name: 'bekiTired',
-  },
-  ':bekiWeirdo': {
-    type: 'webp',
-    name: 'bekiWeirdo',
-  },
-  ':LUL': {
-    type: 'webp',
-    name: 'LUL',
-  },
-  ':bekiMlady': {
-    type: 'webp',
-    name: 'bekiMlady',
-  },
-  ':bekiBlankies': {
-    type: 'webp',
-    name: 'bekiBlankies',
-  },
-  ':oooo': {
-    type: 'webp',
-    name: 'oooo',
-  },
-  ':pogTasty': {
-    type: 'webp',
-    name: 'pogTasty',
-  },
-  ':bekiPls': {
-    type: 'webp',
-    name: 'bekiPls',
-  },
-  ':Clap': {
-    type: 'webp',
-    name: 'Clap',
-  },
-  ':catJAM': {
-    type: 'webp',
-    name: 'catJAM',
-  },
-  ':andullHello': {
-    type: 'webp',
-    name: 'andullHello',
-  },
-  ':shilLove': {
-    type: 'webp',
-    name: 'shilLove',
-  },
-  ':shilEZY': {
-    type: 'webp',
-    name: 'shilEZY',
-  },
-  ':bekiNerd': {
-    type: 'webp',
-    name: 'bekiNerd',
-  },
-}
+// Funkce pro escapování speciálních znaků v regexu (aby např. <3 nezbořilo regex)
+const escape_regex = (str: string) => str.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')
 
-const processContent = (text: string) => {
-  return text
-    .split(/\s+/)
-    .map((word) => {
-      const emote = emotes[word.trim()]
-      if (!emote) return word
-      // console.log(emote)
+// Regex získá všechny klíče emotů. Závorky ( ) zajistí, že při použití
+// funkce split() samotný oddělovač (emote) nezmizí z výsledného pole.
+const emote_regex = computed(() => {
+  const keys = Object.keys(emotes).map(escape_regex)
+  return new RegExp(`(${keys.join('|')})`, 'g')
+})
 
-      if (emote.type === 'emoji') {
-        return emote.emoji
-      }
-
-      if (['avif', 'gif', 'webp'].includes(emote.type)) {
-        return `<img class="inline-block rounded-sm"
-                 src="/images/emo/${emote.name}.${emote.type}"
-                 title="${emote.name}"
-                 alt="${emote.name}"
-                 width="${emoteSize}"
-                 height="${emoteSize}" />`
-      }
-
-      return word
-    })
-    .join(' ')
-}
-
+// Vytáhneme text ze slotu, abychom zachovali možnost psát obsah rovnou do tagu
 watchEffect(() => {
-  //@ts-ignore
-  const slotContent = slots.default?.()?.[0]?.children || ''
-  processedHtml.value = processContent(String(slotContent))
+  const default_slot = slots.default?.()
+  if (!default_slot) {
+    raw_text.value = ''
+    return
+  }
+
+  // Bezpečně spojíme text ze všech uzlů uvnitř slotu
+  raw_text.value = default_slot
+    .map((node) =>
+      typeof node.children === 'string' ? node.children : String(node.children || ''),
+    )
+    .join('')
+})
+
+type ParsedChunk =
+  | { id: number; type: 'emote'; value: EmoteObj; raw: string }
+  | { id: number; type: 'text'; raw: string }
+
+const parsed_chunks = computed<ParsedChunk[]>(() => {
+  if (!raw_text.value) return []
+
+  return (
+    raw_text.value
+      .split(emote_regex.value)
+      // Přidáme návratový typ : ParsedChunk přímo sem:
+      .map((chunk, index): ParsedChunk => {
+        const emote_data = emotes[chunk]
+
+        if (emote_data) {
+          return { id: index, type: 'emote', value: emote_data, raw: chunk }
+        }
+
+        return { id: index, type: 'text', raw: chunk }
+      })
+      .filter((chunk) => chunk.raw !== '')
+  )
 })
 </script>
 
 <template>
-  <span class="font-inter" v-html="processedHtml"></span>
+  <span class="whitespace-pre-wrap">
+    <template v-for="chunk in parsed_chunks" :key="chunk.id">
+      <span v-if="chunk.type === 'text'">{{ chunk.raw }}</span>
+
+      <span v-else-if="chunk.type === 'emote' && chunk.value.type === 'emoji'">
+        {{ chunk.value.emoji }}
+      </span>
+
+      <img
+        v-else-if="chunk.type === 'emote'"
+        class="inline-block rounded-sm align-middle"
+        :src="`/images/emo/${chunk.value.type}/${chunk.value.name}.${chunk.value.type}`"
+        :title="chunk.value.name"
+        :alt="chunk.value.name"
+        :width="emote_size"
+        :height="emote_size"
+        loading="lazy"
+      />
+    </template>
+  </span>
 </template>

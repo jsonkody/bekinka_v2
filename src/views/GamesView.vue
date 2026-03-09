@@ -123,7 +123,7 @@ watch([selectedGenre, sortBy], () => {
 onMounted(() => {
   // loading.value = true
   // setTimeout(() => {
-    fetchGenres()
+  fetchGenres()
   // }, 300000)
   fetchReviews()
 })
@@ -299,7 +299,9 @@ onMounted(() => {
       bekiDementos :bekiDiosMios bekiDiosMios :bekiOk bekiOk :bekiTired bekiTired :bekiWeirdo
       bekiWeirdo :bekiNerd bekiNerd :bekiMlady bekiMlady :bekiBlankies bekiBlankies :KEKW KEKW
       :KEKLEO KEKLEO :LUL LUL :oooo oooo :pogTasty pogTasty :bekiPls bekiPls :Clap Clap :catJAM
-      catJAM :andullHello andullHello :shilLove shilLove :shilEZY shilEZY
+      catJAM :andullHello andullHello :shilLove shilLove :shilEZY shilEZY :NotLikeThis NotLikeThis
+      :bekiGg bekiGg :bekiKodamaHi bekiKodamaHi :bekiKodamaLove bekiKodamaLove :bekiLove bekiLove
+      :bekiMhm bekiMhm :bekiMonka bekiMonka :bekiPenny bekiPenny :bekiThisisfine bekiThisisfine
     </EmoComponent>
   </div>
 </template>

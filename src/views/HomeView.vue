@@ -12,6 +12,23 @@ import GalleryHomeComponent from '@/components/gallery/GalleryHomeComponent.vue'
     <div class="text-center">
       <div class="mb-6 p-3 md:p-8 leading-relaxed rounded-xl bg-black/50 text-left">
         <h1 class="mt-2 font-semibold mb-8 text-center text-emerald-400 text-2xl font-asap">
+          <EmoComponent class="flex-center"> Update - Únor 2026 :bekiKodamaHi</EmoComponent>
+        </h1>
+        <p class="my-3 font-asap text-lg">
+          <EmoComponent>
+            Po uplynutí mnoha měsíců od léčby se konečně citím silnější a moje snaha se zařadit do
+            normálního fungování pokračuje. Pracuji, sportuji, chodím na důkladné kontroly. Když je
+            hůře, vzpomínám na solidaritu a dobré srdce všech co mi při těžkostech pomáhali 🙂 Ať už
+            to bylo jakoukoliv formou <3
+          </EmoComponent>
+        </p>
+
+        <h2 class="text-right mr-7 text-xl text-emerald-400 font-asap">
+          <EmoComponent> S láskou, Beki :bekiKodamaLove </EmoComponent>
+        </h2>
+      </div>
+      <div class="mb-6 p-3 md:p-8 leading-relaxed rounded-xl bg-black/50 text-left">
+        <h1 class="mt-2 font-semibold mb-8 text-center text-emerald-400 text-2xl font-asap">
           🐰🥕 Novinka 🥚🐣
         </h1>
         <p class="my-3 font-asap text-lg">
