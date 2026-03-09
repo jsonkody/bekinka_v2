@@ -4,7 +4,7 @@
   <div class="social-block m-3 md:m-0 md:mr-6">
     <div class="flex flex-row flex-wrap">
       <a
-        v-pop="'Instagram'"
+        v-pop:bottom="'Instagram'"
         class="social-link"
         rel="noreferrer"
         target="_blank"
@@ -15,7 +15,7 @@
       </a>
 
       <a
-        v-pop="'Twitch'"
+        v-pop:bottom="'Twitch'"
         class="social-link"
         rel="noreferrer"
         target="_blank"
@@ -26,7 +26,7 @@
       </a>
 
       <a
-        v-pop="'Discord'"
+        v-pop:bottom="'Discord'"
         class="social-link"
         rel="noreferrer"
         target="_blank"
@@ -37,7 +37,7 @@
       </a>
 
       <a
-        v-pop="'YouTube'"
+        v-pop:bottom="'YouTube'"
         class="social-link"
         rel="noreferrer"
         target="_blank"
