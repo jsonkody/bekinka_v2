@@ -82,7 +82,7 @@ function blink() {
         </span>
       </div>
 
-      <div class="font-inter flex text-gray-900 min-h-[144px] leading-6 tracking-normal">
+      <div class="font-inter flex text-gray-900 min-h-36 leading-6 tracking-normal">
         <div class="p-3">
           <div
             class="font-pixel group rounded-lg overflow-hidden inline-block relative"
@@ -91,7 +91,7 @@ function blink() {
             <div class="image">
               <img :alt="game.title" width="90" height="120" :src="coverImageUrl" />
             </div>
-            <div v-if="review.score" class="score">
+            <div v-if="review.score" class="score" :class="{ 'score-100': review.score === 100 }">
               <span>{{ review.score }}%</span>
             </div>
           </div>
@@ -216,6 +216,11 @@ function blink() {
     -1px 1px 0 #000,
     1px 1px 0 #000;
 }
+
+.window:hover .score-100 {
+  font-size: 2.1rem;
+}
+
 .button {
   border: 2px outset #c3c3c3;
   background: #c3c3c3;
