@@ -2,6 +2,7 @@
   "name": "bekinka_v2",
   "version": "2.0.0",
   "private": true,
+  "packageManager": "pnpm@10.32.1",
   "type": "module",
   "scripts": {
     "dev": "vite",
