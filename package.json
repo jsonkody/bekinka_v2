@@ -1,6 +1,6 @@
 {
   "name": "bekinka_v2",
-  "version": "0.0.0",
+  "version": "2.0.0",
   "private": true,
   "type": "module",
   "scripts": {
@@ -9,8 +9,10 @@
     "preview": "vite preview",
     "build-only": "vite build",
     "type-check": "vue-tsc --build",
-    "lint": "eslint . --fix",
-    "format": "prettier --write src/",
+    "lint": "run-s lint:*",
+    "lint:oxlint": "oxlint . --fix",
+    "lint:eslint": "eslint . --fix --cache",
+    "format": "oxfmt src/",
     "psh": "git add -A && git commit -m \"saved & pushed by npm\" && git push"
   },
   "dependencies": {
@@ -21,28 +23,31 @@
     "pocketbase": "^0.26.8",
     "tailwindcss": "^4.2.1",
     "toolpop": "^0.4.9",
-    "vue": "^3.5.30",
+    "vue": "beta",
     "vue-lite-youtube-embed": "^1.2.4",
     "vue-router": "^5.0.3"
   },
   "devDependencies": {
-    "@tsconfig/node22": "^22.0.5",
+    "@tsconfig/node24": "^24.0.4",
     "@types/node": "^25.5.0",
     "@vitejs/plugin-vue": "^6.0.5",
-    "@vue/eslint-config-prettier": "^10.2.0",
     "@vue/eslint-config-typescript": "^14.7.0",
     "@vue/tsconfig": "^0.9.0",
     "eslint": "^10.0.3",
-    "eslint-plugin-oxlint": "~1.55.0",
-    "eslint-plugin-vue": "^10.8.0",
+    "eslint-config-prettier": "^10.1.8",
+    "eslint-plugin-oxlint": "~1.56.0",
+    "eslint-plugin-vue": "~10.8.0",
     "jiti": "^2.6.1",
     "npm-run-all2": "^8.0.4",
-    "oxlint": "~1.55.0",
-    "prettier": "^3.8.1",
+    "oxfmt": "^0.41.0",
+    "oxlint": "~1.56.0",
     "sass-embedded": "^1.98.0",
     "typescript": "~5.9.3",
-    "vite": "8.0.0",
+    "vite": "beta",
     "vite-plugin-vue-devtools": "^8.1.0",
-    "vue-tsc": "^3.2.5"
+    "vue-tsc": "^3.2.6"
+  },
+  "engines": {
+    "node": "^20.19.0 || >=22.12.0"
   }
 }
