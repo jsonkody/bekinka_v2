@@ -1,132 +1,113 @@
 <script setup lang="ts">
-import { ref, watch, onMounted } from 'vue'
-import PocketBase, { type RecordModel } from 'pocketbase'
-import GameCard from '@/components/games/GameCard.vue'
-import GameSort from '@/components/games/GameSort.vue'
-import EmoComponent from '@/components/EmoComponent.vue'
-import { IconX } from '@tabler/icons-vue'
+import { ref, watch, onMounted } from "vue";
+import PocketBase, { type RecordModel } from "pocketbase";
+import GameCard from "@/components/games/GameCard.vue";
+import GameSort from "@/components/games/GameSort.vue";
+import EmoComponent from "@/components/EmoComponent.vue";
+import { IconX } from "@tabler/icons-vue";
 
-// --- State Management ---
-const reviews = ref<RecordModel[]>([])
-const genres = ref<RecordModel[]>([])
-const page = ref(1)
-const perPage = 12 // Kolik her se načte na jednu stránku
-const totalPages = ref(1)
-const loading = ref(false)
-const searchQuery = ref('')
-const selectedGenre = ref<string | null>(null) // ID vybraného žánru
-const sortBy = ref('-stream_index') // Defaultní řazení
+const reviews = ref<RecordModel[]>([]);
+const genres = ref<RecordModel[]>([]);
+const page_num = ref(1);
+const per_page = 12;
+const total_pages = ref(1);
+const is_loading = ref(false);
+const search_query = ref("");
+const selected_genre = ref<string | null>(null);
+const sort_by = ref("-stream_index");
 
-// --- PocketBase Initialization ---
-const pb = new PocketBase('https://db.bekinka.cz')
-// const pb = new PocketBase('http://127.0.0.1:8090') // Pro lokální vývoj
+const pb = new PocketBase("https://db.bekinka.cz");
 
-// --- Data Fetching ---
-let debounceTimer: number
-const fetchReviews = async (loadMore = false) => {
-  loading.value = true
+let debounce_timer: number;
+
+const fetch_reviews = async (load_more_flag = false) => {
+  is_loading.value = true;
   try {
-    // Pokud nenačítáme další stránku, resetujeme pole
-    if (!loadMore) {
-      page.value = 1
-      // reviews.value = []
+    if (!load_more_flag) {
+      page_num.value = 1;
     }
 
-    // Sestavení filtru pro PocketBase
-    const filterParts: string[] = []
-    if (searchQuery.value) {
-      // Filtrujeme v expandovaném poli 'game' podle 'title'
-      filterParts.push(`game.title ~ "${searchQuery.value}"`)
+    const filter_parts: string[] = [];
+    if (search_query.value) {
+      filter_parts.push(`game.title ~ "${search_query.value}"`);
     }
-    if (selectedGenre.value) {
-      // Filtrujeme podle ID žánru v expandovaném poli 'genres'
-      filterParts.push(`game.genres.id ?= "${selectedGenre.value}"`)
+    if (selected_genre.value) {
+      filter_parts.push(`game.genres.id ?= "${selected_genre.value}"`);
     }
 
-    // pokud radime dle score NEBO je vybran zanr. nezobrazuj prazdne recenze
-    if (sortBy.value.slice(1) === 'score' || selectedGenre.value) {
-      filterParts.push('score > 0')
+    if (sort_by.value.slice(1) === "score" || selected_genre.value) {
+      filter_parts.push("score > 0");
     } else {
-      // jinak nezobrazuj pouze "nezverejnene" recenze (score -1)
-      filterParts.push('score != -1')
+      filter_parts.push("score != -1");
     }
 
-    const filter = filterParts.join(' && ')
+    const filter_str = filter_parts.join(" && ");
 
-    const resultList = await pb.collection('reviews').getList(page.value, perPage, {
-      sort: sortBy.value,
-      filter: filter || undefined, // Pokud je filtr prázdný, pošli undefined
-      expand: 'game, game.genres, game.request.people',
-    })
+    const result_list = await pb.collection("reviews").getList(page_num.value, per_page, {
+      sort: sort_by.value,
+      filter: filter_str || undefined,
+      expand: "game, game.genres, game.request.people",
+    });
 
-    if (loadMore) {
-      reviews.value.push(...resultList.items)
+    if (load_more_flag) {
+      reviews.value.push(...result_list.items);
     } else {
-      reviews.value = resultList.items
+      reviews.value = result_list.items;
     }
 
-    totalPages.value = resultList.totalPages
+    total_pages.value = result_list.totalPages;
   } catch (error) {
-    console.error('Chyba při načítání recenzí:', error)
+    console.error("Chyba při načítání recenzí:", error);
   } finally {
-    loading.value = false
-    // setTimeout(() => {
-
-    // },3000)
+    is_loading.value = false;
   }
-}
+};
 
-const fetchGenres = async () => {
+const fetch_genres = async () => {
   try {
-    const allGenres = await pb.collection('genres').getFullList({ sort: 'name_cs' })
-    genres.value = allGenres
+    const all_genres = await pb.collection("genres").getFullList({ sort: "name_cs" });
+    genres.value = all_genres;
   } catch (error) {
-    console.error('Chyba při načítání žánrů:', error)
+    console.error("Chyba při načítání žánrů:", error);
   }
-}
+};
 
-// --- Event Handlers & Watchers ---
-const loadMore = () => {
-  if (page.value < totalPages.value) {
-    page.value++
-    fetchReviews(true)
+const load_more = () => {
+  if (page_num.value < total_pages.value) {
+    page_num.value++;
+    fetch_reviews(true);
   }
-}
+};
 
-const clearSearch = () => {
-  searchQuery.value = ''
-}
+const clear_search = () => {
+  search_query.value = "";
+};
 
-const toggleGenre = (genreId: string) => {
-  if (selectedGenre.value === genreId) {
-    selectedGenre.value = null // Odznačení žánru
+const toggle_genre = (genre_id: string) => {
+  if (selected_genre.value === genre_id) {
+    selected_genre.value = null;
   } else {
-    selectedGenre.value = genreId
+    selected_genre.value = genre_id;
   }
-}
+};
 
-// Sledování změn a volání API
-watch(searchQuery, (newValue, oldValue) => {
-  if (newValue !== oldValue) {
-    clearTimeout(debounceTimer)
-    debounceTimer = setTimeout(() => {
-      fetchReviews()
-    }, 300) // Debounce 300ms
+watch(search_query, (new_val, old_val) => {
+  if (new_val !== old_val) {
+    clearTimeout(debounce_timer);
+    debounce_timer = setTimeout(() => {
+      fetch_reviews();
+    }, 300);
   }
-})
+});
 
-watch([selectedGenre, sortBy], () => {
-  fetchReviews()
-})
+watch([selected_genre, sort_by], () => {
+  fetch_reviews();
+});
 
-// --- Lifecycle Hooks ---
 onMounted(() => {
-  // loading.value = true
-  // setTimeout(() => {
-  fetchGenres()
-  // }, 300000)
-  fetchReviews()
-})
+  fetch_genres();
+  fetch_reviews();
+});
 </script>
 
 <template>
@@ -136,23 +117,23 @@ onMounted(() => {
         <div class="grow"></div>
         <div class="relative">
           <input
-            @keydown.esc="clearSearch"
+            @keydown.esc="clear_search"
             placeholder="Vyhledej hru ..."
             class="pl-3 pr-8 cursor-text bg-white font-asap font-semibold text-purple-950 text-xl rounded-md border-2 border-purple-400 hover:border-green-400 focus:border-green-400 focus:outline-none trans w-64"
             type="text"
-            v-model="searchQuery"
+            v-model="search_query"
           />
           <IconX
             v-pop:right="'Zrušit'"
-            v-if="searchQuery"
-            @click="clearSearch"
+            v-if="search_query"
+            @click="clear_search"
             :size="24"
             stroke-width="3"
             class="mr-1 h-full cursor-pointer trans absolute top-0 right-0 text-slate-400 hover:text-slate-600"
           />
         </div>
         <div class="grow flex items-center">
-          <div :class="{ invisible: !loading }" class="ml-2" role="status">
+          <div :class="{ invisible: !is_loading }" class="ml-2" role="status">
             <div
               class="h-5 w-5 animate-spin rounded-full border-4 border-transparent border-l-green-400 border-t-green-400"
             ></div>
@@ -166,13 +147,13 @@ onMounted(() => {
       >
         <div v-for="genre in genres" :key="genre.id" class="cursor-pointer">
           <div
-            v-pop:bottom="genre.id === selectedGenre ? 'Zrušit žánr' : 'Vybrat žánr'"
-            @click="toggleGenre(genre.id)"
+            v-pop:bottom="genre.id === selected_genre ? 'Zrušit žánr' : 'Vybrat žánr'"
+            @click="toggle_genre(genre.id)"
             class="select-none font-asap mr-1 mb-1 py-1 px-3 text-sm rounded-md trans"
             :class="{
-              'border border-green-300/90 bg-green-300/90 text-black': genre.id === selectedGenre,
+              'border border-green-300/90 bg-green-300/90 text-black': genre.id === selected_genre,
               'border border-white/20 hover:border-green-300/90 bg-black/25 text-white hover:bg-black/70':
-                selectedGenre !== genre.id,
+                selected_genre !== genre.id,
             }"
           >
             {{ genre.name_cs }}
@@ -197,8 +178,8 @@ onMounted(() => {
       </div>
 
       <div class="flex items-center justify-center">
-        <!-- {{ sortBy }} -->
-        <GameSort v-model="sortBy" />
+        <!-- {{ sort_by }} -->
+        <GameSort v-model="sort_by" />
       </div>
     </div>
 
@@ -216,9 +197,9 @@ onMounted(() => {
         :key="review.id"
         :review="review"
         :pb="pb"
-        :search-query="searchQuery"
-        :selected-genre="selectedGenre"
-        @update-genre-filter="toggleGenre($event)"
+        :search-query="search_query"
+        :selected-genre="selected_genre"
+        @update-genre-filter="toggle_genre($event)"
       />
     </div>
 
@@ -235,16 +216,16 @@ onMounted(() => {
         :key="review.id"
         :review="review"
         :pb="pb"
-        :loading="loading"
-        :search-query="searchQuery"
-        :selected-genre="selectedGenre"
-        @update-genre-filter="toggleGenre($event)"
+        :loading="is_loading"
+        :search-query="search_query"
+        :selected-genre="selected_genre"
+        @update-genre-filter="toggle_genre($event)"
       />
     </div>
 
-    <div v-if="loading && !reviews.length" class="flex flex-wrap -m-2">
+    <div v-if="is_loading && !reviews.length" class="flex flex-wrap -m-2">
       <div
-        v-for="n in perPage"
+        v-for="n in per_page"
         :key="n"
         class="font-pixel p-1 inline-block w-full md:w-1/2 xl:w-1/3"
       >
@@ -254,9 +235,9 @@ onMounted(() => {
             <div class="h-5 w-5 bg-white/10 rounded-sm"></div>
           </div>
 
-          <div class="flex min-h-[144px]">
+          <div class="flex min-h-36">
             <div class="p-3">
-              <div class="w-[90px] h-[120px] bg-white/10 rounded-xl"></div>
+              <div class="w-22.5 h-30 bg-white/10 rounded-xl"></div>
             </div>
             <div class="p-3 pl-1 grow flex flex-col">
               <div class="flex justify-end gap-1 mb-2">
@@ -276,13 +257,13 @@ onMounted(() => {
         </div>
       </div>
     </div>
-    <div v-if="!loading && !reviews.length" class="text-center p-10 text-white/80">
+    <div v-if="!is_loading && !reviews.length" class="text-center p-10 text-white/80">
       Žádné hry neodpovídají zadaným kritériím.
     </div>
   </div>
 
-  <div v-if="!loading && page < totalPages" class="text-center my-24">
-    <button @click="loadMore" class="btn-cyber">Načíst další</button>
+  <div v-if="!is_loading && page_num < total_pages" class="text-center my-24">
+    <button @click="load_more" class="btn-cyber">Načíst další</button>
   </div>
 
   <div id="emo"></div>
@@ -313,7 +294,7 @@ onMounted(() => {
   width: 250px;
   height: 50px;
   font-size: 25px;
-  font-family: 'Pixel';
+  font-family: "Pixel";
 
   /* Původní styl z tvého příkladu */
   position: relative;
@@ -337,7 +318,7 @@ onMounted(() => {
   --slice-4: inset(40% -6px 43% 0);
   --slice-5: inset(80% -6px 5% 0);
 
-  content: 'Načíst další';
+  content: "Načíst další";
   display: block;
   position: absolute;
   top: 0;

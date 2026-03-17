@@ -26,7 +26,7 @@ const requestedBy = computed(() => {
 const coverImageUrl = computed(() => {
   if (game.value && game.value.cover_image) {
     // Správný způsob, jak získat URL souboru z PocketBase
-    return props.pb.files.getURL(game.value, game.value.cover_image, { thumb: '180x240' })
+    return props.pb.files.getURL(game.value, game.value.cover_image, { thumb: '90x120' })
   }
   // Záložní obrázek, pokud není k dispozici
   return 'https://via.placeholder.com/90x120?text=No+Image'

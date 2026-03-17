@@ -2,8 +2,9 @@
 
 /* App global font */
 @font-face {
-  font-family: 'Inter';
-  src: url('/fonts/inter.ttf');
+  font-display: swap;
+  font-family: "Inter";
+  src: url("/fonts/inter.ttf");
   font-style: normal;
   font-weight: 400;
   font-display: swap;
@@ -11,52 +12,56 @@
 
 /* font-pixelated menu font */
 @font-face {
-  font-family: 'Pixel';
-  src: url('/fonts/pixel.woff2');
+  font-display: swap;
+  font-family: "Pixel";
+  src: url("/fonts/pixel.woff2");
   font-weight: 100 900;
   font-style: normal oblique 0deg 10deg;
 }
 
 /* Logo "Bekinka" */
 @font-face {
-  font-family: 'Streamster';
-  src: url('/fonts/streamster.ttf');
+  font-display: swap;
+  font-family: "Streamster";
+  src: url("/fonts/streamster.ttf");
   font-weight: 100 900;
   font-style: normal oblique 0deg 10deg;
 }
 
 /* Test - trying new main font (Asap) */
 @font-face {
-  font-family: 'Asap';
-  src: url('/fonts/asap.ttf') format('truetype');
+  font-display: swap;
+  font-family: "Asap";
+  src: url("/fonts/asap.ttf") format("truetype");
   font-weight: 100 900;
   font-style: italic oblique 0deg 10deg;
 }
 
 /* Roboto */
 @font-face {
-  font-family: 'RobotoMono';
-  src: url('/fonts/roboto_mono.ttf') format('truetype');
+  font-display: swap;
+  font-family: "RobotoMono";
+  src: url("/fonts/roboto_mono.ttf") format("truetype");
   font-weight: 100 900;
   font-style: normal oblique 0deg 10deg;
 }
 
 .font-roboto-mono {
-  font-family: 'RobotoMono', sans-serif;
+  font-family: "RobotoMono", sans-serif;
 }
 
 .font-inter {
-  font-family: 'Inter', sans-serif;
+  font-family: "Inter", sans-serif;
 }
 
 .font-pixel {
-  font-family: 'Pixel';
+  font-family: "Pixel";
 }
 
 .font-streamster {
-  font-family: 'Streamster';
+  font-family: "Streamster";
 }
 
 .font-asap {
-  font-family: 'Asap';
+  font-family: "Asap";
 }
