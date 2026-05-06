@@ -9,9 +9,7 @@ import tailwindcss from "@tailwindcss/vite";
 export default defineConfig({
   plugins: [
     vue(),
-    vueDevTools({
-      launchEditor: "zed",
-    }),
+    vueDevTools(),
     tailwindcss(),
   ],
   resolve: {
