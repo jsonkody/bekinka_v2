@@ -74,7 +74,7 @@ function blink() {
           v-html="highlightText(game.title, searchQuery)"
         ></span>
         <span
-          v-pop="blink_val ? '( ͡~ ͜ʖ ͡°)' : '( ͡° ͜ʖ ͡°)'"
+          v-pop.touch="blink_val ? '( ͡~ ͜ʖ ͡°)' : '( ͡° ͜ʖ ͡°)'"
           @mousedown="blink"
           class="cursor-pointer button justify-self-end mr-1"
         >
