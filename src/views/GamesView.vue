@@ -1,119 +1,119 @@
 <script setup lang="ts">
-import { ref, watch, onMounted } from "vue";
-import PocketBase, { type RecordModel } from "pocketbase";
-import GameCard from "@/components/games/GameCard.vue";
-import GameSort from "@/components/games/GameSort.vue";
-import EmoComponent from "@/components/EmoComponent.vue";
-import { IconX } from "@tabler/icons-vue";
+import { ref, watch, onMounted } from 'vue'
+import PocketBase, { type RecordModel } from 'pocketbase'
+import GameCard from '@/components/games/GameCard.vue'
+import GameSort from '@/components/games/GameSort.vue'
+import EmoComponent from '@/components/EmoComponent.vue'
+import { IconX } from '@tabler/icons-vue'
 
-const reviews = ref<RecordModel[]>([]);
-const genres = ref<RecordModel[]>([]);
-const page_num = ref(1);
-const per_page = 12;
-const total_pages = ref(1);
-const is_loading = ref(false);
-const search_query = ref("");
-const selected_genre = ref<string | null>(null);
-const sort_by = ref("-stream_index");
+const reviews = ref<RecordModel[]>([])
+const genres = ref<RecordModel[]>([])
+const page_num = ref(1)
+const per_page = 12
+const total_pages = ref(1)
+const is_loading = ref(false)
+const search_query = ref('')
+const selected_genre = ref<string | null>(null)
+const sort_by = ref('-stream_index')
 
-const pb = new PocketBase("https://db.bekinka.cz");
+const pb = new PocketBase('https://db.bekinka.cz')
 
-let debounce_timer: number;
+let debounce_timer: number
 
 const fetch_reviews = async (load_more_flag = false) => {
-  is_loading.value = true;
+  is_loading.value = true
   try {
     if (!load_more_flag) {
-      page_num.value = 1;
+      page_num.value = 1
     }
 
-    const filter_parts: string[] = [];
+    const filter_parts: string[] = []
     if (search_query.value) {
-      filter_parts.push(`game.title ~ "${search_query.value}"`);
+      filter_parts.push(`game.title ~ "${search_query.value}"`)
     }
     if (selected_genre.value) {
-      filter_parts.push(`game.genres.id ?= "${selected_genre.value}"`);
+      filter_parts.push(`game.genres.id ?= "${selected_genre.value}"`)
     }
 
-    if (sort_by.value.slice(1) === "score" || selected_genre.value) {
-      filter_parts.push("score > 0");
+    if (sort_by.value.slice(1) === 'score' || selected_genre.value) {
+      filter_parts.push('score > 0')
     } else {
-      filter_parts.push("score != -1");
+      filter_parts.push('score != -1')
     }
 
-    const filter_str = filter_parts.join(" && ");
+    const filter_str = filter_parts.join(' && ')
 
-    const result_list = await pb.collection("reviews").getList(page_num.value, per_page, {
+    const result_list = await pb.collection('reviews').getList(page_num.value, per_page, {
       sort: sort_by.value,
       filter: filter_str || undefined,
-      expand: "game, game.genres, game.request.people",
-    });
+      expand: 'game, game.genres, game.request.people',
+    })
 
     if (load_more_flag) {
-      reviews.value.push(...result_list.items);
+      reviews.value.push(...result_list.items)
     } else {
-      reviews.value = result_list.items;
+      reviews.value = result_list.items
     }
 
-    total_pages.value = result_list.totalPages;
+    total_pages.value = result_list.totalPages
   } catch (error) {
-    console.error("Chyba při načítání recenzí:", error);
+    console.error('Chyba při načítání recenzí:', error)
   } finally {
-    is_loading.value = false;
+    is_loading.value = false
   }
-};
+}
 
 const fetch_genres = async () => {
   try {
-    const all_genres = await pb.collection("genres").getFullList({ sort: "name_cs" });
-    genres.value = all_genres;
+    const all_genres = await pb.collection('genres').getFullList({ sort: 'name_cs' })
+    genres.value = all_genres
   } catch (error) {
-    console.error("Chyba při načítání žánrů:", error);
+    console.error('Chyba při načítání žánrů:', error)
   }
-};
+}
 
 const load_more = () => {
   if (page_num.value < total_pages.value) {
-    page_num.value++;
-    fetch_reviews(true);
+    page_num.value++
+    fetch_reviews(true)
   }
-};
+}
 
 const clear_search = () => {
-  search_query.value = "";
-};
+  search_query.value = ''
+}
 
 const toggle_genre = (genre_id: string) => {
   if (selected_genre.value === genre_id) {
-    selected_genre.value = null;
+    selected_genre.value = null
   } else {
-    selected_genre.value = genre_id;
+    selected_genre.value = genre_id
   }
-};
+}
 
 watch(search_query, (new_val, old_val) => {
   if (new_val !== old_val) {
-    clearTimeout(debounce_timer);
+    clearTimeout(debounce_timer)
     debounce_timer = setTimeout(() => {
-      fetch_reviews();
-    }, 300);
+      fetch_reviews()
+    }, 300)
   }
-});
+})
 
 watch([selected_genre, sort_by], () => {
-  fetch_reviews();
-});
+  fetch_reviews()
+})
 
 onMounted(() => {
-  fetch_genres();
-  fetch_reviews();
-});
+  fetch_genres()
+  fetch_reviews()
+})
 </script>
 
 <template>
   <div>
     <div class="pt-6 px-3 pb-2 bg-black/40 rounded-2xl">
-      <div class="flex justify-center intems-center">
+      <div class="flex justify-center items-center">
         <div class="grow"></div>
         <div class="relative">
           <input
@@ -294,7 +294,7 @@ onMounted(() => {
   width: 250px;
   height: 50px;
   font-size: 25px;
-  font-family: "Pixel";
+  font-family: 'Pixel';
 
   /* Původní styl z tvého příkladu */
   position: relative;
@@ -318,7 +318,7 @@ onMounted(() => {
   --slice-4: inset(40% -6px 43% 0);
   --slice-5: inset(80% -6px 5% 0);
 
-  content: "Načíst další";
+  content: 'Načíst další';
   display: block;
   position: absolute;
   top: 0;
